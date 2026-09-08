@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naming Scout report</title>
+<style>
+:root{
+  --bg:#fbfaf8; --panel:#fff; --ink:#16150f; --ink-2:#4a4740; --ink-3:#78746a;
+  --line:#e5e1d8; --line-2:#d6d1c5; --accent:#1f5d3f; --accent-soft:#e7f1ea;
+  --ok:#1f6b45; --ok-bg:#e6f2ea; --ok-line:#a9cfba;
+  --sale:#8a5a00; --sale-bg:#fdf1dc; --sale-line:#e0be7d;
+  --park:#7a5c2e; --park-bg:#f6efe2; --park-line:#dcc9a5;
+  --taken:#8c3227; --taken-bg:#fbeae7; --taken-line:#e0b3aa;
+  --unk:#5c5a55; --unk-bg:#f0eee9; --unk-line:#bab6ac;
+  --radius:10px;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#14140f; --panel:#1c1c17; --ink:#f0eee7; --ink-2:#c2bfb5; --ink-3:#8f8b81;
+    --line:#2e2e27; --line-2:#3d3d34; --accent:#7fc7a0; --accent-soft:#1d2b23;
+    --ok:#7fc7a0; --ok-bg:#16281f; --ok-line:#2f5b43;
+    --sale:#e0b264; --sale-bg:#2b2113; --sale-line:#5c4620;
+    --park:#c4a878; --park-bg:#262014; --park-line:#4d4029;
+    --taken:#e39187; --taken-bg:#2c1a17; --taken-line:#5e332c;
+    --unk:#9d9a92; --unk-bg:#232320; --unk-line:#41403a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14140f; --panel:#1c1c17; --ink:#f0eee7; --ink-2:#c2bfb5; --ink-3:#8f8b81;
+  --line:#2e2e27; --line-2:#3d3d34; --accent:#7fc7a0; --accent-soft:#1d2b23;
+  --ok:#7fc7a0; --ok-bg:#16281f; --ok-line:#2f5b43;
+  --sale:#e0b264; --sale-bg:#2b2113; --sale-line:#5c4620;
+  --park:#c4a878; --park-bg:#262014; --park-line:#4d4029;
+  --taken:#e39187; --taken-bg:#2c1a17; --taken-line:#5e332c;
+  --unk:#9d9a92; --unk-bg:#232320; --unk-line:#41403a;
+}
+*{box-sizing:border-box}
+html{color-scheme:light dark}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans);
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+a{color:var(--accent)}
+code,.mono{font-family:var(--mono);font-size:.92em}
+
+/* header */
+header{padding:44px 0 28px;border-bottom:1px solid var(--line)}
+.eyebrow{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 14px}
+h1{font:400 34px/1.2 var(--serif);margin:0 0 12px;letter-spacing:-.01em}
+.sub{color:var(--ink-2);margin:0;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.meta span{font-size:12px;color:var(--ink-2);background:var(--panel);
+  border:1px solid var(--line);border-radius:99px;padding:4px 11px}
+.meta span b{font-weight:600;color:var(--ink)}
+
+/* sections */
+section{margin-top:44px;scroll-margin-top:20px}
+h2{font:600 12px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 18px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+h3{font:600 17px/1.3 var(--sans);margin:0 0 6px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.muted{color:var(--ink-3)}
+
+/* brief */
+.brief{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.brief div{background:var(--panel);padding:14px 16px}
+.brief dt{font:600 11px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 6px}
+.brief dd{margin:0;color:var(--ink)}
+.assumptions{margin-top:14px;padding:12px 16px;border-left:3px solid var(--sale-line);
+  background:var(--sale-bg);border-radius:0 var(--radius) var(--radius) 0;font-size:14px}
+.assumptions b{color:var(--sale)}
+
+/* territories */
+.terrs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.terr{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.terr h3{font-size:15px}
+.terr p{margin:0 0 12px;font-size:14px;color:var(--ink-2)}
+.bar{height:5px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:7px}
+.bar i{display:block;height:100%;background:var(--ok);border-radius:3px}
+.rate{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-3)}
+.rate b{color:var(--ink-2);font-weight:600}
+.terr[data-health="mined"] .bar i{background:var(--taken)}
+.terr[data-health="normal"] .bar i{background:var(--sale)}
+
+/* rounds */
+table.rounds{width:100%;border-collapse:collapse;font-size:14px}
+table.rounds th{text-align:left;font:600 11px/1 var(--sans);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);padding:0 12px 10px 0;border-bottom:1px solid var(--line)}
+table.rounds td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+table.rounds td:last-child{color:var(--ink-2)}
+
+/* controls */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px}
+.controls input[type=search]{flex:1 1 200px;min-width:160px;padding:8px 12px;font:14px var(--sans);
+  color:var(--ink);background:var(--panel);border:1px solid var(--line-2);border-radius:8px}
+.controls input[type=search]:focus{outline:2px solid var(--accent);outline-offset:1px}
+.chipbtn{font:500 13px var(--sans);padding:7px 13px;border-radius:99px;cursor:pointer;
+  background:var(--panel);color:var(--ink-2);border:1px solid var(--line-2)}
+.chipbtn[aria-pressed=true]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.count{font-size:13px;color:var(--ink-3);margin-left:auto}
+
+/* candidates */
+.cand{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:20px;margin-bottom:14px;position:relative}
+.cand.pick{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.cand-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:14px}
+.rank{font:600 12px var(--mono);color:var(--ink-3);min-width:22px}
+.cand-head h3{font:500 22px/1.2 var(--serif);margin:0}
+.terrtag{font-size:12px;color:var(--ink-3);border:1px solid var(--line-2);
+  border-radius:99px;padding:2px 9px}
+.badge{font:600 10px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;
+  padding:5px 9px;border-radius:99px;background:var(--accent-soft);color:var(--accent);
+  border:1px solid var(--accent)}
+.field{margin-bottom:11px;font-size:14.5px;display:grid;grid-template-columns:78px 1fr;gap:12px}
+.field dt{font:600 11px/1.55 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.field dd{margin:0;color:var(--ink-2)}
+.field.why dd{color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.chip{font:500 12.5px var(--sans);border-radius:7px;padding:4px 9px;border:1px solid;
+  display:inline-flex;align-items:baseline;gap:6px;white-space:nowrap}
+.chip .k{font-family:var(--mono);font-size:12px}
+.chip .v{font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600;opacity:.85}
+.chip[data-s=available]{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok)}
+.chip[data-s=free]{background:var(--ok-bg);border-color:var(--ok-line);color:var(--ok)}
+.chip[data-s=for_sale]{background:var(--sale-bg);border-color:var(--sale-line);color:var(--sale)}
+.chip[data-s=parked]{background:var(--park-bg);border-color:var(--park-line);color:var(--park)}
+.chip[data-s=registered],.chip[data-s=taken]{background:var(--taken-bg);border-color:var(--taken-line);color:var(--taken)}
+.chip[data-s=reserved]{background:var(--unk-bg);border-color:var(--unk-line);color:var(--unk)}
+.chip[data-s=unknown]{background:var(--unk-bg);border-color:var(--unk-line);color:var(--unk);
+  border-style:dashed}
+.chip[data-conf=low]{opacity:.82}
+.chip[data-conf=low]::after{content:"?";font-size:10px;font-weight:700;opacity:.7}
+
+/* picks */
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.pickcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px;border-top:3px solid var(--accent)}
+.pickcard .n{font:500 20px/1.2 var(--serif);margin:0 0 4px}
+.pickcard .lab{font:600 10px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:10px}
+.pickcard p{margin:0 0 8px;font-size:14px;color:var(--ink-2)}
+.pickcard .db{font-size:13px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:8px;margin:0}
+
+/* caveats */
+.caveats{border:1px solid var(--sale-line);background:var(--sale-bg);border-radius:var(--radius);padding:20px}
+.caveats h2{border:0;padding:0;margin:0 0 12px;color:var(--sale)}
+.caveats ul{margin:0;padding-left:20px}
+.caveats li{margin-bottom:8px;font-size:14.5px;color:var(--ink-2)}
+.caveats li:last-child{margin-bottom:0}
+
+/* legend + footer */
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;font-size:12px}
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--ink-3);display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+.themebtn{background:none;border:1px solid var(--line-2);color:var(--ink-3);
+  border-radius:99px;padding:4px 11px;font:13px var(--sans);cursor:pointer}
+.empty{color:var(--ink-3);font-style:italic;padding:20px 0}
+
+@media (max-width:640px){
+  h1{font-size:27px}
+  .field{grid-template-columns:1fr;gap:2px}
+  .wrap{padding:0 16px 64px}
+}
+@media print{
+  body{background:#fff}
+  .controls,.themebtn,footer{display:none}
+  .cand,.terr,.panel,.pickcard{break-inside:avoid;border-color:#ccc}
+  section{margin-top:26px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Naming Scout</p>
+    <h1 id="title">Naming report</h1>
+    <p class="sub" id="subtitle"></p>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <section id="s-brief" hidden><h2>Brief</h2>
+    <dl class="brief" id="brief"></dl>
+    <div class="assumptions" id="assumptions" hidden></div>
+  </section>
+
+  <section id="s-terr" hidden><h2>Territories</h2>
+    <div class="terrs" id="territories"></div>
+  </section>
+
+  <section id="s-rounds" hidden><h2>Rounds</h2>
+    <div class="panel"><table class="rounds"><thead><tr>
+      <th>Round</th><th>Focus</th><th>Checked</th><th>Available</th><th>Read</th>
+    </tr></thead><tbody id="rounds"></tbody></table></div>
+  </section>
+
+  <section id="s-picks" hidden><h2>Recommendation</h2>
+    <div class="picks" id="picks"></div>
+  </section>
+
+  <section id="s-cands" hidden><h2>Shortlist</h2>
+    <div class="controls">
+      <input type="search" id="q" placeholder="Filter by name, territory, or reason…" aria-label="Filter candidates">
+      <button class="chipbtn" id="f-avail" aria-pressed="false">Available domain only</button>
+      <button class="chipbtn" id="f-buy" aria-pressed="false">Available or purchasable</button>
+      <span class="count" id="count"></span>
+    </div>
+    <div id="candidates"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section id="s-cav" hidden>
+    <div class="caveats"><h2>What was not verified</h2><ul id="caveats"></ul></div>
+  </section>
+
+  <footer>
+    <span id="foot"></span>
+    <button class="themebtn" id="theme">Toggle theme</button>
+  </footer>
+</div>
+
+<script type="application/json" id="data">__NAMING_SCOUT_DATA__</script>
+<script>
+(function(){
+  var D={};
+  try{ D=JSON.parse(document.getElementById('data').textContent)||{}; }
+  catch(e){ document.body.innerHTML='<div class="wrap"><h1>Report data could not be parsed</h1><pre>'+
+    String(e)+'</pre></div>'; return; }
+
+  var el=function(id){return document.getElementById(id)};
+  var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+  // minimal inline markup: **bold**, *italic*, `code`
+  var rich=function(s){return esc(s)
+    .replace(/`([^`]+)`/g,'<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
+    .replace(/(^|\W)\*([^*\n]+)\*/g,'$1<em>$2</em>')};
+  var show=function(id){var n=el(id); if(n) n.hidden=false};
+
+  // ---- header
+  var title=D.title||'Naming report';
+  document.title=title+' — Naming Scout';
+  el('title').textContent=title;
+  if(D.subtitle) el('subtitle').textContent=D.subtitle;
+  var meta=[];
+  if(D.date)          meta.push(['Run',D.date]);
+  if(D.domain_mode)   meta.push(['Domain mode',D.domain_mode]);
+  if(D.clearance_profile) meta.push(['Clearance',D.clearance_profile]);
+  if(D.candidates&&D.candidates.length) meta.push(['Shortlist',D.candidates.length+' names']);
+  el('meta').innerHTML=meta.map(function(m){
+    return '<span>'+esc(m[0])+' <b>'+esc(m[1])+'</b></span>'}).join('');
+
+  // ---- brief
+  var b=D.brief||{};
+  var order=[['naming','Naming'],['does','What it does'],['audience','Audience'],
+             ['positioning','Positioning'],['personality','Personality'],['constraints','Constraints']];
+  var briefHtml=order.filter(function(k){return b[k[0]]}).map(function(k){
+    return '<div><dt>'+esc(k[1])+'</dt><dd>'+rich(b[k[0]])+'</dd></div>'}).join('');
+  Object.keys(b).forEach(function(k){
+    if(order.some(function(o){return o[0]===k})) return;
+    briefHtml+='<div><dt>'+esc(k.replace(/_/g,' '))+'</dt><dd>'+rich(b[k])+'</dd></div>';
+  });
+  if(briefHtml){ el('brief').innerHTML=briefHtml; show('s-brief'); }
+  if(D.assumptions&&D.assumptions.length){
+    el('assumptions').innerHTML='<b>Assumed, correct me if wrong:</b> '+
+      D.assumptions.map(rich).join(' · ');
+    el('assumptions').hidden=false; show('s-brief');
+  }
+
+  // ---- territories
+  var T=D.territories||[];
+  if(T.length){
+    el('territories').innerHTML=T.map(function(t){
+      var ch=Number(t.checked)||0, av=Number(t.available)||0;
+      var pct=ch?Math.round(av/ch*100):null;
+      var health=pct==null?'':(pct>=40?'open':(pct>=15?'normal':'mined'));
+      var bar=ch?'<div class="bar"><i style="width:'+Math.max(pct,2)+'%"></i></div>'+
+        '<div class="rate"><span><b>'+av+'/'+ch+'</b> available</span><span>'+pct+'%'+
+        (t.note?' · '+esc(t.note):'')+'</span></div>':
+        (t.note?'<div class="rate"><span>'+esc(t.note)+'</span></div>':'');
+      return '<div class="terr" data-health="'+health+'"><h3>'+esc(t.name)+'</h3>'+
+        (t.description?'<p>'+rich(t.description)+'</p>':'')+
+        (t.fit?'<p>'+rich(t.fit)+'</p>':'')+bar+'</div>';
+    }).join('');
+    show('s-terr');
+  }
+
+  // ---- rounds
+  var R=D.rounds||[];
+  if(R.length){
+    el('rounds').innerHTML=R.map(function(r){
+      var ch=Number(r.checked)||0, av=Number(r.available)||0;
+      var pct=ch?' ('+Math.round(av/ch*100)+'%)':'';
+      return '<tr><td class="mono">'+esc(r.round)+'</td><td>'+rich(r.focus||'')+'</td>'+
+        '<td class="mono">'+(ch||'—')+'</td><td class="mono">'+(ch?av+pct:'—')+'</td>'+
+        '<td>'+rich(r.note||'')+'</td></tr>';
+    }).join('');
+    show('s-rounds');
+  }
+
+  // ---- picks
+  var picks=[];
+  (D.top3||[]).forEach(function(p,i){picks.push({lab:'Pick '+(i+1),n:p.name,r:p.reason,d:p.dealbreaker})});
+  if(D.unconventional) picks.push({lab:'Best unconventional',n:D.unconventional.name,
+    r:D.unconventional.reason,d:D.unconventional.cost});
+  if(D.safest) picks.push({lab:'Safest',n:D.safest.name,r:D.safest.reason,d:D.safest.cost});
+  if(picks.length){
+    el('picks').innerHTML=picks.map(function(p){
+      return '<div class="pickcard"><div class="lab">'+esc(p.lab)+'</div>'+
+        '<p class="n">'+esc(p.n)+'</p>'+(p.r?'<p>'+rich(p.r)+'</p>':'')+
+        (p.d?'<p class="db">'+rich(p.d)+'</p>':'')+'</div>'}).join('');
+    show('s-picks');
+  }
+  var picked={}; picks.forEach(function(p){ if(p.n) picked[String(p.n).toLowerCase()]=1 });
+
+  // ---- candidates
+  var C=D.candidates||[];
+  var norm=function(s){return String(s||'unknown').toLowerCase().replace(/[\s-]+/g,'_')};
+  var chip=function(k,state,detail,conf){
+    var s=norm(state);
+    if(s.indexOf('unknown')===0||s==='error') s='unknown';
+    var t=[k,state,detail].filter(Boolean).join(' — ');
+    return '<span class="chip" data-s="'+esc(s)+'"'+(conf?' data-conf="'+esc(norm(conf))+'"':'')+
+      ' title="'+esc(t)+'"><span class="k">'+esc(k)+'</span><span class="v">'+esc(state)+'</span></span>';
+  };
+  var render=function(list){
+    if(!list.length){ el('candidates').innerHTML='<p class="empty">No candidates match this filter.</p>'; return }
+    el('candidates').innerHTML=list.map(function(c,i){
+      var chips=(c.domains||[]).map(function(d){return chip(d.domain,d.state,d.detail)})
+        .concat((c.clearance||[]).map(function(x){return chip(x.check,x.state,x.detail,x.confidence)}));
+      var rows='';
+      if(c.why)      rows+='<div class="field why"><dt>Why</dt><dd>'+rich(c.why)+'</dd></div>';
+      if(c.weakness) rows+='<div class="field"><dt>Weakness</dt><dd>'+rich(c.weakness)+'</dd></div>';
+      if(c.verdict)  rows+='<div class="field"><dt>Verdict</dt><dd>'+rich(c.verdict)+'</dd></div>';
+      return '<article class="cand'+(picked[String(c.name).toLowerCase()]?' pick':'')+'">'+
+        '<div class="cand-head"><span class="rank">'+(c.rank||i+1)+'</span>'+
+        '<h3>'+esc(c.name)+'</h3>'+
+        (c.territory?'<span class="terrtag">'+esc(c.territory)+'</span>':'')+
+        (picked[String(c.name).toLowerCase()]?'<span class="badge">Recommended</span>':'')+
+        '</div>'+rows+(chips.length?'<div class="chips">'+chips.join('')+'</div>':'')+'</article>';
+    }).join('');
+  };
+  var has=function(c,states){
+    return (c.domains||[]).some(function(d){return states.indexOf(norm(d.state))>-1})};
+  var apply=function(){
+    var q=el('q').value.trim().toLowerCase();
+    var a=el('f-avail').getAttribute('aria-pressed')==='true';
+    var p=el('f-buy').getAttribute('aria-pressed')==='true';
+    var list=C.filter(function(c){
+      if(a&&!has(c,['available'])) return false;
+      if(p&&!has(c,['available','for_sale','parked'])) return false;
+      if(!q) return true;
+      return JSON.stringify(c).toLowerCase().indexOf(q)>-1;
+    });
+    render(list);
+    el('count').textContent=list.length+' of '+C.length+' shown';
+  };
+  if(C.length){
+    ['f-avail','f-buy'].forEach(function(id){
+      el(id).addEventListener('click',function(){
+        var on=this.getAttribute('aria-pressed')==='true';
+        this.setAttribute('aria-pressed',String(!on));
+        if(!on){ var other=id==='f-avail'?'f-buy':'f-avail'; el(other).setAttribute('aria-pressed','false') }
+        apply();
+      });
+    });
+    el('q').addEventListener('input',apply);
+    apply();
+    el('legend').innerHTML=[['available','not in the registry'],['for_sale','listed on a marketplace'],
+      ['parked','registered, parking host'],['registered','registered'],
+      ['unknown','not resolved — never read as free']]
+      .map(function(l){return chip(l[1],l[0])}).join('');
+    show('s-cands');
+  }
+
+  // ---- caveats
+  var V=D.unverified||[];
+  if(V.length){ el('caveats').innerHTML=V.map(function(x){return '<li>'+rich(x)+'</li>'}).join(''); show('s-cav') }
+
+  el('foot').textContent=(D.date?'Checks run '+D.date+'. ':'')+
+    'Domain and namespace states change — re-run before committing. Not legal advice.';
+
+  // ---- theme
+  var t=el('theme');
+  try{ var saved=localStorage.getItem('ns-theme'); if(saved) document.documentElement.setAttribute('data-theme',saved) }catch(e){}
+  t.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    var next=cur==='dark'?'light':(cur==='light'?'dark':
+      (matchMedia('(prefers-color-scheme: dark)').matches?'light':'dark'));
+    document.documentElement.setAttribute('data-theme',next);
+    try{ localStorage.setItem('ns-theme',next) }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>

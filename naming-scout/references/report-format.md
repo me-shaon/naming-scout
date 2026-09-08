@@ -3,6 +3,20 @@
 The report is the deliverable. It should be readable in five minutes and defensible in a
 conversation with someone who disagrees.
 
+**It ships as an HTML page, not as terminal text.** Build the JSON described by
+`scripts/report.sh --schema`, render it, and it opens in the browser:
+
+```bash
+scripts/report.sh report.json
+```
+
+`examples/report-data.example.json` is a complete payload from a real run. The sections
+below describe what goes in each field; the page lays them out, colour-codes every state,
+and hides anything you leave empty.
+
+In the terminal, say only your recommendation and the one thing that would change it, then
+give the path. The page carries the detail.
+
 ## Sections
 
 ### 1. Brief

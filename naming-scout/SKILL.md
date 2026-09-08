@@ -148,13 +148,34 @@ Non-negotiable reporting rules:
 - **Never state trademark clearance.** "No obvious conflict in this search" is the
   strongest claim available to you, and it is not legal advice.
 
-### 6. Report
+### 6. Report — always as an HTML page in the browser
 
 Structure in `references/report-format.md`. Shape:
 
 brief you worked from → territories found, with hit rates → ranked shortlist of **8–15**,
 each with territory, why it works, its specific weakness, domain state, requested
 clearance → top 3 → best unconventional option → safest option → what you could not verify.
+
+Deliver it as a page, not as a wall of terminal text. Write the report to JSON, render it,
+and it opens in the default browser:
+
+```bash
+scripts/report.sh --schema          # the JSON shape, every field optional
+scripts/report.sh report.json       # renders a self-contained page and opens it
+scripts/report.sh report.json -o ~/naming-report.html --no-open
+```
+
+Write the JSON to the scratchpad or a temp path, not into the user's project, unless they
+asked for a file. `examples/report-data.example.json` is a complete worked payload.
+
+The page colour-codes every domain and clearance state, so `unknown` can never be mistaken
+for `available`; it filters to available-only or available-plus-purchasable, searches the
+shortlist, and prints cleanly. Sections you leave out are omitted rather than shown empty,
+so a partial run still renders.
+
+Then say the three or four sentences that matter in the terminal — your actual
+recommendation and the one thing that would change it — and give the file path. Do not
+restate the whole report as text; that is what the page is for.
 
 Rank by naming quality, positioning fit, distinctiveness, usability, clearance risk,
 then domain state. Reorder only when the user set a hard constraint ("must be an
@@ -199,4 +220,5 @@ Do not:
 | `references/domain-states.md` | interpreting a state, or picking the domain mode |
 | `references/clearance-guide.md` | choosing a profile, or running trademark/social/app-store/search |
 | `references/report-format.md` | writing the final report |
+| `examples/report-data.example.json` | the report JSON, filled in from a real run |
 | `examples/` | five worked runs, including one where the first direction fails |

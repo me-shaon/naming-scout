@@ -48,6 +48,9 @@ separate answers, because they are separate answers.
 available. A trademark search is reported as "no obvious conflict in what I searched", never
 as clearance.
 
+**The result opens in your browser.** Not a wall of terminal text. A page you can filter,
+search, print, and send to a co-founder.
+
 ## The thing this exists to prevent
 
 A well-known model was asked to name a project and produced 12 candidates with the
@@ -97,6 +100,9 @@ scripts/clearance.sh --checks github,npm,pypi leadsman sounder
 
 # defensive variants for a finalist, piped straight into the domain check
 scripts/variants.sh sounder | scripts/rdap.sh --tlds com --available
+
+# render a report and open it in the browser
+scripts/report.sh report.json
 ```
 
 ## What you should tell it
@@ -149,12 +155,24 @@ territory your name already belongs to.
 
 ## What a result looks like
 
-A brief you can correct, the territories it found with their availability rates, a ranked
-shortlist of 8–15 with a stated weakness on every entry, a top 3 with an actual
-recommendation, the best unconventional option, the safest option, and an explicit list of
-what could not be verified.
+When the run finishes, a self-contained HTML page opens in your default browser:
 
-Each shortlist entry looks roughly like:
+- **The brief it worked from**, including anything it assumed, so you can catch a
+  misunderstanding before it costs you a decision
+- **The territories it found**, each with its availability rate as a bar — which directions
+  still have room, and which the whole market has already mined out
+- **The round log**: what each round explored, what the hit rate was, and what that told it
+- **A ranked shortlist of 8–15**, every entry with a specific reason it works, a named
+  weakness, and colour-coded chips for every domain and namespace state
+- **Top 3, best unconventional, and safest**, each with the one thing that would change the
+  recommendation
+- **What could not be verified**, as a section you cannot miss rather than a footnote
+
+`unknown` is styled so it can never be mistaken for `available` — different colour, dashed
+border. You can filter the shortlist to available-only or available-plus-purchasable,
+search it, toggle light and dark, and print it.
+
+Each shortlist entry reads roughly like:
 
 ```
 Leadsman — Depth sounding
@@ -163,7 +181,14 @@ Why:      The leadsman is the crew member who drops the weighted line and calls 
           reports what is under you.
 Weakness: The reference is invisible unless you know it, and non-nautical readers hear
           "lead" as sales lead first.
-.dev free · .sh free · .com registered 1999 · npm free · PyPI free · GitHub taken
+.dev available · .sh available · .com registered 1999 · npm free · PyPI free · GitHub taken
+```
+
+You can also render a report by hand from a JSON file:
+
+```bash
+scripts/report.sh --schema                 # the shape it expects, every field optional
+scripts/report.sh examples/report-data.example.json
 ```
 
 Five full worked runs are in [`examples/`](examples/), including one where the first
