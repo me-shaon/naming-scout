@@ -205,7 +205,6 @@ Rebranding after a cease-and-desist costs more than every step above combined.
 
 ## Credits
 
-The method comes from a naming run of roughly 400 candidate domains across six rounds,
-documented in `00-domain-research.md` and `01-naming-scout.md` in the parent repository.
+The method comes from a naming run of roughly 400 candidate domains across six rounds.
 The availability-rate-as-signal technique, the concept-clustering approach, and the
-"no indexed website" finding all come from that work.
+"no indexed website" cross-check all come from that work.

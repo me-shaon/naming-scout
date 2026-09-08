@@ -1,15 +1,12 @@
 # naming-scout
 
-Research and source for **Naming Scout**, a Claude Agent Skill that finds names worth using
-and then checks whether you can actually use them.
+**Naming Scout** — a Claude Agent Skill that finds names worth using, then tells you the
+truth about whether you can use them.
 
-- **[`naming-scout/`](naming-scout/)** — the skill. Copy it to `~/.claude/skills/` and start
-  describing what you are naming. Full documentation in
-  [`naming-scout/README.md`](naming-scout/README.md).
-- **[`00-domain-research.md`](00-domain-research.md)** — the naming run the method came from:
-  ~400 candidates, six rounds, availability rate as a signal.
-- **[`01-naming-scout.md`](01-naming-scout.md)** — the original spec and the honest
-  assessment of it as a product.
+Concept clustering instead of keyword permutation, registry-level RDAP instead of registrar
+search boxes, and an HTML report that opens in your browser.
+
+Full documentation: **[`naming-scout/README.md`](naming-scout/README.md)**
 
 ## Install
 
@@ -18,3 +15,10 @@ cp -r naming-scout ~/.claude/skills/
 ```
 
 Needs `curl` and `jq`.
+
+## Use
+
+Describe what you are naming:
+
+> Name a CLI that reads your Postgres slow-query log and tells you which index is missing.
+> Backend engineers. Should feel like precision tooling, not a startup.
