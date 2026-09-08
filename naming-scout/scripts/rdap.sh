@@ -207,14 +207,25 @@ for t in "${tld_arr[@]}"; do
   [ -n "$srv" ] || log "! no verified RDAP server for .$t - those rows will read unknown_no_rdap"
 done
 
-worklist=$(mktemp); trap 'rm -f "$worklist"' EXIT
+worklist=$(mktemp); rejects=$(mktemp); trap 'rm -f "$worklist" "$rejects" "$rows"' EXIT
 count=0
 while IFS= read -r raw; do
-  n=$(printf '%s' "$raw" | tr 'A-Z' 'a-z' | tr -d ' \t' | tr -cd 'a-z0-9-')
-  case "$n" in ""|\#*) continue ;; esac
-  # strip a trailing TLD if the caller pasted whole domains
-  for t in "${tld_arr[@]}"; do n="${n%.$t}"; done
-  [ -n "$n" ] || continue
+  # order matters here: trim and comment-strip first, then drop a pasted TLD, and only
+  # then validate. Sanitising before stripping turns "GOOGLE.COM" into "googlecom".
+  line=$(printf '%s' "$raw" | tr -d '\r' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
+  case "$line" in ""|\#*) continue ;; esac
+  n=$(printf '%s' "$line" | tr 'A-Z' 'a-z')
+  n="${n%.}"                                   # trailing dot
+  case "$n" in *.*) n="${n%.*} " ; n="${n% }" ;; esac   # drop a pasted TLD label
+  # multi-word brand names are legitimate input: "Door Split" -> doorsplit
+  n=$(printf '%s' "$n" | tr -d " '\t&.")
+  # anything still outside the DNS label set is reported, never silently rewritten
+  case "$n" in
+    ""|-*|*-) printf '%s\tinvalid\t-\tnot a usable DNS label\tinput\n' "${line:-<blank>}" >> "$rejects"; continue ;;
+  esac
+  if printf '%s' "$n" | LC_ALL=C grep -q '[^a-z0-9-]' || [ "${#n}" -gt 63 ]; then
+    printf '%s\tinvalid\t-\tnot a usable DNS label\tinput\n' "$line" >> "$rejects"; continue
+  fi
   while IFS=$'\t' read -r t srv; do
     [ -n "$t" ] || continue
     printf '%s.%s\t%s\n' "$n" "$t" "$srv" >> "$worklist"
@@ -222,10 +233,13 @@ while IFS= read -r raw; do
   done <<< "$(printf '%b' "$SERVER_MAP")"
 done <<< "$names"
 
+nrej=$(wc -l < "$rejects" 2>/dev/null | tr -d ' '); nrej=${nrej:-0}
+[ "$nrej" -gt 0 ] && log "! $nrej input line(s) rejected as invalid labels"
+
 [ "$count" -gt 0 ] || die "no valid names on input"
 log "· $count lookups across $NTLD TLD(s), $JOBS parallel"
 
-rows=$(mktemp); trap 'rm -f "$worklist" "$rows"' EXIT
+rows=$(mktemp)
 # xargs -I collapses tabs in the replacement string, so the worklist is handed over
 # space-separated: neither a domain nor an RDAP URL can contain a space.
 # shellcheck disable=SC2016
@@ -233,6 +247,7 @@ awk -F'\t' '{print $1" "$2}' "$worklist" \
   | xargs -P "$JOBS" -I{} bash -c 'read -r d s <<< "$1"; "$0" __worker "$d" "$s" '"$USE_CACHE" "$0" {} \
   > "$rows" 2>/dev/null
 
+cat "$rejects" >> "$rows" 2>/dev/null
 sort_rows(){ sort -t$'\t' -k2,2 -k1,1 "$rows"; }
 
 if [ "$FORMAT" = json ]; then

@@ -134,9 +134,28 @@ done
 [ "$CHECKS" = all ] && CHECKS="github,npm,pypi,crates,rubygems,dockerhub"
 
 if [ ${#names[@]} -eq 0 ]; then
-  while IFS= read -r l; do l=$(printf '%s' "$l" | tr -d ' \t'); [ -n "$l" ] && names+=("$l"); done
+  while IFS= read -r l; do
+    l=$(printf '%s' "$l" | tr -d '\r' | sed 's/^[[:space:]]*//; s/[[:space:]]*$//')
+    case "$l" in ""|\#*) continue ;; esac
+    names+=("$l")
+  done
 fi
 [ ${#names[@]} -gt 0 ] || die "no names given (as arguments or on stdin)"
+
+# names go straight into request URLs, so reject anything outside the package-name
+# character set rather than letting curl normalise a path out of it
+clean=()
+for n in "${names[@]}"; do
+  c=$(printf '%s' "$n" | tr 'A-Z' 'a-z' | tr -d " '\t&")
+  c="${c%.}"
+  if [ -z "$c" ] || printf '%s' "$c" | LC_ALL=C grep -q '[^a-z0-9._-]' || case "$c" in .*|*..*) true ;; *) false ;; esac; then
+    printf '%s\t-\tinvalid\thigh\tnot a usable package or org name\n' "${n:-<blank>}" >&2
+    continue
+  fi
+  clean+=("$c")
+done
+names=("${clean[@]}")
+[ ${#names[@]} -gt 0 ] || die "no usable names after validation"
 
 work=$(mktemp); rows=$(mktemp); trap 'rm -f "$work" "$rows"' EXIT
 IFS=',' read -r -a check_arr <<< "$CHECKS"
