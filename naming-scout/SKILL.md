@@ -45,6 +45,15 @@ Then two decisions that change the whole back half of the run:
 If the user already answered something, do not ask it again. If the brief is rich enough
 already, skip straight to a one-line confirmation of your reading and generate.
 
+**If the user arrives with a name already** — "is X available", "what do you think of X",
+"can we use X" — that is the most common entry point and it has its own path. Run the brand
+filter on their name and tell them the specific weakness they had not noticed. Run the
+clearance. If the exact domain is gone, check the `get-`/`try-`/`the-` route before
+concluding it is unusable. Then offer alternatives inside the territory their name already
+belongs to, because they chose that territory for a reason. Do not skip the brand-filter
+step: the most useful thing you can say about a name someone is attached to is a concrete
+flaw, delivered before they find out the domain costs $8,000.
+
 ### 2. Extract concepts, then build territories
 
 From the brief pull: the mechanism, the outcome, the felt emotion, the enemy or tension,
@@ -93,13 +102,22 @@ the absolute path to it.
 
 ```bash
 # domains: registry-level, distinguishes available / registered / parked / for_sale / unknown
+# output is ordered by buyability: available, for_sale, parked, registered, unknown
 printf '%s\n' name1 name2 name3 | scripts/rdap.sh --tlds com,io --quiet
+
+# domain mode A (strict) and mode D (aftermarket welcome)
+… | scripts/rdap.sh --tlds com --available
+… | scripts/rdap.sh --tlds com --states available,for_sale,parked
 
 # namespaces: only the ecosystems in the chosen clearance profile
 scripts/clearance.sh --checks github,npm,pypi name1 name2
 
 # defensive sweep, finalists only
 scripts/variants.sh finalist | scripts/rdap.sh --tlds com --available
+
+# second use: a name you want whose exact domain is gone. --set article finds the
+# get-/try-/the- route before you conclude the name is unusable.
+scripts/variants.sh --set article,plural wantedname | scripts/rdap.sh --tlds com --available
 ```
 
 Pass a whole round in one invocation. The scripts parallelise, back off on 429, and cache

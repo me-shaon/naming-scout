@@ -17,7 +17,8 @@
 #   --format tsv|json                                     default: tsv
 #   --no-cache      skip the local result cache
 #   --refresh-map   re-fetch the IANA bootstrap now
-#   --available     print only rows whose state is 'available'
+#   --states LIST   print only these states, comma-separated. e.g. available,for_sale
+#   --available     shorthand for --states available
 #   --quiet         suppress the stderr summary
 #
 # Output columns (TSV, one header line beginning with '#'):
@@ -72,7 +73,7 @@ log(){ [ "$QUIET" = 1 ] || printf '%s\n' "$*" >&2; }
 command -v curl >/dev/null || die "curl not found"
 command -v jq   >/dev/null || die "jq not found (brew install jq / apt install jq)"
 
-TLDS="com"; NAMES_SRC="-"; JOBS=8; FORMAT=tsv; USE_CACHE=1; REFRESH_MAP=0; ONLY_AVAIL=0; QUIET=0
+TLDS="com"; NAMES_SRC="-"; JOBS=8; FORMAT=tsv; USE_CACHE=1; REFRESH_MAP=0; STATES=""; QUIET=0
 
 # ---------------------------------------------------------------- worker mode
 # The script re-invokes itself through xargs for each domain. Everything below
@@ -166,7 +167,8 @@ while [ $# -gt 0 ]; do
     --format)      FORMAT="${2:?}"; shift 2 ;;
     --no-cache)    USE_CACHE=0; shift ;;
     --refresh-map) REFRESH_MAP=1; shift ;;
-    --available)   ONLY_AVAIL=1; shift ;;
+    --states)      STATES="${2:?}"; shift 2 ;;
+    --available)   STATES="available"; shift ;;
     --quiet)       QUIET=1; shift ;;
     -h|--help)     sed -n '2,40p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     *)             die "unknown option: $1 (try --help)" ;;
@@ -256,14 +258,25 @@ awk -F'\t' '{print $1" "$2}' "$worklist" \
   > "$rows" 2>/dev/null
 
 cat "$rejects" >> "$rows" 2>/dev/null
-sort_rows(){ sort -t$'\t' -k2,2 -k1,1 "$rows"; }
+# ordering puts available first, then the states you might still buy, then the rest
+state_rank(){ awk -F'\t' 'BEGIN{OFS="\t"}
+  {r=9}
+  $2=="available"{r=1} $2=="for_sale"{r=2} $2=="parked"{r=3} $2=="registered"{r=4}
+  $2=="reserved"{r=5} $2 ~ /^unknown/{r=6} $2=="invalid"{r=7}
+  {print r,$0}' "$rows" | sort -t$'\t' -k1,1n -k2,2 | cut -f2-; }
+
+filter(){ # keep only the requested states, if any were requested
+  if [ -z "$STATES" ]; then cat; else
+    awk -F'\t' -v want=",$STATES," '{ if (index(want, "," $2 ",")) print }'
+  fi
+}
 
 if [ "$FORMAT" = json ]; then
-  sort_rows | jq -R -s -c 'split("\n")|map(select(length>0)|split("\t")|{domain:.[0],state:.[1],created:.[2],signal:.[3],source:.[4]})
-                          | if '"$ONLY_AVAIL"' == 1 then map(select(.state=="available")) else . end'
+  state_rank | filter | jq -R -s -c \
+    'split("\n")|map(select(length>0)|split("\t")|{domain:.[0],state:.[1],created:.[2],signal:.[3],source:.[4]})'
 else
   printf '#domain\tstate\tcreated\tsignal\tsource\n'
-  if [ "$ONLY_AVAIL" = 1 ]; then sort_rows | awk -F'\t' '$2=="available"'; else sort_rows; fi
+  state_rank | filter
 fi
 
 if [ "$QUIET" = 0 ]; then
