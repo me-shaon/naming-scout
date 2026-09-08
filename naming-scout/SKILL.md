@@ -88,6 +88,9 @@ with something in the same category; ask what one sentence explains it.
 
 ### 5. Check what matters, and only that
 
+Paths below are relative to this skill's own directory. Run them from there, or prefix with
+the absolute path to it.
+
 ```bash
 # domains: registry-level, distinguishes available / registered / parked / for_sale / unknown
 printf '%s\n' name1 name2 name3 | scripts/rdap.sh --tlds com,io --quiet
@@ -98,6 +101,18 @@ scripts/clearance.sh --checks github,npm,pypi name1 name2
 # defensive sweep, finalists only
 scripts/variants.sh finalist | scripts/rdap.sh --tlds com --available
 ```
+
+Pass a whole round in one invocation. The scripts parallelise, back off on 429, and cache
+results (registered 30 days, available 1 hour), so one call for 30 names is far cheaper and
+kinder to the registries than 30 calls. Add `--no-cache` only when a stale `available` would
+be costly. `export GITHUB_TOKEN=…` before a run with many GitHub checks.
+
+**When the tools are unavailable** — no network, no `jq`, sandboxed shell — do the naming
+work anyway and say plainly that nothing was verified. Territories, candidates, the brand
+filter and the ranking are all still worth delivering. What you must not do is fall back to
+guessing availability from memory or from search results; that is the exact failure this
+skill exists to prevent. Mark every candidate `unchecked` and tell the user which commands
+to run.
 
 Checks with no reliable API — trademark, social handles, app stores, search presence — are
 done by search, and reported with the confidence the method actually supports. Read

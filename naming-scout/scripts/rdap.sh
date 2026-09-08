@@ -50,15 +50,20 @@ MAX_RETRIES=4
 CONNECT_TIMEOUT=8
 MAX_TIME=20
 
-# TLDs absent from the IANA bootstrap whose RDAP server was verified by hand against a
-# known-registered control domain AND a known-free one. Only add entries you verified
-# both ways: a server that 404s on a registered domain silently manufactures false
-# "available" results, which is the single worst failure this tool can have.
+# Fallback servers, consulted only when the IANA bootstrap has no entry for a TLD (either
+# because the bootstrap genuinely omits it, or because the bootstrap fetch failed). Every
+# entry here was verified by hand against a known-registered control domain AND a known-free
+# one. Only add entries you verified BOTH ways: a server that 404s on a registered domain
+# silently manufactures false "available" results, which is the worst failure this tool has.
+# During development, rdap.org and several plausible-looking servers did exactly that.
 declare -a OVERRIDES=(
-  "io|https://rdap.identitydigital.services/rdap/"    # control: nic.io -> 200
-  "sh|https://rdap.identitydigital.services/rdap/"    # control: nic.sh -> 200
-  "me|https://rdap.identitydigital.services/rdap/"    # control: about.me -> 200
-  "tv|https://rdap.nic.tv/"                           # control: twitch.tv -> 200
+  "io|https://rdap.identitydigital.services/rdap/"    # control: nic.io    200 / free 404
+  "sh|https://rdap.identitydigital.services/rdap/"    # control: nic.sh    200
+  "me|https://rdap.identitydigital.services/rdap/"    # control: about.me  200 / free 404
+  "tv|https://rdap.nic.tv/"                           # control: twitch.tv 200 / free 404
+  "com|https://rdap.verisign.com/com/v1/"             # keeps .com working if the bootstrap
+  "net|https://rdap.verisign.com/net/v1/"             # fetch fails on a cold cache
+  "org|https://rdap.publicinterestregistry.org/rdap/"
 )
 
 die(){ printf 'rdap.sh: %s\n' "$*" >&2; exit 2; }
@@ -184,10 +189,13 @@ if [ "$REFRESH_MAP" = 1 ] || [ ! -s "$MAP_FILE" ] || [ "$map_age" -gt "$MAP_TTL_
 fi
 
 server_for(){
+  # bootstrap is authoritative; the hand-verified list is only a fallback
   local tld="$1" s=""
-  for o in "${OVERRIDES[@]}"; do [ "${o%%|*}" = "$tld" ] && { printf '%s' "${o#*|}"; return; }; done
   [ -s "$MAP_FILE" ] && s=$(jq -r --arg t "$tld" \
       'first(.services[]|select(.[0][]==$t)|.[1][]|select(startswith("https")))//empty' "$MAP_FILE" 2>/dev/null)
+  if [ -z "$s" ]; then
+    for o in "${OVERRIDES[@]}"; do [ "${o%%|*}" = "$tld" ] && { s="${o#*|}"; break; }; done
+  fi
   printf '%s' "$s"
 }
 

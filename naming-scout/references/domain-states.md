@@ -114,14 +114,19 @@ Watch for:
 
 ## Verified RDAP coverage
 
-`rdap.sh` resolves TLDs from the IANA bootstrap, plus a small hand-verified override list
-for popular TLDs the bootstrap omits (`.io`, `.me`, `.sh`, `.tv`).
+`rdap.sh` resolves TLDs from the IANA bootstrap first. When the bootstrap has no entry — or
+the bootstrap fetch itself fails on a cold cache — it falls back to a small hand-verified
+list covering `.io`, `.me`, `.sh`, `.tv`, `.com`, `.net` and `.org`.
 
 Some TLDs, `.co` among them, have no RDAP server this skill can verify. They return
 `unknown_no_rdap`. Confirm those with `whois` or a registrar, and label the result as the
 lower-confidence check it is.
 
-Do not add an override without testing the candidate server against **both** a
+With no network at all, every lookup returns `unknown_error` after four attempts. Nothing
+is ever reported as available on a failed request.
+
+Do not add a fallback entry without testing the candidate server against **both** a
 known-registered domain and a known-free one. A server that 404s on registered domains
 manufactures false availability, which is the worst failure this tool can have. During
-development, `rdap.org` and several plausible-looking servers did exactly that.
+development, `rdap.org` returned 404 for `github.io`, and a plausible-looking `.gg` server
+404'd for `nic.gg`. Either would have produced confident, wrong "available" results.
