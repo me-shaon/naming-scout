@@ -18,7 +18,13 @@ Needs `curl` and `jq`.
 
 ## Use
 
-Describe what you are naming:
+Describe what you are building:
 
-> Name a CLI that reads your Postgres slow-query log and tells you which index is missing.
-> Backend engineers. Should feel like precision tooling, not a startup.
+> I'm building a budgeting app for freelancers. The problem is irregular income. You make
+> £9k one month and £900 the next, so normal budgeting apps are useless. We smooth it out
+> and tell you what you can safely pay yourself each month. Need a name.
+
+It interviews you, works through metaphor territories, checks only what your project needs,
+and opens a report in your browser. Worked runs for a startup, a consumer brand, a
+newsletter, a funded B2B company and a developer tool are in
+[`naming-scout/examples/`](naming-scout/examples/).

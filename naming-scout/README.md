@@ -81,25 +81,43 @@ the GitHub check from 60 requests an hour to 5,000.
 
 ## Quick start
 
-Just describe what you are naming:
+Describe what you are building. That is the whole input.
 
-> Name a CLI that reads your Postgres slow-query log and tells you which index is missing.
-> Backend engineers. Should feel like precision tooling, not a startup.
+> I'm building a budgeting app for freelancers. The problem is irregular income. You make
+> £9k one month and £900 the next, so normal budgeting apps are useless. We smooth it out
+> and tell you what you can safely pay yourself each month. Need a name.
 
-It will ask two or three questions, propose a set of checks, and come back with territories
-and a ranked shortlist.
+It asks two or three questions, proposes the checks that matter for a consumer app, and
+comes back with territories and a ranked shortlist.
 
-The scripts also work on their own:
+Here is what that run actually produced. Full transcript in
+[`examples/saas-startup.md`](examples/saas-startup.md).
+
+> **Even Months**
+> It states the outcome in two words. Irregular income made even. A freelancer understands
+> it before you finish the sentence, with no tagline and no explanation.
+>
+> `evenmonths.com` free · `.app` free
+>
+> **Would change my mind:** it is descriptive rather than distinctive, so it will be harder
+> to own in trademark than a coined word.
+
+Two candidates were cut in that run for something a domain check would never surface.
+**Harvest Month** collides with Harvest, the time-tracking product used by the same
+freelancers. **Buffer Month** collides with Buffer, which sells to the same audience.
+Different category, same customer. That is where trademark disputes actually happen.
+
+The scripts also run on their own:
 
 ```bash
-# domain status, registry-level, across several TLDs
-printf '%s\n' leadsman sounder bythemark | scripts/rdap.sh --tlds com,dev,sh
+# domain status, registry-level, across any TLDs you like
+printf '%s\n' evenmonths granary thelayby | scripts/rdap.sh --tlds com,app,io
 
-# package and org namespaces
-scripts/clearance.sh --checks github,npm,pypi leadsman sounder
+# defensive variants for a finalist, piped into the domain check
+scripts/variants.sh evenmonths | scripts/rdap.sh --tlds com --available
 
-# defensive variants for a finalist, piped straight into the domain check
-scripts/variants.sh sounder | scripts/rdap.sh --tlds com --available
+# package and org namespaces, only if you are shipping code
+scripts/clearance.sh --checks github,npm,pypi yourname
 
 # render a report and open it in the browser
 scripts/report.sh report.json
@@ -111,8 +129,8 @@ The more of this you give up front, the fewer questions it asks:
 
 - **What** you are naming: company, SaaS, app, CLI, library, newsletter, community,
   agency, course, content brand
-- **What it does**, mechanism first. "Watches your slow-query log and finds the missing
-  index", not "AI-powered database optimisation platform"
+- **What it does**, mechanism first. "Smooths out irregular freelance income and tells you
+  what you can safely pay yourself", not "AI-powered financial wellness platform"
 - **Who** it is for, and who says the name out loud
 - **What it is instead of.** The wedge, not the category
 - **Tone**, including the tone that would be wrong
@@ -145,9 +163,15 @@ a confident-looking column of wrong answers is worse than no column.
 
 ## Good for
 
-Companies · SaaS and B2B products · mobile and consumer apps · CLIs and developer tools ·
-open-source libraries · newsletters · podcasts · media and content brands · communities ·
-agencies · courses · conferences · side projects.
+Startups and companies · SaaS and B2B products · consumer and mobile apps · agencies and
+consultancies · newsletters, podcasts and content brands · communities · courses and
+conferences · physical product brands · developer tools and open-source libraries · side
+projects.
+
+**You are told which checks apply and the rest are skipped.** A consumer app gets domain,
+trademark, app stores, social and search. A newsletter gets domain, social and search. Only
+a project that ships code gets GitHub, npm and PyPI. You never have to know what a package
+registry is.
 
 Also good for a name you already have: it will run the brand filter on it, tell you the
 specific weakness you had not noticed, run the clearance, and offer alternatives inside the
@@ -174,12 +198,13 @@ to available-only or available-plus-purchasable, search, toggle light and dark, 
 Each shortlist entry reads roughly like:
 
 ```
-Leadsman                                            Depth sounding
-Why:      The leadsman drops the weighted line and calls out the depth. He is not
-          the navigator. He reports what is under you. That is this tool's job.
-Weakness: You have to know the word for the name to mean anything. Anyone who does
-          not will hear "lead" as a sales lead.
-.dev free · .sh free · .com registered 1999 · npm free · PyPI free · GitHub taken
+Granary                                          Storing the harvest
+Why:      A granary is where you keep the surplus so the lean months do not hurt.
+          One word, warm, concrete, and it draws a picture. It sounds like an
+          established company rather than a 2026 app.
+Weakness: The link to freelance income needs one line of explanation the first
+          time. The domain is a purchase, not a registration.
+.com for sale on Efty, held since 1994 · price not visible from RDAP
 ```
 
 You can also render a report by hand from a JSON file:
@@ -189,8 +214,16 @@ scripts/report.sh --schema                 # the shape it expects, every field o
 scripts/report.sh examples/report-data.example.json
 ```
 
-Five full worked runs are in [`examples/`](examples/), including one where the first
-direction fails and the run has to change territory.
+Six full worked runs are in [`examples/`](examples/):
+
+| Run | What it shows |
+|---|---|
+| [`saas-startup.md`](examples/saas-startup.md) | The common case. A founder naming a product. No developer checks. |
+| [`consumer-product.md`](examples/consumer-product.md) | A physical brand where trademark is the dominant risk, and an honest report when a territory does not recover |
+| [`aftermarket.md`](examples/aftermarket.md) | A funded B2B company willing to buy the domain, with all five states side by side |
+| [`newsletter.md`](examples/newsletter.md) | Domain, social and search only. Availability jumping from 5% to 47% on a change of territory |
+| [`weak-first-direction.md`](examples/weak-first-direction.md) | The first direction is wrong and the run has to start over |
+| [`developer-tool.md`](examples/developer-tool.md) | A CLI, where GitHub, npm and PyPI decide the answer |
 
 ## Limitations
 
