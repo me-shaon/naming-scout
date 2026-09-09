@@ -1,0 +1,35 @@
+{
+  "name": "naming-scout",
+  "version": "1.0.0",
+  "description": "An agent skill that finds names worth using, then tells you the truth about whether you can use them. Concept clustering instead of keyword permutation, registry-level RDAP instead of registrar search boxes.",
+  "keywords": [
+    "claude", "claude-code", "agent-skill", "skills", "ai-agent",
+    "naming", "brand-name", "startup-name", "name-generator",
+    "domain", "domain-search", "rdap", "whois", "availability",
+    "trademark", "clearance", "branding"
+  ],
+  "homepage": "https://github.com/me-shaon/naming-scout#readme",
+  "bugs": "https://github.com/me-shaon/naming-scout/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/me-shaon/naming-scout.git"
+  },
+  "license": "MIT",
+  "author": "Ahmed Shamim",
+  "type": "module",
+  "bin": {
+    "naming-scout": "bin/install.mjs"
+  },
+  "files": [
+    "bin/",
+    "naming-scout/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node bin/install.mjs --help >/dev/null && echo ok"
+  }
+}
