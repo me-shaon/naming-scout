@@ -111,9 +111,9 @@ type the spelling they know.
 
 Every name gets one of three answers:
 
-- **ownable** — nothing else uses this name. You will be the first search result.
-- **contested** — other things share this name. You will need time and work.
-- **crowded** — this name is a common word. You may never be first.
+- **ownable.** Nothing else uses this name. You will be the first search result.
+- **contested.** Other things share this name. You will need time and work.
+- **crowded.** This name is a common word. You may never be first.
 
 A name you cannot be found by costs you more than an expensive domain. Most naming tools
 never mention this.
