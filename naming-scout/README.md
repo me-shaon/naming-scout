@@ -88,11 +88,10 @@ npx skills add me-shaon/naming-scout
 That works with Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` to install
 for every project rather than just the current one.
 
-Two other routes:
+From a clone instead:
 
 ```bash
-npx naming-scout --global      # straight from npm, no agent CLI needed
-cp -r naming-scout ~/.claude/skills/   # from a clone
+cp -r naming-scout ~/.claude/skills/
 ```
 
 Requirements: `curl` and `jq`. Optional but recommended: `export GITHUB_TOKEN=…` to raise
