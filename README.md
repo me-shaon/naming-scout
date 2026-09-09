@@ -14,21 +14,36 @@ project. You need `curl` and `jq`.
 
 ## Why it is different
 
-Say you are naming a budgeting app. It helps freelancers who earn a lot one month and almost
-nothing the next.
+**A name generator gets one word from you. Naming Scout gets your whole situation.**
 
-**A name generator gives you your keyword with letters added.**
+What you type into a generator:
 
 ```
-Budgetly      taken in 2011
-Budgetify     taken in 2014
-GetBudget     taken in 2003
+budget
 ```
 
-None of these tells your customer what the app does. And all of them are gone. Every
-generator looks in the same small place, so that place is empty.
+What you tell Naming Scout:
 
-**Naming Scout works from what your product does.**
+```
+A budgeting app for freelancers. They earn £9,000 one month and £900 the
+next. It works out a safe amount to pay yourself, so bad months stop hurting.
+Freelancers will recommend it to other freelancers. UK and US.
+```
+
+It asks a few questions before it starts. Everything below comes from that difference.
+
+**A generator only knows one word, so it can only add letters to it.**
+
+| Name | What it is | The `.com` |
+|---|---|---|
+| `Budgetly` | "budget" plus "ly" | taken in 2011 |
+| `Budgetify` | "budget" plus "ify" | taken in 2014 |
+| `GetBudget` | "budget" plus "get" | taken in 2003 |
+
+None of these says what your app does. And all of them are gone. Every generator looks in
+the same small place, so that place is empty.
+
+**Naming Scout knows what your app is for, so it can look for meaning.**
 
 Your app stops bad months from hurting. A cushion is soft, and it stops you getting hurt when
 you fall. So one idea it may reach is a name like this:
@@ -38,6 +53,14 @@ Cash Cushion    money that softens the fall in a bad month
 ```
 
 That is one example, not a promise. You get 8 to 15 names, each with a reason and a weakness.
+
+**It also knows which checks you need.**
+
+You are building a phone app, so it checks the app stores, the trademark registers and the
+social handles. It skips npm and PyPI, because nobody installs your app from a terminal. A
+Python library gets the opposite. A newsletter gets neither.
+
+A domain search cannot do this, because it never learns what you are building.
 
 **Then it tells you the truth about every domain.**
 
@@ -59,9 +82,21 @@ later, after you have chosen the name.
 
 ## It also does these
 
-**It works in your language.** Say you want the Bangla word `dokan` for a shop app. Bangla is
-not written in English letters, so your customers will type it in different ways. All of them
-are already gone:
+**It can name your product in your own language.** You are building a shop app in Dhaka. Ask
+for Bangla names and you get names your customers already understand:
+
+```
+Baki Boi      the credit book          bakiboi.com     free
+Mudi Khata    the grocer's ledger      mudikhata.com   free
+Amar Baki     my credit                amarbaki.com    free
+```
+
+An English name would need explaining to a shopkeeper in Dhaka. These do not.
+
+It also checks every English spelling of a local word. Bangla has no fixed English spelling,
+so different customers type it differently. If you buy `dokan.com` and a customer types
+`dukan.com`, they land on somebody else's page. All three spellings are owned by other
+people already:
 
 ```
 dokan.com     taken in 2002
@@ -69,20 +104,28 @@ dukan.com     taken in 2000
 dukaan.com    taken in 1999
 ```
 
-Most people check one spelling and never learn this. Naming Scout checks every spelling. It
-does the same for Hindi, Urdu, Arabic, Turkish, Thai and Korean.
+It does this for Hindi, Urdu, Arabic, Turkish, Thai and Korean too.
 
-**It stops a bad spelling choice.** You want `staticapi.com`, but it is for sale. You think
-about using `statikapi.com` instead:
+**It knows that changing the spelling will not save you.** Your name is taken, so you think
+about dropping a letter or swapping one. Everybody tries this:
 
 ```
-staticapi.com    for sale
-statikapi.com    taken in October 2025
+tracker.com      taken in 1994      trackr.com       for sale since 1997
+builder.com      taken in 1997      buildr.com       taken in 2004
+staticapi.com    for sale           statikapi.com    taken in 2025
+```
+
+Someone always got there first, often twenty years earlier. A changed spelling also sends
+your customers to the wrong website, because they type the spelling they know.
+
+Naming Scout checks the changed spelling before you choose it. Then it looks for a better
+answer:
+
+```
 staticapi.dev    free
 ```
 
-Someone already took the misspelling. And the correct spelling is free with a different
-ending. Keeping the spelling your customers know is almost always better.
+Keep the spelling people know. Change the ending instead.
 
 **It tells you if people can find you.** Every name gets one of three answers:
 
