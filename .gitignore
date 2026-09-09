@@ -2,9 +2,5 @@
 *.tmp
 /tmp/
 
-# Private research notes, not part of the published skill
-00-domain-research.md
-01-naming-scout.md
-
 # Local render previews
 .preview/
