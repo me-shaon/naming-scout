@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/me-shaon/naming-scout/main/assets/banner-dark.png">
+  <img src="https://raw.githubusercontent.com/me-shaon/naming-scout/main/assets/banner-light.png" alt="Naming Scout. Names your product, then tells you the truth about every domain.">
+</picture>
+
 # Naming Scout
 
 Names your company, product, app, newsletter or side project. Then checks whether the name is
