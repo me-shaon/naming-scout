@@ -57,6 +57,8 @@ schema(){ cat <<'JSON'
       "verdict":"what you would do about it",
       "searchability":{ "grade":"ownable",
                         "note":"nothing else claims the term. first result within weeks" },
+      "canonical":{ "spelling":"staticapi", "domain":"staticapi.com", "state":"for_sale",
+                    "detail":"only for a respelled name. who holds the spelling users type" },
       "domains":  [ { "domain":"leadsman.dev", "state":"available", "detail":"" },
                     { "domain":"leadsman.com","state":"registered","detail":"since 1999" } ],
       "clearance":[ { "check":"GitHub","state":"taken","confidence":"high","detail":"" },
@@ -72,6 +74,8 @@ schema(){ cat <<'JSON'
 Domain states: available · for_sale · parked · registered · reserved · unknown · invalid
 Clearance states: free · taken · unknown  (plus confidence: high · medium · low)
 Searchability grades: ownable · contested · crowded  (see references/search-and-seo.md)
+canonical: include only when the name is a respelling of a real word (statik for static).
+           The page shows it as the traffic you would leak. See references/brand-filter.md.
 Text fields accept **bold**, *italic* and `code`.
 JSON
 }

@@ -95,6 +95,9 @@ h1{font:400 clamp(28px,5vw,40px)/1.15 var(--serif);margin:0;letter-spacing:-.015
 .find[data-g=contested] .s{color:var(--hold)}
 .find[data-g=crowded]::before{border-color:var(--no)}
 .find[data-g=crowded] .s{color:var(--no)}
+.leak{margin:14px 0 0;padding-left:14px;border-left:2px solid var(--hold);font-size:14.5px;
+  color:var(--ink-2)}
+.leak b{color:var(--hold);font-weight:600}
 
 /* ---------- shortlist ---------- */
 section.block{margin-top:56px}
@@ -353,6 +356,13 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
       if(c.weakness) body+='<p class="f"><b>Weakness</b>'+rich(c.weakness)+'</p>';
       if(c.searchability&&c.searchability.note)
         body+='<p class="f"><b>Searchability</b>'+rich(c.searchability.note)+'</p>';
+      if(c.canonical&&c.canonical.spelling){
+        var cn=c.canonical;
+        body+='<p class="leak"><b>Spelled the usual way:</b> '+
+          rich(cn.spelling)+(cn.domain?' ('+esc(cn.domain)+', '+esc(cn.state||'unchecked')+
+          (cn.detail?'. '+esc(cn.detail):'')+')':'')+
+          '. That is the spelling people will type.</p>';
+      }
       if(c.verdict)  body+='<p class="f"><b>Verdict</b>'+rich(c.verdict)+'</p>';
       if(c.searchability&&c.searchability.grade) marks.push(find_mark(c.searchability));
       if(marks.length) body+='<div class="marks">'+marks.join('')+'</div>';

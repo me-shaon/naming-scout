@@ -339,6 +339,12 @@
       "searchability": {
         "grade": "contested",
         "note": "Dead reckoning is a well-documented navigation method. The one-word spelling helps a little."
+      },
+      "canonical": {
+        "spelling": "dead reckoning",
+        "domain": "deadreckoning.com",
+        "state": "registered",
+        "detail": "held since 1998"
       }
     }
   ],

@@ -54,6 +54,11 @@ instead of `shop` gets the whole romanisation space swept, because `dokan`, `duk
 `dukaan` are one word to a customer and three strings to a registry. Every one of those is
 already registered, which is the sort of thing founders assume is not true.
 
+**It handles respelling honestly.** If you want `statik` because `static` is taken, it checks
+who holds the spelling your users will actually type, and it tells you that `statikapi.com`
+went to somebody else in October 2025. Usually the better answer is to keep the spelling and
+change the TLD.
+
 **It says what it could not verify.** A rate-limited lookup is reported as unknown, not as
 available. A trademark search is reported as "no obvious conflict in what I searched", never
 as clearance.
@@ -226,7 +231,7 @@ scripts/report.sh --schema                 # the shape it expects, every field o
 scripts/report.sh examples/report-data.example.json
 ```
 
-Seven full worked runs are in [`examples/`](examples/):
+Eight full worked runs are in [`examples/`](examples/):
 
 | Run | What it shows |
 |---|---|
@@ -236,6 +241,7 @@ Seven full worked runs are in [`examples/`](examples/):
 | [`aftermarket.md`](examples/aftermarket.md) | A funded B2B company willing to buy the domain, with all five states side by side |
 | [`newsletter.md`](examples/newsletter.md) | Domain, social and search only. Availability jumping from 5% to 47% on a change of territory |
 | [`weak-first-direction.md`](examples/weak-first-direction.md) | The first direction is wrong and the run has to start over |
+| [`respelling.md`](examples/respelling.md) | The founder wants `statik` instead of `static`. Why that fails and what to do instead |
 | [`developer-tool.md`](examples/developer-tool.md) | A CLI, where GitHub, npm and PyPI decide the answer |
 
 ## Limitations
