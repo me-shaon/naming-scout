@@ -226,8 +226,8 @@ Answer these honestly. Any "no" means another round, not a softer adjective.
 
 Do not:
 
-- open with `<concept>ly`, `<concept>AI`, `<concept>Labs`, `<concept>HQ`, `Get<concept>`,
-  or a dropped vowel. These are the output of a permutation tool, and the space is exhausted.
+- open with `<concept>ly`, `<concept>AI`, `<concept>Labs`, `<concept>HQ`, or `Get<concept>`.
+  These are the output of a permutation tool, and the space is exhausted.
 - present forty names. Present the ones you would defend.
 - ship six variants of one weak idea as if they were six ideas.
 - call a parked domain available, or an unknown a negative.
@@ -237,6 +237,8 @@ Do not:
 - let a user pick a descriptive name for SEO reasons without telling them keyword domains
   stopped being a ranking signal in 2012.
 - treat a transliterated word as unclaimed. Domainers hold short strings in every language.
+- accept a respelling (`statik` for `static`) without checking who holds the canonical
+  spelling, or without offering a different TLD first. Rule in `references/brand-filter.md`.
 - describe a name as "clean, modern, memorable". Say what it does that another name does not.
 - recommend a name that reads well and sounds wrong. Say it out loud first.
 

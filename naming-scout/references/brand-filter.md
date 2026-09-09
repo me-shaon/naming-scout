@@ -100,17 +100,56 @@ A candidate presented with no weakness has not been examined. If it genuinely ha
 say what it costs instead: an $8,000 domain, a crowded namespace, a coined word that will
 need three years of marketing to mean something.
 
+## Respelling a real word
+
+Founders reach for this when the spelling they want is gone. `Statik` for static. `Lyft` for
+lift. It is not banned. It is also not free.
+
+**Why it is riskier than coining a word.** A coined name like `Klarna` has no correct spelling
+competing with it. A respelled name does. The canonical form already exists, it is what people
+type, and somebody else owns it. Checked live in 2026: `lift.com`, `flicker.com`, `zero.com`
+and `fiver.com` are all held by someone other than Lyft, Flickr, Xero and Fiverr. Those brands
+live with the leak because they are large enough to be unambiguous. A pre-launch product is
+not.
+
+This is the transliteration problem in English. One word, several strings, and the string your
+users type belongs to someone else.
+
+**Adopt a respelling only when all five hold.**
+
+1. **One transformation, not three.** `i` to `y` is deducible from the sound. A letter swap
+   plus a dropped vowel plus a doubled consonant is not, and the listener cannot reconstruct
+   it.
+2. **The result reads as its own word, not as a typo.** `Lyft` looks deliberate. `Statik`
+   looks like static spelled wrong. Say it to someone and watch whether they wince.
+3. **The canonical word is generic and unowned as a brand.** "Lift" belongs to nobody. If a
+   competitor holds the canonical spelling, every referral you earn goes to them.
+4. **You can afford the leak.** Some share of direct traffic will always go to the correct
+   spelling. Budget for buying it later, or accept losing it permanently.
+5. **Never respell a descriptive name.** Descriptive plus misspelled is the worst combination
+   available. You lose the instant comprehension that was the only argument for a descriptive
+   name, and you add a permanent spelling tax. `statikapi` fails here.
+
+**Always report the canonical spelling's status next to the candidate.** If `staticapi.com` is
+parked or held by a competitor, that is a stated cost of choosing `statikapi`, not a detail.
+The report has a `canonical` field for exactly this.
+
+**Check the respelling is not already taken.** It is the first move everyone makes. Run
+`scripts/variants.sh --set respell <word>` through the domain check before you assume the
+misspelling is open ground.
+
+**Consider a different TLD first.** Keeping the correct spelling on `.io` or `.dev` usually
+beats a respelled `.com`. The name is what people say. The TLD is what they type once.
+
 ## Automatic cuts
 
 - **Permutation artefacts.** `<concept>ly`, `<concept>AI`, `<concept>HQ`, `<concept>Labs`,
-  `Get<concept>`, `<concept>ify`, dropped vowels (`Trakr`, `Flowr`). Exhausted, and they
-  signal that no thought happened.
+  `Get<concept>`, `<concept>ify`. Exhausted, and they signal that no thought happened.
+  A dropped vowel is a respelling, which has its own rule below rather than a blanket ban.
 - **Near-duplicates of another candidate.** Two names from the same stem are one candidate
   with a variant, not two options. Pick the better one.
 - **Descriptive to the point of being generic.** If it could be the category's Wikipedia
   article title, it cannot be owned, in trademark or in memory.
-- **Novelty spelling of a common word.** `Kwik`, `Xpress`, `Fli`. Costs the phone test and
-  buys nothing.
 - **Anything only defensible by its domain being free.** This is the cut that matters most.
 
 ## Scoring, when the list is long
