@@ -45,14 +45,22 @@ the same small place, so that place is empty.
 
 **Naming Scout knows what your app is for, so it can look for meaning.**
 
-Your app stops bad months from hurting. A cushion is soft, and it stops you getting hurt when
-you fall. So one idea it may reach is a name like this:
+Your app stops bad months from hurting. A cushion is soft. It stops you getting hurt when you
+fall. So it can reach names like these:
 
-```
-Cash Cushion    money that softens the fall in a bad month
-```
+| Name | What it says to a customer | The `.com` |
+|---|---|---|
+| **Cash Cushion** | money that softens the fall in a bad month | for sale, held since 2003 |
+| **Even Months** | every month pays you the same | free |
 
-That is one example, not a promise. You get 8 to 15 names, each with a reason and a weakness.
+You get 8 to 15 names like this. Each one comes with a reason and a weakness. These two are
+examples, not a promise.
+
+**Then it tells you which one it would pick, and why.** Cash Cushion is the better name, but
+you have to buy the domain. Even Months costs about $12 today.
+
+Most generators never show you Cash Cushion at all. They only show names with a free domain,
+so the better name never reaches you.
 
 **It also knows which checks you need.**
 
