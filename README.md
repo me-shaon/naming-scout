@@ -10,8 +10,6 @@ npx skills add me-shaon/naming-scout
 Works in Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for every
 project. You need `curl` and `jq`.
 
----
-
 ## Why it is different
 
 **A name generator gets one word from you. Naming Scout gets your whole situation.**
@@ -86,8 +84,6 @@ instead:
 The last one matters most. Other tools show a failed check as a free domain. You find out
 later, after you have chosen the name.
 
----
-
 ## It also does these
 
 **It can name your product in your own language.** You are building a shop app in Dhaka. Ask
@@ -150,8 +146,6 @@ Keep the spelling people know. Change the ending instead.
 
 A name people cannot find costs you more than an expensive domain.
 
----
-
 ## What you get
 
 A web page opens in your browser. The answer is at the top.
@@ -160,8 +154,6 @@ You see one recommended name, why it works, and the domain to buy. You also see 
 that would change the answer. Below that, two more names, then the full list.
 
 Every name comes with a weakness. If a name has no weakness listed, nobody checked it properly.
-
----
 
 ## What it checks
 
@@ -177,8 +169,6 @@ It helps you check these by hand, because they need judgement:
 - Search results
 - App stores
 - Social media handles
-
----
 
 ## Real examples
 
@@ -196,8 +186,6 @@ Eight complete runs with real data: **[`naming-scout/examples/`](naming-scout/ex
 | [Developer tool](naming-scout/examples/developer-tool.md) | Where npm and PyPI decide it |
 
 Full guide: **[`naming-scout/README.md`](naming-scout/README.md)**
-
----
 
 ## What it cannot do
 
