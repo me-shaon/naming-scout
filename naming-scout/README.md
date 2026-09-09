@@ -281,6 +281,21 @@ money on a brand:
 
 Rebranding after a cease-and-desist costs more than every step above combined.
 
+## Tests
+
+```bash
+./tests/run.sh              # offline. scripts, report rendering, docs consistency.
+./tests/run.sh --network    # adds live RDAP controls against known-taken domains.
+```
+
+The network suite guards the one failure that matters most: an RDAP server answering 404
+for a domain that is registered, which becomes a confident "available" and sends someone
+off to register a name they cannot have. Run it after touching the server map.
+
+`tests/cases/` holds nine briefs for the judgement layer, graded by hand against
+`tests/rubric.md`. They cover each project type, a user who arrives with a name already, a
+non-English market, and a first direction that fails.
+
 ## Credits
 
 The method comes from a naming run of roughly 400 candidate domains across six rounds.

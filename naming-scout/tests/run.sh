@@ -109,6 +109,13 @@ for f in "$ROOT"/examples/*.md; do
   grep -qF "$(basename "$f")" "$ROOT/SKILL.md" && ok "$(basename "$f") is indexed in SKILL.md" \
     || bad "$(basename "$f") is indexed in SKILL.md" "an unindexed example gets opened by guesswork"
 done
+for c in "$HERE"/cases/*.md; do
+  n=$(basename "$c")
+  grep -q '^\*\*Must\*\*$' "$c" && grep -q '^\*\*Fails if\*\*$' "$c" \
+    && ok "case $n states must and fails-if" \
+    || bad "case $n states must and fails-if" "a case with no failure condition grades nothing"
+done
+
 grep -q '^name: naming-scout$' "$ROOT/SKILL.md" && ok "frontmatter declares the name" \
   || bad "frontmatter declares the name"
 d=$(grep -m1 '^description: ' "$ROOT/SKILL.md" | cut -c14-)
