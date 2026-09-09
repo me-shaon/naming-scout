@@ -3,6 +3,15 @@
 An agent skill that finds a name for your startup or product. Then it checks if you can
 really use it.
 
+```bash
+npx skills add me-shaon/naming-scout
+```
+
+Works in Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for every
+project. You need `curl` and `jq`.
+
+---
+
 ## Why it is different
 
 Say you are naming a budgeting app. It helps freelancers who earn a lot one month and almost
@@ -35,25 +44,16 @@ That is one example, not a promise. You get 8 to 15 names, each with a reason an
 Most tools show you a red cross. You learn nothing from a red cross. You get five answers
 instead:
 
-```
-free           nobody owns it. Register it now.
-for sale       someone owns it and wants to sell it
-parked         someone owns it. No website and no price.
-taken          someone owns it and uses it
-not checked    the check failed. This does not mean free.
-```
+| Answer | What it means |
+|---|---|
+| **free** | Nobody owns it. Register it now. |
+| **for sale** | Someone owns it and wants to sell it. |
+| **parked** | Someone owns it. No website and no price. |
+| **taken** | Someone owns it and uses it. |
+| **not checked** | The check failed. This does not mean free. |
 
 The last one matters most. Other tools show a failed check as a free domain. You find out
 later, after you have chosen the name.
-
----
-
-```bash
-npx skills add me-shaon/naming-scout
-```
-
-Works in Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for every
-project. You need `curl` and `jq`.
 
 ---
 
