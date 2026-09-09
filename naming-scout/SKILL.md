@@ -1,6 +1,6 @@
 ---
 name: naming-scout
-description: Find and validate names for a company, product, SaaS, app, CLI, library, newsletter, community, agency, course, or content brand. Runs a positioning interview, generates candidates inside metaphor territories rather than by permutation, filters them for brand quality, then checks the namespaces that actually matter using registry-level RDAP and package registry APIs. Use when the user asks for name ideas, a brand name, a product or project name, a domain name, help renaming something, or wants to know whether a name they already have is available or clear to use.
+description: Find and validate names for a company, product, SaaS, app, CLI, library, newsletter, community, agency, course, or content brand. Runs a positioning interview, generates inside metaphor territories rather than by permutation, filters for brand quality, then verifies domains and namespaces at registry level. Use when the user asks for name ideas, a brand name, a product, project or domain name, help renaming something, or wants to know whether a name they already have is available or clear to use.
 license: MIT
 compatibility: Requires bash, curl and jq, plus internet access for the domain and package registry lookups. Opens its report in a web browser.
 metadata:
@@ -116,12 +116,16 @@ Availability tells you where to dig. It never tells you what is good.
 
 ### 4. Filter for brand quality before checking anything
 
-Run every candidate through `references/brand-filter.md` before it earns a lookup.
-Checking bad names wastes calls and pads the report.
+Filter every candidate before it earns a lookup. Checking bad names wastes calls and pads
+the report.
 
-Fast version: say it aloud; spell it down a phone line; picture it in a URL bar and as a
-logo; ask whether it still fits when the product doubles in scope; ask whether it collides
-with something in the same category; ask what one sentence explains it.
+The filter, enough for most candidates: say it aloud; spell it down a phone line; picture
+it in a URL bar and as a logo; ask whether it still fits when the product doubles in scope;
+ask whether it collides with something in the same category; ask what one sentence explains
+it.
+
+Open `references/brand-filter.md` for the full fourteen tests only when a candidate is
+borderline, is a respelling, or looks like it collides with an existing brand.
 
 Then grade its **searchability** `ownable`, `contested` or `crowded`. A name you cannot rank
 for costs more than an expensive domain, so it belongs in the report beside one. Short is not
@@ -223,7 +227,8 @@ scripts/report.sh report.json -o ~/naming-report.html --no-open
 ```
 
 Write the JSON to the scratchpad or a temp path, not into the user's project, unless they
-asked for a file. `examples/report-data.example.json` is a complete worked payload.
+asked for a file. `--schema` is normally enough on its own; open
+`examples/report-data.example.json` only if a section's shape is still unclear.
 
 Each domain and clearance state gets a distinct mark, so `unknown` can never be mistaken
 for `available`. Sections you leave out are omitted rather than shown empty, so a partial
@@ -283,5 +288,17 @@ Do not:
 | `references/search-and-seo.md` | grading searchability, TLD and ranking, whether short names help |
 | `references/naming-across-languages.md` | the market is not English-speaking, or the user offers a word from their own language |
 | `references/report-format.md` | writing the final report |
-| `examples/report-data.example.json` | the report JSON, filled in from a real run |
-| `examples/` | five worked runs, including one where the first direction fails |
+| `examples/report-data.example.json` | `--schema` left a section's shape unclear |
+
+Eight worked runs. Open **at most one**, and only when it matches the run in front of you.
+
+| File | The run it shows |
+|---|---|
+| `examples/saas-startup.md` | a founder with a product and no name, no developer checks |
+| `examples/developer-tool.md` | GitHub, npm and PyPI decide the answer |
+| `examples/consumer-product.md` | no registry checks at all, trademark dominates |
+| `examples/newsletter.md` | domain, social and search only |
+| `examples/local-language.md` | non-English market, transliteration sweep, unverifiable TLD |
+| `examples/aftermarket.md` | domain mode D, a registered name still ranks first |
+| `examples/respelling.md` | the user wants to misspell their way out of buying the `.com` |
+| `examples/weak-first-direction.md` | the best availability rate came from the worst territory |
