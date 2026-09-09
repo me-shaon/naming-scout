@@ -59,8 +59,8 @@ availability note: *"I could not find an indexed website for these, which is pro
 Live registry check: **all 12 were registered.** Several since 2004. The one name it
 advised against was the only one actually free.
 
-"No indexed website" means parked or private, and parked is what squatter-held inventory
-looks like. For a short brandable domain the heuristic runs backwards: no indexed site
+"No indexed website" means parked or private. Parked is what squatter-held inventory looks
+like. For a short brandable domain the heuristic runs backwards: no indexed site
 makes it *more* likely the name is expensively held. Naming Scout will not make that claim,
 because it asks the registry instead of guessing.
 

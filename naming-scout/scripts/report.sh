@@ -29,10 +29,10 @@ command -v jq >/dev/null || die "jq not found (brew install jq / apt install jq)
 
 schema(){ cat <<'JSON'
 {
-  "title":       "Naming Scout — <what is being named>",
+  "title":       "Naming Scout: <what is being named>",
   "subtitle":    "one line on the run",
   "date":        "YYYY-MM-DD",
-  "domain_mode": "D — aftermarket welcome",
+  "domain_mode": "D. Aftermarket welcome",
   "clearance_profile": "Developer tool",
 
   "brief": { "naming":"", "does":"", "audience":"", "positioning":"",

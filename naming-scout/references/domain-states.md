@@ -62,7 +62,7 @@ could not find an indexed website for these, which is promising". Live RDAP: **a
 registered**, several since 2004 and 2013. The one name it advised against was the one that
 was actually free.
 
-"No indexed website" means parked or private, and parked is exactly what squatter-held
+"No indexed website" means parked or private. Parked is exactly what squatter-held
 inventory looks like. For a short, brandable domain the heuristic runs backwards: no
 indexed site raises the probability that it is expensively held, not that it is free.
 
@@ -100,7 +100,7 @@ since 2004" are different answers to the same question.
 ## Alternate TLD notes
 
 `.com` still carries the strongest default-trust signal, and people type it by reflex when
-they half-remember a name. That is a real cost of not having it, and it is the only real
+they half-remember a name. That is a real cost of not having it. It is also the only real
 cost. Plenty of substantial companies run on `.io`, `.dev`, `.ai`, `.so` and `.co`.
 
 Watch for:

@@ -46,7 +46,7 @@ If the user already answered something, do not ask it again. If the brief is ric
 already, skip straight to a one-line confirmation of your reading and generate.
 
 **Users often arrive with a name already.** "Is X available?" "What do you think of X?"
-This is the most common way the skill gets used, and it has its own path. Run the brand
+This is the most common way the skill gets used. It has its own path. Run the brand
 filter on their name first and tell them the specific weakness they had not noticed. Then
 run the clearance. If the exact domain is gone, check the `get-`, `try-` and `the-` routes
 before you call the name unusable. Then offer alternatives from the territory their name
@@ -148,7 +148,7 @@ Non-negotiable reporting rules:
   likely expensively held than free.
 - **Parked is registered.** Label it `parked`, never "available".
 - **Never state trademark clearance.** "No obvious conflict in this search" is the
-  strongest claim available to you, and it is not legal advice.
+  strongest claim available to you. It is not legal advice.
 
 ### 6. Report the answer first, as an HTML page in the browser
 

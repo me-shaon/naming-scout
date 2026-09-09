@@ -16,7 +16,7 @@ searched. Territories search a space chosen for this brief.
 3. **Keep territories that are far apart.** Four distant territories beat eight adjacent
    ones. If two territories generate similar-sounding names, they are one territory.
 4. **Include one territory the user would not have asked for.** The unconventional option
-   in the report comes from here, and it is often what they pick.
+   in the report comes from here. It is often the one they pick.
 5. **Name each territory in the user's language**, not as jargon. "Field tools" not
    "instrumentation semantics".
 

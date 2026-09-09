@@ -50,7 +50,7 @@ into a terminal has different requirements from one a founder pitches to a VC, o
 reader forwards to a colleague.
 
 Ask about sophistication: an audience that knows the category will read a subtle metaphor.
-A general audience will not, and needs the name to do less work.
+A general audience will not. For them the name has to do less work.
 
 ### 4. Positioning
 
