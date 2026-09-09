@@ -81,14 +81,18 @@ because it asks the registry instead of guessing.
 
 ## Install
 
-The skill is one directory. Copy it wherever your Claude reads skills from:
+```bash
+npx skills add me-shaon/naming-scout
+```
+
+That works with Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` to install
+for every project rather than just the current one.
+
+Two other routes:
 
 ```bash
-# Claude Code, personal skills
-cp -r naming-scout ~/.claude/skills/
-
-# or per-project
-cp -r naming-scout .claude/skills/
+npx naming-scout --global      # straight from npm, no agent CLI needed
+cp -r naming-scout ~/.claude/skills/   # from a clone
 ```
 
 Requirements: `curl` and `jq`. Optional but recommended: `export GITHUB_TOKEN=…` to raise

@@ -4,10 +4,20 @@ A Claude Agent Skill that finds names worth using, then tells you the truth abou
 can use them.
 
 ```bash
-cp -r naming-scout ~/.claude/skills/
+npx skills add me-shaon/naming-scout
 ```
 
-Then describe what you are building. Needs `curl` and `jq`.
+Works with Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` to install for
+every project instead of just this one.
+
+Or install it directly:
+
+```bash
+npx naming-scout            # this project
+npx naming-scout --global   # every project
+```
+
+Then describe what you are building. Needs `curl` and `jq` for the live checks.
 
 ---
 
