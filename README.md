@@ -5,15 +5,15 @@
 
 # Naming Scout
 
-An agent skill that finds a name for your startup or product. Then it checks if you can
-really use it.
+An agent skill for naming a startup, product, app, library or newsletter. It interviews you
+about what you are building before generating anything, and works inside metaphor territories
+rather than permuting your keywords.
 
-```bash
-npx skills add me-shaon/naming-scout
-```
+Every candidate is then checked where it counts. Domains are read from the registry itself,
+alongside the package registries and hand checks your project actually needs. A check that
+failed is reported as failed, never as free.
 
-Works in Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for every
-project. You need `curl` and `jq`.
+Works in Claude Code, Cursor, Codex, OpenCode and 75 other agents.
 
 ## Why it is different
 
@@ -174,6 +174,16 @@ It helps you check these by hand, because they need judgement:
 - Search results
 - App stores
 - Social media handles
+
+## Install
+
+```bash
+npx skills add me-shaon/naming-scout
+```
+
+Add `-g` to install it for every project rather than just the current one. You need `curl`
+and `jq`. Optional: `export GITHUB_TOKEN=…` raises the GitHub check from 60 requests an hour
+to 5,000.
 
 ## Real examples
 
