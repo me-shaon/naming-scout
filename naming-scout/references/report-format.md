@@ -127,6 +127,26 @@ row opens.
 `open`, `normal`, `exhausted`. This section is what the user keeps if they reject the whole
 shortlist, so `fit` must say why the territory suits this brief in particular.
 
+### Considered and cut
+
+The names you dropped, and the reason each one died. This sits with the territories in the
+folded-shut half of the page, and it is the section readers screenshot: it is the only
+evidence that the shortlist was chosen rather than generated.
+
+Six to twelve entries. Each needs a `name`, the `direction` it came from, and a `why_cut`
+that names a specific defect. Cover the cuts a reader would otherwise ask about: the
+obvious word everyone suggests, the construction they were expecting, the near-miss that
+lost on one fact.
+
+```
+Growthly     Suffix constructions  the -ly space is exhausted. reads as generated, not chosen
+Fathom       Depth sounding        crowded. an existing analytics brand already owns the term
+Sounding     Depth sounding        the .com is held at $9k and the name is not worth that
+```
+
+"a bit generic" is not a reason. Say what it collides with, what it locks you into, or what
+it costs. If a whole direction died, cut its best name and say the direction died with it.
+
 ### Check these yourself
 
 Explicit, never a footnote. List unresolved lookups, the trademark disclaimer, and the

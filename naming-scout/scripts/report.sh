@@ -50,6 +50,11 @@ schema(){ cat <<'JSON'
       "note":"what the rate told you" }
   ],
 
+  "rejected": [
+    { "name":"Growthly", "direction":"Suffix constructions",
+      "why_cut":"the -ly space is exhausted. reads as generated, not chosen" }
+  ],
+
   "candidates": [
     { "rank":1, "name":"Leadsman", "territory":"Depth sounding",
       "why":"specific reason this name works, one or two sentences",

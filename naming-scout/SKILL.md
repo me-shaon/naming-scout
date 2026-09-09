@@ -220,8 +220,8 @@ The order, which the page enforces:
 
 The pick, meaning one name with its reason, the domain to register and what would change
 your mind. Then two alternates, a line each. Then boldest and safest, a line each. Then the
-shortlist of **8 to 15** as collapsed rows. Then, folded shut, the brief, the territories
-and the rounds. Last, what you could not verify.
+shortlist of **8 to 15** as collapsed rows. Then, folded shut, the brief, the territories,
+the rounds, and the names you cut. Last, what you could not verify.
 
 Keep the fields short or the page stops reading as an answer: the pick's reason is **one
 sentence**, boldest and safest are **one line each**, and every candidate needs a `why`, a
@@ -251,6 +251,12 @@ Rank by naming quality, positioning fit, distinctiveness, usability, clearance r
 then domain state. Reorder only when the user set a hard constraint ("must be an
 available .com" makes availability a filter, not a tiebreaker).
 
+**Report the names you cut**, six to twelve of them, each with the direction it came from
+and the specific defect that killed it. The obvious word everyone suggests, the construction
+the reader was expecting, the near-miss that lost on one fact. "A bit generic" is not a
+reason. This is the only evidence the shortlist was chosen rather than generated, and it is
+the part a reader learns from.
+
 **A good result beats a long result.** Fifteen names you would defend beat forty you would not.
 
 ### 7. Self-review before sending
@@ -265,6 +271,8 @@ Answer these honestly. Any "no" means another round, not a softer adjective.
 - Does each "why it works" say something that could not be said about a different name?
 - Is there a weakness listed for every candidate? A candidate with no stated weakness has
   not been examined.
+- Does the cut list answer the names a reader would have asked about, or only the ones that
+  were easy to dismiss?
 
 ## Failure modes
 

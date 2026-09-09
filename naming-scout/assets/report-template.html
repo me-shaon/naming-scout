@@ -240,6 +240,9 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
       <div id="m-rounds" hidden><h3>Rounds</h3>
         <table><thead><tr><th>#</th><th>Focus</th><th>Free</th><th>What it told us</th></tr></thead>
         <tbody id="rounds"></tbody></table></div>
+      <div id="m-rej" hidden><h3>Considered and cut</h3>
+        <table><thead><tr><th>Name</th><th>Direction</th><th>Why it was cut</th></tr></thead>
+        <tbody id="rejected"></tbody></table></div>
     </div>
   </details>
 
@@ -447,6 +450,15 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
         '<td>'+rich(r.note||'')+'</td></tr>';
     }).join('');
     show('m-rounds'); any=true;
+  }
+  var X=D.rejected||[];
+  if(X.length){
+    el('rejected').innerHTML=X.map(function(x){
+      return '<tr><td class="n">'+esc(x.name||'')+'</td>'+
+        '<td>'+esc(x.direction||x.territory||'')+'</td>'+
+        '<td>'+rich(x.why_cut||x.why||'')+'</td></tr>';
+    }).join('');
+    show('m-rej'); any=true;
   }
   if(any) show('method');
 
