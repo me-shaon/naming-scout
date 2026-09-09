@@ -217,7 +217,8 @@ for t in "${tld_arr[@]}"; do
   [ -n "$srv" ] || log "! no verified RDAP server for .$t - those rows will read unknown_no_rdap"
 done
 
-worklist=$(mktemp); rejects=$(mktemp); trap 'rm -f "$worklist" "$rejects" "$rows"' EXIT
+worklist=$(mktemp); rejects=$(mktemp); rows=$(mktemp)
+trap 'rm -f "$worklist" "$rejects" "$rows"' EXIT
 count=0
 while IFS= read -r raw; do
   # order matters here: trim and comment-strip first, then drop a pasted TLD, and only
@@ -246,16 +247,20 @@ done <<< "$names"
 nrej=$(wc -l < "$rejects" 2>/dev/null | tr -d ' '); nrej=${nrej:-0}
 [ "$nrej" -gt 0 ] && log "! $nrej input line(s) rejected as invalid labels"
 
-[ "$count" -gt 0 ] || die "no valid names on input"
-log "· $count lookups across $NTLD TLD(s), $JOBS parallel"
-
-rows=$(mktemp)
-# xargs -I collapses tabs in the replacement string, so the worklist is handed over
-# space-separated: neither a domain nor an RDAP URL can contain a space.
-# shellcheck disable=SC2016
-awk -F'\t' '{print $1" "$2}' "$worklist" \
-  | xargs -P "$JOBS" -I{} bash -c 'read -r d s <<< "$1"; "$0" __worker "$d" "$s" '"$USE_CACHE" "$0" {} \
-  > "$rows" 2>/dev/null
+STATUS=0
+if [ "$count" -gt 0 ]; then
+  log "· $count lookups across $NTLD TLD(s), $JOBS parallel"
+  # xargs -I collapses tabs in the replacement string, so the worklist is handed over
+  # space-separated: neither a domain nor an RDAP URL can contain a space.
+  # shellcheck disable=SC2016
+  awk -F'\t' '{print $1" "$2}' "$worklist" \
+    | xargs -P "$JOBS" -I{} bash -c 'read -r d s <<< "$1"; "$0" __worker "$d" "$s" '"$USE_CACHE" "$0" {} \
+    > "$rows" 2>/dev/null
+else
+  # nothing usable to look up. Still print the invalid rows: they say why.
+  log "! no valid names on input"
+  STATUS=2
+fi
 
 cat "$rejects" >> "$rows" 2>/dev/null
 # ordering puts available first, then the states you might still buy, then the rest
@@ -287,4 +292,4 @@ if [ "$QUIET" = 0 ]; then
   printf '  available rate: %s/%s\n' "$a" "$count" >&2
   [ "$u" -gt 0 ] && printf '  %s row(s) unverified - do not read these as available\n' "$u" >&2
 fi
-exit 0
+exit "$STATUS"
