@@ -3,24 +3,42 @@
 **Finds a name for your startup, product or side project. Then proves you can actually use
 it.**
 
-**Naming Scout is an agent skill** that builds names from metaphor territories instead of
-bolting suffixes onto your keyword, then checks them against the domain registry itself, plus
-trademark, GitHub, npm, the app stores and search.
+**Naming Scout is an agent skill.** It builds names from what your product actually does,
+instead of adding letters to your keyword. Then it checks each one against the domain registry
+itself, plus trademark, GitHub, npm, the app stores and search.
 
-Say you are naming a budgeting app for freelancers, the kind whose income is £9,000 one month
-and £900 the next.
+### An example
 
-| Name | `.com` |
-|---|---|
-| `Budgetly` | taken since 2011 |
-| `GetBudget` | taken since 2003 |
-| `Budgetify` | taken since 2014 |
-| `BudgetAI` | for sale on Afternic |
-| **`Even Months`** | **free** |
+You are naming an app for freelancers. Their income is £9,000 one month and £900 the next.
+The app works out how much they can safely pay themselves, so every month feels the same.
 
-The first four are what a generator gives you, and they went years ago. Naming Scout found the
-last one by asking what the product *does*, which is turn uneven income into even months. No
-amount of bolting suffixes onto "budget" gets you there.
+**A name generator gives you this:**
+
+| Name | What it means | `.com` |
+|---|---|---|
+| `Budgetly` | "budget" + "ly" | taken since 2011 |
+| `Budgetify` | "budget" + "ify" | taken since 2014 |
+| `GetBudget` | "budget" + "get" | taken since 2003 |
+
+Three versions of one word. None of them says anything about the product, and all three were
+taken years ago. Every generator searches this same small space, so it is empty.
+
+**Naming Scout starts from what the app does.** It softens the bad months. A cushion is the
+soft thing that stops you getting hurt when you fall. So:
+
+> ## Cash Cushion
+> Money that softens the fall in a bad month.
+
+You understand it without being told. That is the difference.
+
+Then it tells you the price of that name, which no generator does:
+
+- `cashcushion.com` is **for sale** on Afternic. Someone has held it since 2003.
+- `evenmonths.com` is **free** today, from the same run.
+
+Cash Cushion is the better name. Even Months is the cheaper one. Naming Scout shows you both
+and says which it would pick and why, instead of quietly hiding the good name because the
+domain costs money.
 
 ```bash
 npx skills add me-shaon/naming-scout
