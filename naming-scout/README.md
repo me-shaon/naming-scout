@@ -1,7 +1,7 @@
 # Naming Scout
 
-A Claude Agent Skill that finds names worth using, then tells you the truth about whether
-you can use them.
+Names your company, product, app, newsletter or side project. Then checks whether the name is
+actually usable: domain, trademark, GitHub, npm, app stores and search.
 
 ## The problem
 

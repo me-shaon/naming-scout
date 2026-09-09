@@ -1,16 +1,18 @@
 # Naming Scout
 
-A Claude Agent Skill that finds names worth using, then tells you the truth about whether you
-can use them.
+Names your company, product, app, newsletter or side project. Then checks whether the name is
+actually usable: domain, trademark, GitHub, npm, app stores and search.
+
+An agent skill for Claude Code, Cursor, Codex, OpenCode and 75 other coding agents.
 
 ```bash
 npx skills add me-shaon/naming-scout
 ```
 
-Works with Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` to install for
-every project instead of just this one.
+Add `-g` to install for every project instead of just this one. Needs `curl` and `jq` for the
+live checks.
 
-Then describe what you are building. Needs `curl` and `jq` for the live checks.
+Then describe what you are building, and it takes over from there.
 
 ---
 
