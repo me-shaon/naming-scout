@@ -114,9 +114,10 @@ Watch for:
 
 ## Verified RDAP coverage
 
-`rdap.sh` resolves TLDs from the IANA bootstrap first. When the bootstrap has no entry — or
-the bootstrap fetch itself fails on a cold cache — it falls back to a small hand-verified
-list covering `.io`, `.me`, `.sh`, `.tv`, `.com`, `.net` and `.org`.
+`rdap.sh` resolves TLDs from the IANA bootstrap first. It falls back to a small
+hand-verified list covering `.io`, `.me`, `.sh`, `.tv`, `.com`, `.net` and `.org`. The
+fallback covers two cases: the bootstrap has no entry for that TLD, or the bootstrap fetch
+itself failed on a cold cache.
 
 Some TLDs, `.co` among them, have no RDAP server this skill can verify. They return
 `unknown_no_rdap`. Confirm those with `whois` or a registrar, and label the result as the

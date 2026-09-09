@@ -45,14 +45,15 @@ Then two decisions that change the whole back half of the run:
 If the user already answered something, do not ask it again. If the brief is rich enough
 already, skip straight to a one-line confirmation of your reading and generate.
 
-**If the user arrives with a name already** — "is X available", "what do you think of X",
-"can we use X" — that is the most common entry point and it has its own path. Run the brand
-filter on their name and tell them the specific weakness they had not noticed. Run the
-clearance. If the exact domain is gone, check the `get-`/`try-`/`the-` route before
-concluding it is unusable. Then offer alternatives inside the territory their name already
-belongs to, because they chose that territory for a reason. Do not skip the brand-filter
-step: the most useful thing you can say about a name someone is attached to is a concrete
-flaw, delivered before they find out the domain costs $8,000.
+**Users often arrive with a name already.** "Is X available?" "What do you think of X?"
+This is the most common way the skill gets used, and it has its own path. Run the brand
+filter on their name first and tell them the specific weakness they had not noticed. Then
+run the clearance. If the exact domain is gone, check the `get-`, `try-` and `the-` routes
+before you call the name unusable. Then offer alternatives from the territory their name
+already belongs to. They chose that territory for a reason.
+
+Never skip the brand-filter step. The most useful thing you can tell someone attached to a
+name is a concrete flaw, delivered before they learn the domain costs $8,000.
 
 ### 2. Extract concepts, then build territories
 
@@ -125,15 +126,16 @@ results (registered 30 days, available 1 hour), so one call for 30 names is far 
 kinder to the registries than 30 calls. Add `--no-cache` only when a stale `available` would
 be costly. `export GITHUB_TOKEN=…` before a run with many GitHub checks.
 
-**When the tools are unavailable** — no network, no `jq`, sandboxed shell — do the naming
-work anyway and say plainly that nothing was verified. Territories, candidates, the brand
-filter and the ranking are all still worth delivering. What you must not do is fall back to
-guessing availability from memory or from search results; that is the exact failure this
-skill exists to prevent. Mark every candidate `unchecked` and tell the user which commands
-to run.
+**When the tools cannot run** (no network, no `jq`, a sandboxed shell) do the naming work
+anyway. Say plainly that nothing was verified. Territories, candidates, the brand filter and
+the ranking are all still worth delivering.
 
-Checks with no reliable API — trademark, social handles, app stores, search presence — are
-done by search, and reported with the confidence the method actually supports. Read
+Never fall back to guessing availability from memory or from search results. That is the
+exact failure this skill exists to prevent. Mark every candidate `unchecked` and tell the
+user which commands to run.
+
+Four checks have no reliable API: trademark, social handles, app stores and search
+presence. Do those by hand and report each at the confidence its method supports. Read
 `references/clearance-guide.md` before doing any of them; it says what each check can and
 cannot establish.
 
@@ -148,17 +150,17 @@ Non-negotiable reporting rules:
 - **Never state trademark clearance.** "No obvious conflict in this search" is the
   strongest claim available to you, and it is not legal advice.
 
-### 6. Report — answer first, as an HTML page in the browser
+### 6. Report the answer first, as an HTML page in the browser
 
 **Lead with the name you would use.** Not the brief, not the territories, not the method.
 The reader came for a decision; everything else is evidence they may or may not want.
 
 The order, which the page enforces:
 
-the pick — one name, its reason, the domain to register, and what would change your mind →
-two alternates, a line each → boldest and safest, a line each → the shortlist of **8–15**
-as collapsed rows → *folded away:* the brief, territories and rounds → what you could not
-verify.
+The pick, meaning one name with its reason, the domain to register and what would change
+your mind. Then two alternates, a line each. Then boldest and safest, a line each. Then the
+shortlist of **8 to 15** as collapsed rows. Then, folded shut, the brief, the territories
+and the rounds. Last, what you could not verify.
 
 Keep the fields short or the page stops reading as an answer: the pick's reason is **one
 sentence**, boldest and safest are **one line each**, and every candidate needs a `why`, a

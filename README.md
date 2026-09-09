@@ -1,6 +1,6 @@
 # naming-scout
 
-**Naming Scout** — a Claude Agent Skill that finds names worth using, then tells you the
+**Naming Scout** is a Claude Agent Skill. It finds names worth using, then tells you the
 truth about whether you can use them.
 
 Concept clustering instead of keyword permutation, registry-level RDAP instead of registrar

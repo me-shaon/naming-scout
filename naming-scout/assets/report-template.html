@@ -126,14 +126,14 @@ h2{font:600 11.5px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;
 .empty{color:var(--ink-3);font-style:italic;padding:22px 0;border-top:1px solid var(--rule)}
 
 /* ---------- method (secondary) ---------- */
-.method{margin-top:26px;border-top:1px solid var(--rule);padding-top:2px}
-.method>summary{list-style:none;cursor:pointer;padding:14px 0;
+.method{margin-top:0}
+.method>summary{list-style:none;cursor:pointer;padding:18px 0;
   font:600 11.5px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
 .method>summary::-webkit-details-marker{display:none}
 .method>summary:hover{color:var(--ink)}
 .method>summary::before{content:"+ ";font-family:var(--mono)}
 .method[open]>summary::before{content:"– "}
-.method .inner{padding:8px 0 32px}
+.method .inner{padding:6px 0 34px}
 h3{font:600 11px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;
   color:var(--ink-3);margin:32px 0 14px}
 h3:first-child{margin-top:0}
@@ -162,7 +162,7 @@ td{padding:11px 14px 11px 0;border-bottom:1px solid var(--rule);vertical-align:t
 td.n{font-family:var(--mono);color:var(--ink)}
 
 /* ---------- caveats ---------- */
-.caveats{margin-top:40px;border-top:1px solid var(--rule);padding-top:22px}
+.caveats{margin-top:0;border-top:1px solid var(--rule);padding-top:26px}
 .caveats ul{margin:0;padding-left:18px;list-style:none}
 .caveats li{position:relative;margin-bottom:12px;font-size:15px;color:var(--ink-2);max-width:62ch}
 .caveats li::before{content:"";position:absolute;left:-18px;top:9px;width:6px;height:6px;
@@ -217,20 +217,20 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
   </section>
 
   <details class="method" id="method" hidden>
-    <summary>How this was found</summary>
+    <summary>How these were found</summary>
     <div class="inner">
       <p class="runmeta" id="runmeta" hidden></p>
       <div id="m-brief" hidden><h3>Brief</h3><div class="brief" id="brief"></div>
         <p class="assume" id="assume" hidden></p></div>
-      <div id="m-terr" hidden><h3>Territories explored</h3><div id="terrs"></div></div>
+      <div id="m-terr" hidden><h3>Territories</h3><div id="terrs"></div></div>
       <div id="m-rounds" hidden><h3>Rounds</h3>
-        <table><thead><tr><th>#</th><th>Focus</th><th>Available</th><th>What it meant</th></tr></thead>
+        <table><thead><tr><th>#</th><th>Focus</th><th>Free</th><th>What it told us</th></tr></thead>
         <tbody id="rounds"></tbody></table></div>
     </div>
   </details>
 
   <section class="caveats" id="s-cav" hidden>
-    <h2>Before you commit</h2>
+    <h2>Check these yourself</h2>
     <ul id="caveats"></ul>
   </section>
 
@@ -262,7 +262,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
   var mark=function(label,state,detail,conf){
     var s=norm(state);
     return '<span class="st" data-s="'+esc(s)+'"'+(conf?' data-conf="'+esc(norm(conf))+'"':'')+
-      ' title="'+esc([label,state,detail].filter(Boolean).join(' — '))+'">'+
+      ' title="'+esc([label,state,detail].filter(Boolean).join(': '))+'">'+
       '<span class="t">'+esc(label)+'</span><span class="s">'+esc(state)+'</span></span>';
   };
 
@@ -281,7 +281,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
 
   // ---------- header
   var title=D.title||'Naming report';
-  document.title=title+' — Naming Scout';
+  document.title=title+' | Naming Scout';
   el('title').textContent=title;
   if(D.subtitle) el('lede').textContent=D.subtitle;
   var eb=['Naming Scout']; if(D.date) eb.push(D.date);
@@ -293,12 +293,12 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
   if(lead&&lead.name){
     var lc=find(lead.name)||{}, bd=best(lc);
     el('pick').innerHTML=
-      '<div class="lab">'+(top.length?'The pick':'Leading candidate')+'</div>'+
+      '<div class="lab">'+(top.length?'The pick':'Top candidate')+'</div>'+
       '<p class="name">'+esc(lead.name)+'</p>'+
       (lc.territory?'<p class="pterr">'+esc(lc.territory)+'</p>':'')+
       (lead.reason||lc.why?'<p class="why">'+rich(lead.reason||lc.why)+'</p>':'')+
       (bd?'<p class="dom">'+mark(bd.domain,bd.state,bd.detail)+'</p>':'')+
-      (lead.dealbreaker?'<p class="caveat"><b>What would change my mind:</b> '+
+      (lead.dealbreaker?'<p class="caveat"><b>Would change my mind:</b> '+
         rich(lead.dealbreaker)+'</p>':'');
     show('verdict');
   }
@@ -312,19 +312,19 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
     el('alts').hidden=false;
   }
   var ex=[];
-  if(D.unconventional&&D.unconventional.name) ex.push(['Boldest',D.unconventional]);
-  if(D.safest&&D.safest.name) ex.push(['Safest',D.safest]);
+  if(D.unconventional&&D.unconventional.name) ex.push(['Boldest bet',D.unconventional]);
+  if(D.safest&&D.safest.name) ex.push(['Safest bet',D.safest]);
   if(ex.length){
     el('extras').innerHTML=ex.map(function(e){
       return '<div class="extra"><dt>'+esc(e[0])+'</dt><dd><b>'+esc(e[1].name)+'</b>'+
-        (e[1].reason?' — '+rich(e[1].reason):'')+'</dd></div>'}).join('');
+        (e[1].reason?'. '+rich(e[1].reason):'')+'</dd></div>'}).join('');
     el('extras').hidden=false;
   }
   var picked={}; top.forEach(function(p){ if(p.name) picked[String(p.name).toLowerCase()]=1 });
 
   // ---------- shortlist, collapsed by default
   var render=function(list){
-    if(!list.length){ el('rows').innerHTML='<p class="empty">Nothing matches that filter.</p>'; return }
+    if(!list.length){ el('rows').innerHTML='<p class="empty">No names match that filter.</p>'; return }
     el('rows').innerHTML=list.map(function(c,i){
       var bd=best(c);
       var marks=(c.domains||[]).map(function(d){return mark(d.domain,d.state,d.detail)})
@@ -339,7 +339,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
         '<span class="nm">'+esc(c.name)+'</span>'+
         '<span class="tg">'+esc(c.territory||'')+'</span>'+
         (bd?mark(bd.domain,bd.state,bd.detail):'')+'</summary>'+
-        '<div class="body">'+(body||'<p class="f">No detail recorded.</p>')+'</div></details>';
+        '<div class="body">'+(body||'<p class="f">No notes recorded for this name.</p>')+'</div></details>';
     }).join('');
   };
   var hasState=function(c,ss){return (c.domains||[]).some(function(d){return ss.indexOf(norm(d.state))>-1})};
@@ -356,7 +356,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
     el('count').textContent=list.length===C.length?'':list.length+' of '+C.length;
   };
   if(C.length){
-    el('blurb').textContent=C.length+' names, ranked. Open one for the reasoning and the full checks.';
+    el('blurb').textContent='Ranked. Open a name to see why it works and every check that was run.';
     if(C.length>6){
       el('controls').hidden=false;
       ['f-avail','f-buy'].forEach(function(id){
@@ -377,7 +377,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
   var any=false;
   var rm=[];
   if(D.domain_mode)        rm.push('Domain mode: '+D.domain_mode);
-  if(D.clearance_profile)  rm.push('Clearance: '+D.clearance_profile);
+  if(D.clearance_profile)  rm.push('Checks run: '+D.clearance_profile);
   if(rm.length){ el('runmeta').textContent=rm.join('  ·  '); el('runmeta').hidden=false; any=true }
   var b=D.brief||{};
   var order=[['naming','Naming'],['does','What it does'],['audience','Audience'],
@@ -399,7 +399,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
       var pct=ch?Math.round(av/ch*100):null;
       var h=pct==null?'':(pct>=40?'open':(pct>=15?'normal':'mined'));
       return '<div class="terr" data-h="'+h+'"><div class="th"><span class="tn">'+esc(t.name)+'</span>'+
-        (ch?'<span class="tr">'+av+'/'+ch+' free'+(t.note?' · '+esc(t.note):'')+'</span>':
+        (ch?'<span class="tr">'+av+'/'+ch+' free'+(t.note?'. '+esc(t.note):'')+'</span>':
             (t.note?'<span class="tr">'+esc(t.note)+'</span>':''))+'</div>'+
         (t.fit||t.description?'<p>'+rich(t.fit||t.description)+'</p>':'')+
         (ch?'<div class="bar"><i style="width:'+Math.max(pct,2)+'%"></i></div>':'')+'</div>';
@@ -411,7 +411,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
     el('rounds').innerHTML=R.map(function(r){
       var ch=Number(r.checked)||0, av=Number(r.available)||0;
       return '<tr><td class="n">'+esc(r.round)+'</td><td>'+rich(r.focus||'')+'</td>'+
-        '<td class="n">'+(ch?av+'/'+ch+' ('+Math.round(av/ch*100)+'%)':'—')+'</td>'+
+        '<td class="n">'+(ch?av+'/'+ch+' ('+Math.round(av/ch*100)+'%)':'-')+'</td>'+
         '<td>'+rich(r.note||'')+'</td></tr>';
     }).join('');
     show('m-rounds'); any=true;
@@ -423,7 +423,7 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
   if(V.length){ el('caveats').innerHTML=V.map(function(x){return '<li>'+rich(x)+'</li>'}).join(''); show('s-cav') }
 
   el('foot').textContent=(D.date?'Checked '+D.date+'. ':'')+
-    'States change — re-run before you register. Not legal advice.';
+    'Domain states change. Re-run before you register. This is not legal advice.';
 
   var t=el('theme');
   try{ var sv=localStorage.getItem('ns-theme'); if(sv) document.documentElement.setAttribute('data-theme',sv) }catch(e){}

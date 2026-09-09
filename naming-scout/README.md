@@ -29,18 +29,18 @@ what it is instead of, what tone would be wrong. A name generated from positioni
 different object from one generated from a search term.
 
 **It generates inside metaphor territories, not by permutation.** A territory is a coherent
-concept domain — depth sounding, courtroom vocabulary, the arithmetic of a gig — chosen for
-your brief. Names inside one territory sound like each other and unlike everything else,
-because they came from an idea rather than a string operation. The territories are half the
-value: they are how you keep thinking about the space after the run is over.
+concept domain picked for your brief. Depth sounding. Courtroom vocabulary. The arithmetic
+of a gig. Names from one territory sound like each other and unlike everything else, because
+they came from an idea instead of a string operation. The territories are half the value.
+They are how you keep thinking about the space once the run is over.
 
 **It uses availability as a map, not as a filter.** Availability rate per territory tells
 you which directions are mined out and which still have room. In one of the worked examples,
 a territory with 25% availability was abandoned for one with 14%, because the second one
 produced better names. That decision is the whole method in one line.
 
-**It never guesses about availability.** Domain status comes from RDAP — the registry's own
-protocol — not from a registrar's search box and not from whether a website loads. It
+**It never guesses about availability.** Domain status comes from RDAP, the registry's own
+protocol. Not from a registrar's search box. Not from whether a website loads. It
 reports `available`, `registered`, `parked`, `for_sale`, `reserved` and `unknown` as
 separate answers, because they are separate answers.
 
@@ -109,16 +109,16 @@ scripts/report.sh report.json
 
 The more of this you give up front, the fewer questions it asks:
 
-- **What** you are naming — company, SaaS, app, CLI, library, newsletter, community,
+- **What** you are naming: company, SaaS, app, CLI, library, newsletter, community,
   agency, course, content brand
 - **What it does**, mechanism first. "Watches your slow-query log and finds the missing
   index", not "AI-powered database optimisation platform"
 - **Who** it is for, and who says the name out loud
-- **What it is instead of** — the wedge, not just the category
+- **What it is instead of.** The wedge, not the category
 - **Tone**, including the tone that would be wrong
-- **Constraints** — length, spelling, languages, words to avoid
-- **Domain appetite** — must it be `.com`, and would you buy one that is already taken
-- **What it will ship as** — that determines which namespaces get checked
+- **Constraints.** Length, spelling, languages, words to avoid
+- **Domain appetite.** Must it be `.com`? Would you buy one that is already taken?
+- **What it will ship as.** This decides which namespaces get checked
 
 ## What it checks
 
@@ -135,7 +135,7 @@ Assisted, reported at the confidence the method supports:
 
 | Check | How | Confidence |
 |---|---|---|
-| Trademark | Public register search, live marks, relevant classes | Low — never a clearance opinion |
+| Trademark | Public register search, live marks, relevant classes | Low. Never a clearance opinion |
 | Search presence | Search for an existing brand on the term | Medium |
 | App stores | Manual store search | Medium |
 | Social handles | Reported as probable, never verified | Low, deliberately |
@@ -158,15 +158,15 @@ territory your name already belongs to.
 When the run finishes, a self-contained HTML page opens in your default browser. It is
 ordered the way you actually read: **the answer first, the evidence underneath.**
 
-- **The pick** — one name, large, with the reason, the domain to register, and the one
+- **The pick.** One name, large, with the reason, the domain to register, and the one
   thing that would change the recommendation
-- **Two alternates**, a line each, then **boldest** and **safest**, a line each
-- **The shortlist**, 8–15 names as quiet single-line rows. Open one for why it works, its
-  named weakness, and every check that was run
-- **How this was found** — the brief, the territories with their availability rates, and
-  the round log. Folded shut, because it is what you open when you want to argue with the
+- **Two alternates**, a line each. Then **boldest** and **safest**, a line each
+- **The shortlist.** 8 to 15 names as quiet single-line rows. Open one to see why it works,
+  its named weakness, and every check that was run
+- **How these were found.** The brief, the territories with their availability rates, and
+  the round log. Folded shut, because this is what you open when you want to argue with the
   recommendation
-- **Before you commit** — what could not be verified
+- **Check these yourself.** What could not be verified
 
 Every state gets its own mark, so `unknown` can never be mistaken for `available`. Filter
 to available-only or available-plus-purchasable, search, toggle light and dark, print.
@@ -174,13 +174,12 @@ to available-only or available-plus-purchasable, search, toggle light and dark, 
 Each shortlist entry reads roughly like:
 
 ```
-Leadsman — Depth sounding
-Why:      The leadsman is the crew member who drops the weighted line and calls the
-          depth. That is precisely this tool's role: not the navigator, the person who
-          reports what is under you.
-Weakness: The reference is invisible unless you know it, and non-nautical readers hear
-          "lead" as sales lead first.
-.dev available · .sh available · .com registered 1999 · npm free · PyPI free · GitHub taken
+Leadsman                                            Depth sounding
+Why:      The leadsman drops the weighted line and calls out the depth. He is not
+          the navigator. He reports what is under you. That is this tool's job.
+Weakness: You have to know the word for the name to mean anything. Anyone who does
+          not will hear "lead" as a sales lead.
+.dev free · .sh free · .com registered 1999 · npm free · PyPI free · GitHub taken
 ```
 
 You can also render a report by hand from a JSON file:
@@ -196,8 +195,8 @@ direction fails and the run has to change territory.
 ## Limitations
 
 - **RDAP coverage is not universal.** Some TLDs, including `.co`, have no RDAP server this
-  skill can verify. Those return `unknown_no_rdap` — an unresolved lookup, never a free
-  domain. Confirm them at a registrar.
+  skill can verify. Those return `unknown_no_rdap`, which means the lookup did not resolve.
+  It never means the domain is free. Confirm those at a registrar.
 - **No prices.** RDAP has no price field. `for_sale` means a listing exists, not that it is
   affordable, and `available` on a new gTLD can still mean registry premium pricing.
 - **Registries rate-limit.** Lookups that get throttled are reported as `unknown_error` and
@@ -215,10 +214,10 @@ Domain availability is the cheapest and least consequential of the checks. Befor
 money on a brand:
 
 1. **Get a trademark clearance search from an attorney** in every market you will operate
-   in. A search here — or from any AI tool — covers exact and near-exact strings in public
-   registers. It does not cover common-law rights, unpublished applications, foreign marks,
-   or confusingly-similar marks nobody thought to search. Clearance is a legal opinion and
-   this is not one.
+   in. A search here covers exact and near-exact strings in public registers. So does a
+   search from any other AI tool. It does not cover common-law rights, unpublished
+   applications, foreign marks, or similar marks nobody thought to search. Clearance is a
+   legal opinion. This is not one.
 2. **Register the trademark**, in the right classes, before you announce.
 3. **Check the business registry** in your home jurisdiction for an existing entity.
 4. **Reserve the handles yourself**, on the signup pages, in one sitting.
