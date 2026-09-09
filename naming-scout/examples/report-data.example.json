@@ -127,7 +127,11 @@
           "confidence": "low",
           "detail": "searched the name alone, not the name plus postgres"
         }
-      ]
+      ],
+      "searchability": {
+        "grade": "contested",
+        "note": "Shares the term with a seabird and with audio hardware. Adding \"postgres\" to the query clears it, so expect to lose the bare term for the first year."
+      }
     },
     {
       "rank": 2,
@@ -167,7 +171,11 @@
           "state": "taken",
           "confidence": "high"
         }
-      ]
+      ],
+      "searchability": {
+        "grade": "ownable",
+        "note": "Almost nothing else uses the word. You would be the first result within weeks."
+      }
     },
     {
       "rank": 3,
@@ -208,7 +216,11 @@
           "state": "taken",
           "confidence": "high"
         }
-      ]
+      ],
+      "searchability": {
+        "grade": "contested",
+        "note": "Dowsing has a large existing body of results. The developer sense would have to be built."
+      }
     },
     {
       "rank": 4,
@@ -248,7 +260,11 @@
           "state": "taken",
           "confidence": "high"
         }
-      ]
+      ],
+      "searchability": {
+        "grade": "ownable",
+        "note": "A phrase nobody else claims. Long-tail queries land on you immediately."
+      }
     },
     {
       "rank": 5,
@@ -269,7 +285,11 @@
           "detail": "held since 2024"
         }
       ],
-      "clearance": []
+      "clearance": [],
+      "searchability": {
+        "grade": "crowded",
+        "note": "A common term in construction and in scripture. You would not own this."
+      }
     },
     {
       "rank": 6,
@@ -290,7 +310,11 @@
           "detail": "held since 2019"
         }
       ],
-      "clearance": []
+      "clearance": [],
+      "searchability": {
+        "grade": "crowded",
+        "note": "Used as a product name across several industries. The term is not winnable."
+      }
     },
     {
       "rank": 7,
@@ -311,7 +335,11 @@
           "detail": "HTTP 429 after 4 attempts. Not resolved."
         }
       ],
-      "clearance": []
+      "clearance": [],
+      "searchability": {
+        "grade": "contested",
+        "note": "Dead reckoning is a well-documented navigation method. The one-word spelling helps a little."
+      }
     }
   ],
   "top3": [

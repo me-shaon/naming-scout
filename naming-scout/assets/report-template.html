@@ -84,6 +84,17 @@ h1{font:400 clamp(28px,5vw,40px)/1.15 var(--serif);margin:0;letter-spacing:-.015
 .st[data-s=registered] .s,.st[data-s=taken] .s{color:var(--no)}
 .st[data-s=unknown]::before{border-style:dashed}
 .st[data-conf=low] .s::after{content:" ?";font-weight:700}
+.find{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.find::before{content:"";width:8px;height:8px;flex:none;border:1.5px solid var(--unk);
+  border-radius:2px;transform:rotate(45deg)}
+.find .t{font-size:13.5px;color:var(--ink-2)}
+.find .s{font-size:12.5px;color:var(--ink-3)}
+.find[data-g=ownable]::before{background:var(--go);border-color:var(--go)}
+.find[data-g=ownable] .s{color:var(--go)}
+.find[data-g=contested]::before{border-color:var(--hold)}
+.find[data-g=contested] .s{color:var(--hold)}
+.find[data-g=crowded]::before{border-color:var(--no)}
+.find[data-g=crowded] .s{color:var(--no)}
 
 /* ---------- shortlist ---------- */
 section.block{margin-top:56px}
@@ -266,6 +277,13 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
       '<span class="t">'+esc(label)+'</span><span class="s">'+esc(state)+'</span></span>';
   };
 
+  var find_mark=function(f){
+    if(!f||!f.grade) return '';
+    return '<span class="find" data-g="'+esc(norm(f.grade))+'" title="'+
+      esc('Searchability: '+f.grade+(f.note?'. '+f.note:''))+'">'+
+      '<span class="t">search</span><span class="s">'+esc(f.grade)+'</span></span>';
+  };
+
   var C=D.candidates||[];
   var byName={}; C.forEach(function(c){ if(c.name) byName[String(c.name).toLowerCase()]=c });
   var find=function(n){ return byName[String(n||'').toLowerCase()] };
@@ -297,7 +315,8 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
       '<p class="name">'+esc(lead.name)+'</p>'+
       (lc.territory?'<p class="pterr">'+esc(lc.territory)+'</p>':'')+
       (lead.reason||lc.why?'<p class="why">'+rich(lead.reason||lc.why)+'</p>':'')+
-      (bd?'<p class="dom">'+mark(bd.domain,bd.state,bd.detail)+'</p>':'')+
+      (bd||lc.searchability?'<p class="dom">'+(bd?mark(bd.domain,bd.state,bd.detail):'')+
+        find_mark(lc.searchability)+'</p>':'')+
       (lead.dealbreaker?'<p class="caveat"><b>Would change my mind:</b> '+
         rich(lead.dealbreaker)+'</p>':'');
     show('verdict');
@@ -332,7 +351,10 @@ footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--rule);font-si
       var body='';
       if(c.why)      body+='<p class="f why"><b>Why it works</b>'+rich(c.why)+'</p>';
       if(c.weakness) body+='<p class="f"><b>Weakness</b>'+rich(c.weakness)+'</p>';
+      if(c.searchability&&c.searchability.note)
+        body+='<p class="f"><b>Searchability</b>'+rich(c.searchability.note)+'</p>';
       if(c.verdict)  body+='<p class="f"><b>Verdict</b>'+rich(c.verdict)+'</p>';
+      if(c.searchability&&c.searchability.grade) marks.push(find_mark(c.searchability));
       if(marks.length) body+='<div class="marks">'+marks.join('')+'</div>';
       return '<details class="row"'+(picked[String(c.name).toLowerCase()]?' data-pick="1"':'')+'>'+
         '<summary><span class="rk">'+(c.rank||i+1)+'</span>'+

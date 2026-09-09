@@ -55,6 +55,8 @@ schema(){ cat <<'JSON'
       "why":"specific reason this name works, one or two sentences",
       "weakness":"the named cost. every candidate needs one",
       "verdict":"what you would do about it",
+      "searchability":{ "grade":"ownable",
+                        "note":"nothing else claims the term. first result within weeks" },
       "domains":  [ { "domain":"leadsman.dev", "state":"available", "detail":"" },
                     { "domain":"leadsman.com","state":"registered","detail":"since 1999" } ],
       "clearance":[ { "check":"GitHub","state":"taken","confidence":"high","detail":"" },
@@ -69,6 +71,7 @@ schema(){ cat <<'JSON'
 
 Domain states: available · for_sale · parked · registered · reserved · unknown · invalid
 Clearance states: free · taken · unknown  (plus confidence: high · medium · low)
+Searchability grades: ownable · contested · crowded  (see references/search-and-seo.md)
 Text fields accept **bold**, *italic* and `code`.
 JSON
 }
