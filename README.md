@@ -4,8 +4,9 @@
 it.**
 
 Not `Growthly`, `GrowthAI` or `GetGrowth`. Every generator produces those, which is exactly
-why they are all taken. Naming Scout builds names from metaphor territories, then checks them
-against the domain registry itself, plus trademark, GitHub, npm, the app stores and search.
+why they are all taken. **Naming Scout is an agent skill** that builds names from metaphor
+territories, then checks them against the domain registry itself, plus trademark, GitHub,
+npm, the app stores and search.
 
 Same brief, same afternoon, one music newsletter:
 
