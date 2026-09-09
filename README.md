@@ -95,20 +95,20 @@ for Bangla names.
 
 The two names you would reach for first are already gone:
 
-```
-Amar Dokan    my shop           amardokan.com    taken in 2011
-Tali Khata    the tally book    talikhata.com    taken in 2021
-```
+| Name | What it means | The `.com` |
+|---|---|---|
+| Amar Dokan | my shop | taken in 2011 |
+| Tali Khata | the tally book | taken in 2021 |
 
 An app called TallyKhata already serves Bangladeshi shopkeepers, and `tallykhata.com` went in
 2018. A generator would offer you that name and say nothing about it.
 
 Naming Scout keeps going and finds names that are still free:
 
-```
-Baki Boi      the credit book    bakiboi.com      free
-Khata Patra   ledger papers      khatapatra.com   free
-```
+| Name | What it means | The `.com` |
+|---|---|---|
+| Baki Boi | the credit book | **free** |
+| Khata Patra | ledger papers | **free** |
 
 A shopkeeper in Dhaka understands these at once. An English name would need explaining.
 
@@ -117,32 +117,28 @@ customers spell it in different ways. If you buy `amardokan.com` and a customer 
 `amardukan.com`, they land on somebody else's website. All three spellings are taken, and
 they were registered years apart:
 
-```
-amardokan.com     taken in 2011
-amardukan.com     taken in 2018
-amardokaan.com    taken in 2022
-```
+| Spelling | Status |
+|---|---|
+| `amardokan.com` | taken in 2011 |
+| `amardukan.com` | taken in 2018 |
+| `amardokaan.com` | taken in 2022 |
 
 It does this for Hindi, Urdu, Arabic, Turkish, Thai and Korean too.
 
 **It knows that changing the spelling will not save you.** Your name is taken, so you think
 about dropping a letter or swapping one. Everybody tries this:
 
-```
-tracker.com      taken in 1994      trackr.com       for sale since 1997
-builder.com      taken in 1997      buildr.com       taken in 2004
-staticapi.com    for sale           statikapi.com    taken in 2025
-```
+| The name you wanted | The change you would make |
+|---|---|
+| `tracker.com` taken in 1994 | `trackr.com` for sale since 1997 |
+| `builder.com` taken in 1997 | `buildr.com` taken in 2004 |
+| `staticapi.com` for sale | `statikapi.com` taken in 2025 |
 
 Someone always got there first, often twenty years earlier. A changed spelling also sends
 your customers to the wrong website, because they type the spelling they know.
 
 Naming Scout checks the changed spelling before you choose it. Then it looks for a better
-answer:
-
-```
-staticapi.dev    free
-```
+answer. `staticapi.dev` is free.
 
 Keep the spelling people know. Change the ending instead.
 
