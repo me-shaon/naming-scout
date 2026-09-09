@@ -155,22 +155,21 @@ territory your name already belongs to.
 
 ## What a result looks like
 
-When the run finishes, a self-contained HTML page opens in your default browser:
+When the run finishes, a self-contained HTML page opens in your default browser. It is
+ordered the way you actually read: **the answer first, the evidence underneath.**
 
-- **The brief it worked from**, including anything it assumed, so you can catch a
-  misunderstanding before it costs you a decision
-- **The territories it found**, each with its availability rate as a bar — which directions
-  still have room, and which the whole market has already mined out
-- **The round log**: what each round explored, what the hit rate was, and what that told it
-- **A ranked shortlist of 8–15**, every entry with a specific reason it works, a named
-  weakness, and colour-coded chips for every domain and namespace state
-- **Top 3, best unconventional, and safest**, each with the one thing that would change the
+- **The pick** — one name, large, with the reason, the domain to register, and the one
+  thing that would change the recommendation
+- **Two alternates**, a line each, then **boldest** and **safest**, a line each
+- **The shortlist**, 8–15 names as quiet single-line rows. Open one for why it works, its
+  named weakness, and every check that was run
+- **How this was found** — the brief, the territories with their availability rates, and
+  the round log. Folded shut, because it is what you open when you want to argue with the
   recommendation
-- **What could not be verified**, as a section you cannot miss rather than a footnote
+- **Before you commit** — what could not be verified
 
-`unknown` is styled so it can never be mistaken for `available` — different colour, dashed
-border. You can filter the shortlist to available-only or available-plus-purchasable,
-search it, toggle light and dark, and print it.
+Every state gets its own mark, so `unknown` can never be mistaken for `available`. Filter
+to available-only or available-plus-purchasable, search, toggle light and dark, print.
 
 Each shortlist entry reads roughly like:
 

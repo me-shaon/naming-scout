@@ -4,7 +4,6 @@
   "date": "2026-09-08",
   "domain_mode": "B — available on .com or a developer-native TLD",
   "clearance_profile": "Developer tool",
-
   "brief": {
     "naming": "A CLI tool",
     "does": "Reads your Postgres slow-query log and tells you which index is missing",
@@ -17,159 +16,331 @@
     "Go binary distributed via a Homebrew tap",
     "No commercial launch yet, so trademark and app stores are out of scope"
   ],
-
   "territories": [
-    { "name": "Depth sounding",
+    {
+      "name": "Depth sounding",
       "description": "The instruments sailors used to find the bottom before sonar — a weighted line dropped into water you cannot see through.",
       "fit": "The product's job is finding the expensive thing hidden in a system you have no visibility into. Maps almost exactly.",
-      "checked": 22, "available": 12, "note": "unmined on .dev" },
-    { "name": "Diagnostics",
+      "checked": 22,
+      "available": 12,
+      "note": "unmined on .dev"
+    },
+    {
+      "name": "Diagnostics",
       "description": "Vitals, triage, symptoms, the patient chart.",
       "fit": "Fits the function, but every observability tool already lives here, so expect to sound like the category.",
-      "checked": 12, "available": 4, "note": "crowded by meaning, not by domain" },
-    { "name": "Divining",
+      "checked": 12,
+      "available": 4,
+      "note": "crowded by meaning, not by domain"
+    },
+    {
+      "name": "Divining",
       "description": "Finding water underground by reading surface signals.",
       "fit": "Generates well and the mechanism is right. Cuts against 'precision tooling' — see the Dowse weakness.",
-      "checked": 10, "available": 5, "note": "open" },
-    { "name": "Craft and sharpening",
+      "checked": 10,
+      "available": 5,
+      "note": "open"
+    },
+    {
+      "name": "Craft and sharpening",
       "description": "Whetstone, hone, grindstone, the tools that make other tools work.",
       "fit": "Fits 'make the slow thing fast', but heavily used across developer tooling already.",
-      "checked": 8, "available": 1, "note": "exhausted" },
-    { "name": "Cartography of the plan tree",
+      "checked": 8,
+      "available": 1,
+      "note": "exhausted"
+    },
+    {
+      "name": "Cartography of the plan tree",
       "description": "Atlas, contour, seam — the query plan as terrain.",
       "fit": "Accurate but abstract; the names read as generic data tooling.",
-      "checked": 6, "available": 2, "note": "weak names, adequate availability" }
+      "checked": 6,
+      "available": 2,
+      "note": "weak names, adequate availability"
+    }
   ],
-
   "rounds": [
-    { "round": 1, "focus": "Spread across all five territories, .com and .dev",
-      "checked": 24, "available": 1,
-      "note": "1/24 on **.com**, 14/24 on **.dev**. Real-word compounds on .com were registered between 1995 and 2010. This decides the TLD, not the name." },
-    { "round": 2, "focus": "Deeper into depth sounding",
-      "checked": 22, "available": 1,
-      "note": "Rate held. Same conclusion, more confidently." },
-    { "round": 3, "focus": "Strongest stems, short CLI-shaped forms, added .sh",
-      "checked": 12, "available": 4,
-      "note": "Short single words are gone on .com and free on .dev and .sh." }
+    {
+      "round": 1,
+      "focus": "Spread across all five territories, .com and .dev",
+      "checked": 24,
+      "available": 1,
+      "note": "1/24 on **.com**, 14/24 on **.dev**. Real-word compounds on .com were registered between 1995 and 2010. This decides the TLD, not the name."
+    },
+    {
+      "round": 2,
+      "focus": "Deeper into depth sounding",
+      "checked": 22,
+      "available": 1,
+      "note": "Rate held. Same conclusion, more confidently."
+    },
+    {
+      "round": 3,
+      "focus": "Strongest stems, short CLI-shaped forms, added .sh",
+      "checked": 12,
+      "available": 4,
+      "note": "Short single words are gone on .com and free on .dev and .sh."
+    }
   ],
-
   "candidates": [
-    { "rank": 1, "name": "Sounder", "territory": "Depth sounding",
+    {
+      "rank": 1,
+      "name": "Sounder",
+      "territory": "Depth sounding",
       "why": "The instrument itself, and a real word an engineer reads correctly on first sight. Shortest of the finalists and the best as a typed command: `sounder analyze`.",
       "weakness": "Also a bird and an audio device, and it reads as a comparative adjective (\"sounder judgment\") on first pass. PyPI is taken, so a Python installer needs a different distribution name.",
       "verdict": "The one I would ship.",
       "domains": [
-        { "domain": "sounder.dev", "state": "available" },
-        { "domain": "sounder.sh", "state": "available" },
-        { "domain": "sounder.com", "state": "registered", "detail": "since 1995" }
+        {
+          "domain": "sounder.dev",
+          "state": "available"
+        },
+        {
+          "domain": "sounder.sh",
+          "state": "available"
+        },
+        {
+          "domain": "sounder.com",
+          "state": "registered",
+          "detail": "since 1995"
+        }
       ],
       "clearance": [
-        { "check": "npm", "state": "free", "confidence": "high" },
-        { "check": "PyPI", "state": "taken", "confidence": "high", "detail": "pypi.org/project/sounder" },
-        { "check": "GitHub", "state": "taken", "confidence": "high" },
-        { "check": "Search", "state": "unknown", "confidence": "low", "detail": "checked the name alone, not name + postgres" }
-      ] },
-
-    { "rank": 2, "name": "Leadsman", "territory": "Depth sounding",
+        {
+          "check": "npm",
+          "state": "free",
+          "confidence": "high"
+        },
+        {
+          "check": "PyPI",
+          "state": "taken",
+          "confidence": "high",
+          "detail": "pypi.org/project/sounder"
+        },
+        {
+          "check": "GitHub",
+          "state": "taken",
+          "confidence": "high"
+        },
+        {
+          "check": "Search",
+          "state": "unknown",
+          "confidence": "low",
+          "detail": "checked the name alone, not name + postgres"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "name": "Leadsman",
+      "territory": "Depth sounding",
       "why": "The leadsman is the crew member who drops the weighted line and calls the depth. That is precisely this tool's role: not the navigator, the one who reports what is under you. Two syllables, spells itself, no collision in developer tooling.",
       "weakness": "The reference is invisible unless you know it, and non-nautical readers hear \"lead\" as sales lead first — an unfortunate association in a B2B-adjacent space.",
       "verdict": "Pick it if your audience enjoys a name that rewards knowing something.",
       "domains": [
-        { "domain": "leadsman.dev", "state": "available" },
-        { "domain": "leadsman.sh", "state": "available" },
-        { "domain": "leadsman.com", "state": "registered", "detail": "since 1999" }
+        {
+          "domain": "leadsman.dev",
+          "state": "available"
+        },
+        {
+          "domain": "leadsman.sh",
+          "state": "available"
+        },
+        {
+          "domain": "leadsman.com",
+          "state": "registered",
+          "detail": "since 1999"
+        }
       ],
       "clearance": [
-        { "check": "npm", "state": "free", "confidence": "high" },
-        { "check": "PyPI", "state": "free", "confidence": "high" },
-        { "check": "GitHub", "state": "taken", "confidence": "high" }
-      ] },
-
-    { "rank": 3, "name": "Dowse", "territory": "Divining",
+        {
+          "check": "npm",
+          "state": "free",
+          "confidence": "high"
+        },
+        {
+          "check": "PyPI",
+          "state": "free",
+          "confidence": "high"
+        },
+        {
+          "check": "GitHub",
+          "state": "taken",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "name": "Dowse",
+      "territory": "Divining",
       "why": "Five letters, one syllable, unclaimed on both developer TLDs. The metaphor is exactly right: finding what is underground by reading surface signals.",
       "weakness": "Dowsing is pseudoscience. For a tool selling itself on precision, naming it after the archetypal unscientific method is a real tension — some engineers will read it as a joke.",
       "verdict": "Best shape of the three. Only works if the association reads as confident rather than careless.",
       "domains": [
-        { "domain": "dowse.dev", "state": "available" },
-        { "domain": "dowse.sh", "state": "available" },
-        { "domain": "dowse.com", "state": "registered", "detail": "since 1999" }
+        {
+          "domain": "dowse.dev",
+          "state": "available"
+        },
+        {
+          "domain": "dowse.sh",
+          "state": "available"
+        },
+        {
+          "domain": "dowse.com",
+          "state": "registered",
+          "detail": "since 1999"
+        }
       ],
       "clearance": [
-        { "check": "npm", "state": "free", "confidence": "high" },
-        { "check": "PyPI", "state": "taken", "confidence": "high", "detail": "as `dowser`" },
-        { "check": "GitHub", "state": "taken", "confidence": "high" }
-      ] },
-
-    { "rank": 4, "name": "By the Mark", "territory": "Depth sounding",
+        {
+          "check": "npm",
+          "state": "free",
+          "confidence": "high"
+        },
+        {
+          "check": "PyPI",
+          "state": "taken",
+          "confidence": "high",
+          "detail": "as `dowser`"
+        },
+        {
+          "check": "GitHub",
+          "state": "taken",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "name": "By the Mark",
+      "territory": "Depth sounding",
       "why": "The leadsman's actual call — \"by the mark, twain\" — the depth read off the knots on the line. It names the output rather than the operator, which is the more accurate framing for a reporting tool.",
       "weakness": "Three words. As a CLI binary it has to collapse to `bythemark` or `btm`, and neither is good. Better suited to a hosted product than a terminal command.",
       "verdict": "Highest ceiling, wrong shape for a CLI.",
       "domains": [
-        { "domain": "bythemark.dev", "state": "available" },
-        { "domain": "bythemark.sh", "state": "available" },
-        { "domain": "bythemark.com", "state": "registered", "detail": "since 2008" }
+        {
+          "domain": "bythemark.dev",
+          "state": "available"
+        },
+        {
+          "domain": "bythemark.sh",
+          "state": "available"
+        },
+        {
+          "domain": "bythemark.com",
+          "state": "registered",
+          "detail": "since 2008"
+        }
       ],
       "clearance": [
-        { "check": "npm", "state": "free", "confidence": "high" },
-        { "check": "PyPI", "state": "free", "confidence": "high" },
-        { "check": "GitHub", "state": "taken", "confidence": "high" }
-      ] },
-
-    { "rank": 5, "name": "Plumbline", "territory": "Depth sounding",
+        {
+          "check": "npm",
+          "state": "free",
+          "confidence": "high"
+        },
+        {
+          "check": "PyPI",
+          "state": "free",
+          "confidence": "high"
+        },
+        {
+          "check": "GitHub",
+          "state": "taken",
+          "confidence": "high"
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "name": "Plumbline",
+      "territory": "Depth sounding",
       "why": "The weight on a string that finds true vertical. Familiar to people who have never been on a boat, which removes the explanation cost that Leadsman carries.",
       "weakness": "Nine characters and two stressed syllables, so it types and speaks heavier than the rest. Both `.com` and `.dev` are registered, which leaves no clean domain route.",
       "verdict": "Better word, worse availability. Listed so you can see what was given up.",
       "domains": [
-        { "domain": "plumbline.com", "state": "registered", "detail": "since 1999" },
-        { "domain": "plumbline.dev", "state": "registered", "detail": "since 2024" }
+        {
+          "domain": "plumbline.com",
+          "state": "registered",
+          "detail": "since 1999"
+        },
+        {
+          "domain": "plumbline.dev",
+          "state": "registered",
+          "detail": "since 2024"
+        }
       ],
-      "clearance": [] },
-
-    { "rank": 6, "name": "Slipstream", "territory": "Motion",
+      "clearance": []
+    },
+    {
+      "rank": 6,
+      "name": "Slipstream",
+      "territory": "Motion",
       "why": "The low-drag pocket behind a moving object — the state the tool is trying to put your queries into. Instantly understood with no domain knowledge.",
       "weakness": "Heavily used as a product name across several industries, and it describes the outcome rather than the mechanism, which makes it interchangeable with any performance tool.",
       "verdict": "Aftermarket only, and not worth it at BrandBucket pricing.",
       "domains": [
-        { "domain": "slipstream.com", "state": "for_sale", "detail": "BrandBucket, registered 1996" },
-        { "domain": "slipstream.dev", "state": "registered", "detail": "since 2019" }
+        {
+          "domain": "slipstream.com",
+          "state": "for_sale",
+          "detail": "BrandBucket, registered 1996"
+        },
+        {
+          "domain": "slipstream.dev",
+          "state": "registered",
+          "detail": "since 2019"
+        }
       ],
-      "clearance": [] },
-
-    { "rank": 7, "name": "Deadreckon", "territory": "Navigation",
+      "clearance": []
+    },
+    {
+      "rank": 7,
+      "name": "Deadreckon",
+      "territory": "Navigation",
       "why": "Dead reckoning is estimating position from known speed and heading when you cannot see landmarks — a fair description of query planning itself.",
       "weakness": "\"Dead\" in the name of a database tool is an unforced association with downtime. The `.dev` lookup did not resolve.",
       "verdict": "Weak on tone. Resolve the lookup before spending more thought on it.",
       "domains": [
-        { "domain": "deadreckon.com", "state": "registered", "detail": "since 1999" },
-        { "domain": "deadreckon.dev", "state": "unknown", "detail": "HTTP 429 after 4 attempts — unresolved, not available" }
+        {
+          "domain": "deadreckon.com",
+          "state": "registered",
+          "detail": "since 1999"
+        },
+        {
+          "domain": "deadreckon.dev",
+          "state": "unknown",
+          "detail": "HTTP 429 after 4 attempts — unresolved, not available"
+        }
       ],
-      "clearance": [] }
+      "clearance": []
+    }
   ],
-
   "top3": [
-    { "name": "Sounder",
+    {
+      "name": "Sounder",
       "reason": "Types well, reads correctly cold, and the metaphor survives without explanation.",
-      "dealbreaker": "Drop it if the PyPI collision matters more than I think." },
-    { "name": "Leadsman",
+      "dealbreaker": "Drop it if the PyPI collision matters more than I think."
+    },
+    {
+      "name": "Leadsman",
       "reason": "Better metaphor, worse first impression.",
-      "dealbreaker": "Drop it if a meaningful share of your audience will hear \"sales lead\"." },
-    { "name": "Dowse",
+      "dealbreaker": "Drop it if a meaningful share of your audience will hear \"sales lead\"."
+    },
+    {
+      "name": "Dowse",
       "reason": "Best shape of all three and free on both developer TLDs.",
-      "dealbreaker": "Drop it if \"precision tooling\" is the positioning you have to defend." }
+      "dealbreaker": "Drop it if \"precision tooling\" is the positioning you have to defend."
+    }
   ],
-
   "unconventional": {
     "name": "By the Mark",
-    "reason": "A phrase name in developer tooling is rare enough to be memorable, and phrases are the one territory permutation tools cannot reach — which is why availability there ran an order of magnitude above compounds.",
-    "cost": "You give up the clean binary name."
+    "reason": "A phrase name in developer tooling is rare enough to be memorable.",
+    "cost": "You give up the clean binary name — it collapses to `bythemark` or `btm`."
   },
-
   "safest": {
     "name": "Sounder",
-    "reason": "`sounder.dev`, GitHub org `sounder-dev`, npm `sounder`, Python package published as `sounder-cli`.",
+    "reason": "`sounder.dev`, npm `sounder`, Python published as `sounder-cli`.",
     "cost": "Nothing beyond the PyPI rename."
   },
-
   "unverified": [
     "Search was run on the names alone, not on \"name + postgres\". A same-category collision could still exist — check before you announce.",
     "`deadreckon.dev` returned HTTP 429 after four attempts. That is **unresolved, not available**.",

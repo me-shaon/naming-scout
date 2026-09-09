@@ -1,7 +1,7 @@
 # Report format
 
-The report is the deliverable. It should be readable in five minutes and defensible in a
-conversation with someone who disagrees.
+The report is the deliverable. Someone should get the answer in ten seconds and be able to
+argue with it in five minutes.
 
 **It ships as an HTML page, not as terminal text.** Build the JSON described by
 `scripts/report.sh --schema`, render it, and it opens in the browser:
@@ -10,96 +10,95 @@ conversation with someone who disagrees.
 scripts/report.sh report.json
 ```
 
-`examples/report-data.example.json` is a complete payload from a real run. The sections
-below describe what goes in each field; the page lays them out, colour-codes every state,
-and hides anything you leave empty.
+`examples/report-data.example.json` is a complete payload from a real run.
 
-In the terminal, say only your recommendation and the one thing that would change it, then
-give the path. The page carries the detail.
+## The one rule: answer first
 
-## Sections
+Lead with the name you would use. Not the brief, not the territories, not the method. The
+reader came for a decision, and everything else is evidence they may or may not want.
 
-### 1. Brief
+The page enforces this ordering, so your job is to fill the fields at the right length:
 
-Three or four lines of what you worked from, including the assumptions you made where the
-user did not answer. This is where a misunderstanding gets caught before it costs the user
-a decision.
+| Order | What the reader sees | Where it comes from |
+|---|---|---|
+| 1 | **The pick** — one name, large, with the reason, the domain to register, and what would change your mind | `top3[0]` + that candidate |
+| 2 | **Two alternates** — name, one line, best domain | `top3[1]`, `top3[2]` |
+| 3 | **Boldest and safest** — one line each | `unconventional`, `safest` |
+| 4 | **The shortlist** — collapsed rows, one line each, open for the reasoning | `candidates` |
+| 5 | **How this was found** — folded away: brief, territories, rounds | `brief`, `territories`, `rounds` |
+| 6 | **Before you commit** — what was not verified | `unverified` |
 
-### 2. Territories
+The method section is folded shut on purpose. It is the part you would show someone who
+challenges the recommendation, not the part you open with.
 
-Each territory: what it is, why it fits this brief, and its availability rate.
+## Length discipline
+
+The page is only as clean as the text you put in it. Overlong fields are what made the old
+reports unreadable.
+
+| Field | Length | Note |
+|---|---|---|
+| `subtitle` | one line | The finding of the run, not a description of it. "The .com collapse is the finding: move to .dev, or buy." |
+| `top3[].reason` | **one sentence** | This sits under a 58px name. Two sentences and the page stops looking like an answer. |
+| `top3[].dealbreaker` | one sentence | Framed as "what would change my mind". |
+| `unconventional.reason`, `safest.reason` | **one line** | These are footnotes to the pick, not entries in their own right. |
+| `candidates[].why` | one or two sentences | Hidden until the row is opened, so it can carry more, but not a paragraph. |
+| `candidates[].weakness` | one or two sentences | Required on every candidate. |
+| `candidates[].verdict` | one line | What you would do about it. |
+| `territories[].fit` | one or two lines | Why this territory, for this brief. |
+| `rounds[].note` | one line | What the hit rate meant, not what you did. |
+
+If a field wants to be longer, it usually means the point is not sharp yet.
+
+## What goes in each field
+
+### The pick and the alternates
+
+`top3` is ranked, and the first entry is the recommendation, not a menu option. Say which
+one you would use and why, in a sentence someone could disagree with.
+
+Every entry needs a `dealbreaker`: the one fact that would change the recommendation. A
+pick with no stated dealbreaker reads as sales copy.
+
+### Boldest and safest
+
+**Boldest** is the highest ceiling and the highest risk — usually from the territory the
+user would not have asked for: an imperative, a phrase, a coined word. Put what it demands
+from them in `cost`.
+
+**Safest** is the lowest clearance risk and the least explanation cost. Often not exciting,
+which is the point: it answers "I need to ship next week". It may be the same name as the
+pick; that is a real finding, not a duplication.
+
+Omit either if the run genuinely produced nothing that fits. Do not promote a middling name
+into an empty slot.
+
+### The shortlist
+
+8–15 candidates, ranked, each with `why`, `weakness`, `verdict`, and only the checks that
+matter for this project. A newsletter candidate has no `clearance` array.
+
+**Every entry has a stated weakness.** An entry without one has not been examined.
+
+List `domains` best-first — the page surfaces the most actionable one in the collapsed row
+(available, then for_sale, then parked, then registered), and shows the rest on open.
+
+### Territories
+
+`checked` and `available` drive a rate bar and the open/normal/mined colour. `note` is the
+one-word read: `unmined`, `normal`, `exhausted`. This is the part the user keeps if they
+reject the whole shortlist, so make `fit` say why the territory suits this brief
+specifically.
+
+### Before you commit
+
+Explicit, never a footnote. Unresolved lookups, the trademark disclaimer, the checks you
+skipped and why:
 
 ```
-Navigation  — instruments for finding your way when the obvious signal fails.
-              Fits because the product's job is orientation, not measurement.
-              12/26 available (46%). Unmined.
-
-Reference   — the product as a book you keep on the desk.
-              Fits the teaching half of the positioning.
-              3/24 available (13%). The umbrella words are gone everywhere.
-```
-
-The rates are one of the more useful things in the report. They tell the user which
-directions still have room, which is exactly what they need if they reject the shortlist.
-
-### 3. Shortlist
-
-8–15 candidates, ranked. Each entry:
-
-```
-**Lodestar**
-Territory:  Navigation
-Why:        A lodestar is what you steer by when the instruments fail, which is the
-            product's actual job for a founder mid-decision. The word is old enough to
-            read as established rather than trendy, and it survives being said aloud in
-            a boardroom without explanation.
-Weakness:   One of the more reached-for navigation words. Two other companies use it in
-            adjacent categories, so it will not feel uniquely yours in year one.
-.com:       registered 2001, in use — a US consultancy
-Alternates: lodestar.dev available · uselodestar.com available
-GitHub:     free · npm: taken (stub package, last publish 2016)
-Search:     dominated by the consultancy on the exact term
-Verdict:    Strong name, contested namespace. Worth it only if you will run on .dev.
-```
-
-Non-negotiable: **every entry has a stated weakness**. An entry with no weakness has not
-been examined, and it reads as sales copy.
-
-Cut the entry down to what is relevant. A newsletter shortlist has no GitHub line.
-
-### 4. Top 3
-
-Three names with a sentence each on why they are top, plus the one thing that would make
-you drop each. Say which you would pick and why. A recommendation the user can argue with
-is more useful than a menu.
-
-### 5. Best unconventional option
-
-The name with the highest ceiling and the highest risk. Usually from the territory the user
-would not have asked for: an imperative, a coined word, a phrase, something that needs a
-tagline. Say plainly what it demands from them, because it is usually more marketing work
-in exchange for a name nobody else could have.
-
-Omit the section if the run genuinely produced nothing unconventional, and say so rather
-than promoting a safe name into the slot.
-
-### 6. Safest option
-
-Lowest clearance risk, cleanest namespace, least explanation cost. Often not the most
-exciting name, and that is the point: it is the answer to "I need to ship next week".
-
-### 7. What was not verified
-
-Explicit, not a footnote:
-
-```
-- .co results are unresolved: no RDAP server this tool can verify. Confirm at a registrar.
-- Trademark: searched live US marks in classes 9 and 42, no obvious conflict. Not a
-  clearance opinion. Get an attorney search before you spend on the brand.
-- Social handles not checked. Status codes are unreliable enough that I would rather you
-  open the signup pages than trust a number from me.
-- 3 domain lookups returned rate-limit errors and are unknown, not available:
-  <names>. Re-run scripts/rdap.sh to resolve.
+"deadreckon.dev returned HTTP 429 after four attempts. That is **unresolved, not available**."
+"No trademark search. Correct for a hobby CLI, wrong the moment you charge for it."
+"Social handles were not checked — platform status codes are unreliable in both directions."
 ```
 
 ## Tone
@@ -113,12 +112,22 @@ Write as an advisor who will be held to it.
 Avoid: clean, modern, sleek, catchy, memorable, powerful, versatile, and any adjective that
 would apply equally to a different name. Every claim should be falsifiable.
 
+## In the terminal
+
+Do not restate the report. Say the recommendation, the one thing that would change it, and
+give the path:
+
+> **Sounder**, on `sounder.dev`. It types well and reads correctly cold. I would drop it
+> only if the PyPI collision matters more than I think — the name is taken there, so a
+> Python installer would ship as `sounder-cli`.
+>
+> Full report: /tmp/postgres-slow-query-profiler-cli-20260908.html
+
 ## Length
 
-The report should be as long as the number of names you would defend, and no longer. A
-run that produced six good names produces a six-name report. Padding it to fifteen with
-material you would cut in conversation is the single fastest way to make the whole thing
-feel machine-generated.
+As long as the number of names you would defend, and no longer. A run that produced six
+good names produces a six-name report. Padding to fifteen with material you would cut in
+conversation is the fastest way to make the whole thing feel machine-generated.
 
 If you cannot fill a shortlist you believe in, say so and run another round in a different
-territory. That is a better outcome than a long list of near-misses.
+territory.

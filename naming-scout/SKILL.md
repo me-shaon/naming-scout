@@ -148,16 +148,24 @@ Non-negotiable reporting rules:
 - **Never state trademark clearance.** "No obvious conflict in this search" is the
   strongest claim available to you, and it is not legal advice.
 
-### 6. Report — always as an HTML page in the browser
+### 6. Report — answer first, as an HTML page in the browser
 
-Structure in `references/report-format.md`. Shape:
+**Lead with the name you would use.** Not the brief, not the territories, not the method.
+The reader came for a decision; everything else is evidence they may or may not want.
 
-brief you worked from → territories found, with hit rates → ranked shortlist of **8–15**,
-each with territory, why it works, its specific weakness, domain state, requested
-clearance → top 3 → best unconventional option → safest option → what you could not verify.
+The order, which the page enforces:
 
-Deliver it as a page, not as a wall of terminal text. Write the report to JSON, render it,
-and it opens in the default browser:
+the pick — one name, its reason, the domain to register, and what would change your mind →
+two alternates, a line each → boldest and safest, a line each → the shortlist of **8–15**
+as collapsed rows → *folded away:* the brief, territories and rounds → what you could not
+verify.
+
+Keep the fields short or the page stops reading as an answer: the pick's reason is **one
+sentence**, boldest and safest are **one line each**, and every candidate needs a `why`, a
+`weakness` and a `verdict` in a line or two. Full guidance and lengths:
+`references/report-format.md`.
+
+Write the report to JSON, render it, and it opens in the default browser:
 
 ```bash
 scripts/report.sh --schema          # the JSON shape, every field optional
@@ -168,14 +176,12 @@ scripts/report.sh report.json -o ~/naming-report.html --no-open
 Write the JSON to the scratchpad or a temp path, not into the user's project, unless they
 asked for a file. `examples/report-data.example.json` is a complete worked payload.
 
-The page colour-codes every domain and clearance state, so `unknown` can never be mistaken
-for `available`; it filters to available-only or available-plus-purchasable, searches the
-shortlist, and prints cleanly. Sections you leave out are omitted rather than shown empty,
-so a partial run still renders.
+Each domain and clearance state gets a distinct mark, so `unknown` can never be mistaken
+for `available`. Sections you leave out are omitted rather than shown empty, so a partial
+run still renders.
 
-Then say the three or four sentences that matter in the terminal — your actual
-recommendation and the one thing that would change it — and give the file path. Do not
-restate the whole report as text; that is what the page is for.
+Then, in the terminal, say only the recommendation, the one thing that would change it, and
+the file path. Do not restate the report; that is what the page is for.
 
 Rank by naming quality, positioning fit, distinctiveness, usability, clearance risk,
 then domain state. Reorder only when the user set a hard constraint ("must be an
