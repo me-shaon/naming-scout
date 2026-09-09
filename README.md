@@ -91,25 +91,36 @@ later, after you have chosen the name.
 ## It also does these
 
 **It can name your product in your own language.** You are building a shop app in Dhaka. Ask
-for Bangla names and you get names your customers already understand:
+for Bangla names.
+
+The two names you would reach for first are already gone:
 
 ```
-Baki Boi      the credit book          bakiboi.com     free
-Mudi Khata    the grocer's ledger      mudikhata.com   free
-Amar Baki     my credit                amarbaki.com    free
+Amar Dokan    my shop           amardokan.com    taken in 2011
+Tali Khata    the tally book    talikhata.com    taken in 2021
 ```
 
-An English name would need explaining to a shopkeeper in Dhaka. These do not.
+An app called TallyKhata already serves Bangladeshi shopkeepers, and `tallykhata.com` went in
+2018. A generator would offer you that name and say nothing about it.
 
-It also checks every English spelling of a local word. Bangla has no fixed English spelling,
-so different customers type it differently. If you buy `dokan.com` and a customer types
-`dukan.com`, they land on somebody else's page. All three spellings are owned by other
-people already:
+Naming Scout keeps going and finds names that are still free:
 
 ```
-dokan.com     taken in 2002
-dukan.com     taken in 2000
-dukaan.com    taken in 1999
+Baki Boi      the credit book    bakiboi.com      free
+Khata Patra   ledger papers      khatapatra.com   free
+```
+
+A shopkeeper in Dhaka understands these at once. An English name would need explaining.
+
+It also checks every English spelling. Bangla is not written in English letters, so your
+customers spell it in different ways. If you buy `amardokan.com` and a customer types
+`amardukan.com`, they land on somebody else's website. All three spellings are taken, and
+they were registered years apart:
+
+```
+amardokan.com     taken in 2011
+amardukan.com     taken in 2018
+amardokaan.com    taken in 2022
 ```
 
 It does this for Hindi, Urdu, Arabic, Turkish, Thai and Korean too.
