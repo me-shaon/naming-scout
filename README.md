@@ -1,18 +1,27 @@
 # Naming Scout
 
-Names your company, product, app, newsletter or side project. Then checks whether the name is
-actually usable: domain, trademark, GitHub, npm, app stores and search.
+**Finds a name for your startup, product or side project. Then proves you can actually use
+it.**
 
-An agent skill for Claude Code, Cursor, Codex, OpenCode and 75 other coding agents.
+Not `Growthly`, `GrowthAI` or `GetGrowth`. Every generator produces those, which is exactly
+why they are all taken. Naming Scout builds names from metaphor territories, then checks them
+against the domain registry itself, plus trademark, GitHub, npm, the app stores and search.
+
+Same brief, same afternoon, one music newsletter:
+
+| What was tried | Free on `.com` |
+|---|---|
+| Industry words: `merchtable`, `soundcheck`, `backline` | **1 of 20** |
+| Phrases: `thedoorsplit`, `whatthegigpays`, `countthegate` | **8 of 17** |
+
+A permutation tool cannot produce `whatthegigpays`. That is precisely why it was still free.
 
 ```bash
 npx skills add me-shaon/naming-scout
 ```
 
-Add `-g` to install for every project instead of just this one. Needs `curl` and `jq` for the
-live checks.
-
-Then describe what you are building, and it takes over from there.
+Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for every project. Needs
+`curl` and `jq`.
 
 ---
 
@@ -35,15 +44,9 @@ Naming Scout works in **metaphor territories** instead. It reads your positionin
 to eight concept domains that fit it, and generates inside those. A budgeting app for
 freelancers gets *storing the harvest* and *steadiness at sea*, not `Budgetly`.
 
-The difference is measurable, and the skill measures it. In one run for a music newsletter:
-
-| Round | Approach | Free on `.com` |
-|---|---|---|
-| 1 | Industry vocabulary: `merchtable`, `soundcheck`, `backline` | **1 / 20 (5%)** |
-| 2 | Phrases: `thedoorsplit`, `whatthegigpays`, `countthegate` | **8 / 17 (47%)** |
-
-Same brief, same afternoon. Nine times the hit rate, because permutation tools cannot produce
-a phrase, so nobody had taken them.
+The skill measures the difference as it goes, which is where the 5% against 47% at the top of
+this page came from. It also reports the rate per territory, so you learn which directions
+still have room even if you reject every name on the list.
 
 ### They tell you a name is unavailable when it is for sale
 
