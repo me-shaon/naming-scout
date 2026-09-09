@@ -39,12 +39,37 @@ The six things you must know before generating:
 | **Personality** | tone | serious, technical, premium, playful, irreverent, scientific, minimal, quirky |
 | **Constraints** | hard limits | length, spelling, languages, words to avoid, style preference |
 
-Then two decisions that change the whole back half of the run:
+Then two decisions that change the whole back half of the run. Both are summarised here, so
+neither reference file is a required read.
 
-- **Domain mode** (A–E, `references/domain-states.md`). Ask plainly: does it have to be
-  `.com`? Are you willing to buy from the aftermarket? Should parked domains be shown?
-- **Clearance profile** (`references/clearance-guide.md`). If the user does not know,
-  propose one from what they are naming and say in one line why those checks and not others.
+**Domain mode.** Ask plainly: does it have to be `.com`? Would you buy from the aftermarket?
+Should parked domains be shown?
+
+| Mode | Shows | For |
+|---|---|---|
+| **A** strict | `available` only | registering today, accepting the quality cost |
+| **B** alternates | `available` on `.com` or a fitting alternate TLD | most runs |
+| **C** with parked | adds `parked`, still labelled registered | someone who will send an enquiry |
+| **D** aftermarket | adds `for_sale`, marketplace named | where the best names usually are |
+| **E** broad | everything, grouped by state | the default when the user has not decided |
+
+**Clearance profile.** Propose one and say in a line why those checks and not others.
+
+| Profile | Checks |
+|---|---|
+| Open-source library | domain, GitHub, its own registry, search |
+| Developer tool / CLI | domain, GitHub, npm + PyPI, Homebrew, search |
+| Technical product / SaaS | domain, GitHub org, search, trademark, a social or two |
+| Consumer product or app | domain, app stores, trademark, socials, search |
+| Company | domain, trademark, search, socials, business registry |
+| Newsletter / media / podcast | domain, socials, search, podcast directories if audio |
+| Community | domain, socials, Discord/Slack vanity, search |
+| Agency / consultancy | domain, trademark, search, LinkedIn, local registry |
+| Course / education | domain, socials, search, marketplace listings |
+
+Adjust on the specifics rather than the label. Open `references/domain-states.md` only to
+interpret an odd state, and `references/clearance-guide.md` only before running the manual
+checks in step 5.
 
 If the user already answered something, do not ask it again. If the brief is rich enough
 already, skip straight to a one-line confirmation of your reading and generate.
