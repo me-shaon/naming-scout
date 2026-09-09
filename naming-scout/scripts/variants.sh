@@ -10,7 +10,7 @@
 #   ./variants.sh signalforge | ./rdap.sh --tlds com --available
 #
 # Options:
-#   --set LIST   comma-separated from: plural,article,verb,typo,hyphen,tld-stem,all
+#   --set LIST   comma-separated from: plural,article,verb,typo,hyphen,tld-stem,translit,all
 #                default: plural,article,verb,typo
 #
 # Sets:
@@ -21,6 +21,11 @@
 #             few letter swaps that actually produce confusable brands
 #   hyphen    signalforge -> signal-forge
 #   tld-stem  splits a compound so the domain-hack spelling can be tested separately
+#   translit  romanisation variants for a name from a non-Latin script.
+#             dokan -> dukan, dokaan, dukaan, dokhan. Run this whenever the name comes
+#             from Bangla, Hindi, Urdu, Arabic, Persian, Turkish, Thai, Korean or any
+#             language people romanise inconsistently. Your users will type all of these,
+#             and so will the squatters.
 #
 # Output: one candidate per line, deduplicated, ready to pipe into rdap.sh.
 #
@@ -42,7 +47,7 @@ if [ ${#names[@]} -eq 0 ]; then
   while IFS= read -r l; do l=$(printf '%s' "$l" | tr -d ' \t'); [ -n "$l" ] && names+=("$l"); done
 fi
 [ ${#names[@]} -gt 0 ] || { printf 'variants.sh: no name given\n' >&2; exit 2; }
-[ "$SETS" = all ] && SETS="plural,article,verb,typo,hyphen,tld-stem"
+[ "$SETS" = all ] && SETS="plural,article,verb,typo,hyphen,tld-stem,translit"
 
 has(){ case ",$SETS," in *",$1,"*) return 0 ;; *) return 1 ;; esac; }
 out=""
@@ -83,6 +88,32 @@ for raw in "${names[@]}"; do
     done
   fi
 
+  if has translit; then
+    # Consonant rules run once each. Vowel rules run twice, because real romanisations
+    # differ on two vowels at a time: dokan, dukan, dokaan, dukaan are all the same word.
+    # Combining consonant rules as well would produce strings nobody would ever type.
+    VOWEL_RULES='s/aa/a/g s/a/aa/g s/ee/i/g s/i/ee/g s/oo/u/g s/u/oo/g s/o/u/g s/u/o/g s/e/a/g s/a/e/g'
+    CONS_RULES='s/kh/k/g s/k/kh/g s/gh/g/g s/g/gh/g s/bh/b/g s/dh/d/g s/th/t/g
+                s/ph/f/g s/f/ph/g s/sh/s/g s/s/sh/g s/ch/c/g s/c/ch/g s/z/j/g s/j/z/g
+                s/v/w/g s/w/v/g s/v/b/g s/q/k/g s/k/q/g s/x/ks/g s/^a// s/a$// s/$/a/'
+
+    pass1="$n"
+    for r in $VOWEL_RULES $CONS_RULES; do
+      pass1="$pass1 $(printf '%s' "$n" | sed "$r")"
+    done
+    for w in $pass1; do
+      add "$w"
+      case " $VOWEL_RULES " in *" "*) ;; esac
+      for r in $VOWEL_RULES; do add "$(printf '%s' "$w" | sed "$r")"; done
+    done
+
+    # doubled consonants collapse: dokkan -> dokan
+    len=${#n}
+    for ((i=0;i<len-1;i++)); do
+      [ "${n:i:1}" = "${n:i+1:1}" ] && add "${n:0:i}${n:i+1}"
+    done
+  fi
+
   if has typo; then
     len=${#n}
     for ((i=0;i<len;i++)); do add "${n:0:i}${n:i:1}${n:i}"; done          # doubled letter
@@ -94,4 +125,7 @@ for raw in "${names[@]}"; do
   fi
 done
 
-printf '%s' "$out" | awk 'NF && !seen[$0]++'
+# Drop any string with three identical letters in a row. Vowel rules applied twice can
+# produce them, and no name anybody types looks like that. sed, not awk: POSIX awk has no
+# backreferences, so the same pattern there matches nothing and filters silently fail.
+printf '%s' "$out" | sed '/\(.\)\1\1/d' | awk 'NF && !seen[$0]++'
