@@ -107,7 +107,9 @@ before you finish the sentence, with no tagline and no explanation. It spells it
 phone. It survives if you later add invoicing or tax, because the promise is about the month,
 not about budgeting.
 *Weakness:* it is descriptive rather than distinctive, so it will be harder to own in
-trademark than a coined word. Expect to compete for the search term.
+trademark than a coined word.
+*Searchability:* **ownable**. Nothing else claims the exact phrase, so you would be the first
+result within weeks of launch.
 `.com` free · `.app` free · full defensive sweep free
 
 **Granary** (Storing the harvest)
@@ -117,6 +119,9 @@ company rather than a 2026 app.
 *Weakness:* the connection to freelance income needs one line of explanation the first time.
 The domain has been held since 1994 and is listed on Efty, so this is a purchase, not a
 registration. Price is not visible from RDAP.
+*Searchability:* **crowded**. You would share the term with actual granaries, a Leeds
+waterfront district and a chain of restaurants. Add the aftermarket price to the cost of
+ranking for your own name.
 `.com` for_sale, Efty listing, held since 1994
 
 **Lean Months** (Storing the harvest)
@@ -125,6 +130,7 @@ recognised by anyone who has had a bad quarter.
 *Weakness:* it names the pain rather than the relief. A product called Lean Months reminds
 the user of the bad thing every time they open it. Even Months names the same idea from the
 other side.
+*Searchability:* **contested**. "Lean" pulls in lean startup and lean manufacturing results.
 `.com` free
 
 **The Lay-By** (Storing the harvest)
@@ -148,6 +154,8 @@ The metaphor lands and the domain is free.
 *Weakness:* **Harvest is a well-known time-tracking and invoicing product for freelancers.**
 Same audience, adjacent category, and your name contains theirs. This is the strongest
 collision in the run. Cut it.
+*Searchability:* **crowded**, on top of everything else. You would be competing with an
+established product and with the agricultural sense of the word.
 `.com` free, and it does not matter
 
 **Between Checks** (Naming the months)
@@ -167,9 +175,9 @@ corporate where the audience is not. Parked since 1999, so there is no listing a
 1. **Even Months.** The one I would launch. It names the outcome, needs no explanation, the
    `.com` and `.app` are both free, and the whole defensive sweep is open. It is the least
    distinctive of the three and that is the price.
-2. **Granary.** The better brand if you are willing to buy. It will still be a good name in
-   ten years and it does not sound like a budgeting app, which helps if you expand. Get the
-   Efty price before you fall in love with it.
+2. **Granary.** The better brand if you are willing to buy, and the more expensive one twice
+   over. You pay Efty for the domain and then you pay again in content and links to outrank
+   actual granaries for your own name. Get the price before you fall in love with it.
 3. **Lean Months.** The marketing-led choice. Take it only if you want the product to lead
    with the problem.
 
@@ -206,5 +214,7 @@ Buy the first two. Nobody types the rest.
   the App Store and Google Play for your final two before you build the listing.
 - **Social handles were not checked.** Status codes are wrong in both directions often enough
   to be useless. `@evenmonths` is worth grabbing on every platform in one sitting.
+- **Searchability grades came from reading page one, not from a ranking tool.** They are a
+  judgment about how contested a term is, not a measured difficulty score.
 - `granary.com` is listed, which tells you a price exists. It does not tell you the price.
   Open the Efty listing.

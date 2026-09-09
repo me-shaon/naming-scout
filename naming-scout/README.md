@@ -44,6 +44,16 @@ protocol. Not from a registrar's search box. Not from whether a website loads. I
 reports `available`, `registered`, `parked`, `for_sale`, `reserved` and `unknown` as
 separate answers, because they are separate answers.
 
+**It grades how hard the name is to find you by.** Every candidate gets `ownable`, `contested`
+or `crowded`, because a name you cannot rank for costs more than an expensive domain.
+`Granary` is a lovely word and you would be competing with actual granaries forever. It also
+corrects the myth that a keyword domain ranks better, which stopped being true in 2012.
+
+**It names in your language, not only in English.** A Bangladeshi founder wanting `dokan`
+instead of `shop` gets the whole romanisation space swept, because `dokan`, `dukan` and
+`dukaan` are one word to a customer and three strings to a registry. Every one of those is
+already registered, which is the sort of thing founders assume is not true.
+
 **It says what it could not verify.** A rate-limited lookup is reported as unknown, not as
 available. A trademark search is reported as "no obvious conflict in what I searched", never
 as clearance.
@@ -137,6 +147,8 @@ The more of this you give up front, the fewer questions it asks:
 - **Constraints.** Length, spelling, languages, words to avoid
 - **Domain appetite.** Must it be `.com`? Would you buy one that is already taken?
 - **What it will ship as.** This decides which namespaces get checked
+- **Your market and language.** If it is not English-speaking, say so. A name in your own
+  language is often the strongest option and it needs a different check list
 
 ## What it checks
 
@@ -154,7 +166,7 @@ Assisted, reported at the confidence the method supports:
 | Check | How | Confidence |
 |---|---|---|
 | Trademark | Public register search, live marks, relevant classes | Low. Never a clearance opinion |
-| Search presence | Search for an existing brand on the term | Medium |
+| Search presence | Collision check, plus an `ownable`/`contested`/`crowded` grade | Medium |
 | App stores | Manual store search | Medium |
 | Social handles | Reported as probable, never verified | Low, deliberately |
 
@@ -214,11 +226,12 @@ scripts/report.sh --schema                 # the shape it expects, every field o
 scripts/report.sh examples/report-data.example.json
 ```
 
-Six full worked runs are in [`examples/`](examples/):
+Seven full worked runs are in [`examples/`](examples/):
 
 | Run | What it shows |
 |---|---|
 | [`saas-startup.md`](examples/saas-startup.md) | The common case. A founder naming a product. No developer checks. |
+| [`local-language.md`](examples/local-language.md) | Naming in Bangla for a Bangladeshi market. Transliteration sweeps, an unverifiable local TLD, searchability deciding the ranking |
 | [`consumer-product.md`](examples/consumer-product.md) | A physical brand where trademark is the dominant risk, and an honest report when a territory does not recover |
 | [`aftermarket.md`](examples/aftermarket.md) | A funded B2B company willing to buy the domain, with all five states side by side |
 | [`newsletter.md`](examples/newsletter.md) | Domain, social and search only. Availability jumping from 5% to 47% on a change of territory |

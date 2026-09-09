@@ -25,6 +25,7 @@ Describe what you are building:
 > and tell you what you can safely pay yourself each month. Need a name.
 
 It interviews you, works through metaphor territories, checks only what your project needs,
-and opens a report in your browser. Worked runs for a startup, a consumer brand, a
-newsletter, a funded B2B company and a developer tool are in
+and opens a report in your browser. It grades how hard each name will be to rank for, and it
+works in languages other than English. Worked runs for a startup, a consumer brand, a
+newsletter, a funded B2B company, a Bangla-language product and a developer tool are in
 [`naming-scout/examples/`](naming-scout/examples/).

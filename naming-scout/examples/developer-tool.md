@@ -106,6 +106,8 @@ time. It is the shortest of the finalists and the best to type: `sounder analyze
 *Weakness:* it is also a bird and a piece of audio equipment. Read cold it can land as a
 comparative adjective, as in "sounder judgment". PyPI already holds the name, so a Python
 installer needs a different one.
+*Searchability:* **contested**. Shares the term with a seabird and with audio hardware.
+"sounder postgres" is clean, so expect to lose the bare term for the first year.
 `.dev` free · `.sh` free · `.com` registered 1995 · npm free · **PyPI taken** · GitHub taken
 
 **Leadsman** (Depth sounding)
@@ -114,6 +116,8 @@ reports what is under you. That is this tool's job. Two syllables that spell the
 other developer tool uses the word.
 *Weakness:* you have to know the word for the name to mean anything. Anyone who does not
 will hear "lead" as a sales lead, which is an unhelpful first association here.
+*Searchability:* **ownable**. Almost nothing else uses the word, so you would be the first
+result within weeks. This is the strongest search position in the run.
 `.dev` free · `.sh` free · `.com` registered 1999 · npm free · PyPI free · GitHub taken
 
 **By the Mark** (Depth sounding)
@@ -130,6 +134,8 @@ underground by reading the surface. That is what the tool does to a query plan.
 *Weakness:* dowsing is pseudoscience. This tool sells precision. Naming it after the
 best-known unscientific method is a real conflict. Some engineers will read it as a joke,
 which may be fine or may be fatal depending on how serious the positioning is.
+*Searchability:* **contested**. Dowsing has a large existing body of results, so the developer
+sense would have to be built from nothing.
 `.dev` free · `.sh` free · `.com` registered 1999 · npm free · PyPI taken as `dowser`
 
 **Plumbrod, Soundingline, Keelline.** Same territory. `.dev` free. All three are worse to say
