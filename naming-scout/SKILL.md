@@ -1,6 +1,9 @@
 ---
 name: naming-scout
 description: Find and validate names for a company, product, SaaS, app, CLI, library, newsletter, community, agency, course, or content brand. Runs a positioning interview, generates candidates inside metaphor territories rather than by permutation, filters them for brand quality, then checks the namespaces that actually matter using registry-level RDAP and package registry APIs. Use when the user asks for name ideas, a brand name, a product or project name, a domain name, help renaming something, or wants to know whether a name they already have is available or clear to use.
+license: MIT
+metadata:
+  version: "1.0.0"
 ---
 
 # Naming Scout
