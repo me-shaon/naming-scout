@@ -103,6 +103,16 @@ since 2004" are different answers to the same question.
 they half-remember a name. That is a real cost of not having it. It is also the only real
 cost. Plenty of substantial companies run on `.io`, `.dev`, `.ai`, `.so` and `.co`.
 
+**Ranking.** No gTLD ranks better than another. Google treats `.com`, `.io`, `.dev` and
+`.xyz` identically, with no boost and no penalty. Choose on credibility, price and
+availability.
+
+The exception is geographic targeting. Most country TLDs tell a search engine you serve that
+country, which is right for a local business and a real handicap for a global one. A handful
+of country TLDs used as words are treated as generic instead, including `.io`, `.co`, `.ai`,
+`.me`, `.tv` and `.fm`. Details and the caveat about that list changing are in
+`search-and-seo.md`.
+
 Watch for:
 
 - **`.co`** is one keystroke from `.com`. Expect to lose some traffic permanently.
@@ -122,6 +132,12 @@ itself failed on a cold cache.
 Some TLDs, `.co` among them, have no RDAP server this skill can verify. They return
 `unknown_no_rdap`. Confirm those with `whois` or a registrar, and label the result as the
 lower-confidence check it is.
+
+Local country TLDs are the weakest area. Confirmed on 2026-09-09, `.bd`, `.pk`, `.lk`, `.np`
+and `.my` have no RDAP server in the bootstrap, while `.in` and `.id` do. A local product
+naming for a local market will often be unable to verify its most important domain here. Say
+so and send the user to the registry's own search. 94 internationalised TLDs do have RDAP, so
+native-script domains can usually be checked.
 
 With no network at all, every lookup returns `unknown_error` after four attempts. Nothing
 is ever reported as available on a failed request.

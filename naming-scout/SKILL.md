@@ -94,6 +94,12 @@ Fast version: say it aloud; spell it down a phone line; picture it in a URL bar 
 logo; ask whether it still fits when the product doubles in scope; ask whether it collides
 with something in the same category; ask what one sentence explains it.
 
+Then grade its **searchability** `ownable`, `contested` or `crowded`. A name you cannot rank
+for costs more than an expensive domain, so it belongs in the report beside one. Short is not
+the same as findable: short real words are the hardest names to own in search.
+`references/search-and-seo.md` has the grading table and the correction to the exact-match
+domain myth, which users will raise.
+
 **A candidate with no one-sentence reason to exist is cut, however available it is.**
 
 ### 5. Check what matters, and only that
@@ -138,6 +144,18 @@ Four checks have no reliable API: trademark, social handles, app stores and sear
 presence. Do those by hand and report each at the confidence its method supports. Read
 `references/clearance-guide.md` before doing any of them; it says what each check can and
 cannot establish.
+
+**If the market is not English-speaking**, read `references/naming-across-languages.md` first.
+A name from a non-Latin script has no single spelling, so sweep the romanisations before
+committing to one:
+
+```bash
+scripts/variants.sh --set translit dokan | scripts/rdap.sh --tlds com
+```
+
+Expect single transliterated words to be gone on `.com` and compounds to be open. Many local
+country TLDs, including `.bd`, `.pk`, `.lk` and `.np`, have no RDAP and cannot be verified
+here.
 
 Non-negotiable reporting rules:
 
@@ -214,7 +232,11 @@ Do not:
 - ship six variants of one weak idea as if they were six ideas.
 - call a parked domain available, or an unknown a negative.
 - run npm and PyPI checks for a newsletter, or skip PyPI for a Python library.
-- assume `.com` matters before asking, or assume shorter is better.
+- assume `.com` matters before asking, or assume shorter is better. Short real words are the
+  hardest names to own in search.
+- let a user pick a descriptive name for SEO reasons without telling them keyword domains
+  stopped being a ranking signal in 2012.
+- treat a transliterated word as unclaimed. Domainers hold short strings in every language.
 - describe a name as "clean, modern, memorable". Say what it does that another name does not.
 - recommend a name that reads well and sounds wrong. Say it out loud first.
 
@@ -227,6 +249,8 @@ Do not:
 | `references/brand-filter.md` | scoring candidates before they earn a lookup |
 | `references/domain-states.md` | interpreting a state, or picking the domain mode |
 | `references/clearance-guide.md` | choosing a profile, or running trademark/social/app-store/search |
+| `references/search-and-seo.md` | grading searchability, TLD and ranking, whether short names help |
+| `references/naming-across-languages.md` | the market is not English-speaking, or the user offers a word from their own language |
 | `references/report-format.md` | writing the final report |
 | `examples/report-data.example.json` | the report JSON, filled in from a real run |
 | `examples/` | five worked runs, including one where the first direction fails |

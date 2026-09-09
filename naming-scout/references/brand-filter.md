@@ -3,7 +3,7 @@
 Applied to every candidate before it earns a lookup. Cheap to run, and it removes most of
 what makes AI naming output feel worthless.
 
-## Twelve tests
+## Fourteen tests
 
 **1. Say it aloud.** Three times, at speaking pace, in a sentence: "We're using X for
 that." Names that read well and speak badly are the most common failure in written-first
@@ -23,9 +23,16 @@ Concrete beats abstract. Imageable beats conceptual. A name that draws a picture
 a name that describes a category does not.
 
 **5. Length and shape.** Count syllables, not characters. Two or three syllables is the
-comfortable range for spoken use. Look at the shape as a word: ascenders and descenders
-make a wordmark; a flat run of round letters does not. Short is not automatically better.
-A memorable four-syllable name beats a forgettable two-syllable one.
+comfortable range for spoken use. Look at the shape as a word. Ascenders and descenders make
+a wordmark. A flat run of round letters does not.
+
+Short is not automatically better, and the reason matters. Length helps memory and typing. It
+does nothing for ranking, and short real words are the hardest names to own in search because
+the word already had meanings before you did. Chase short and distinctive together. If you can
+only have one, take distinctive. Full argument in `search-and-seo.md`.
+
+Length becomes a hard limit only where a system imposes one: a CLI binary, an app store
+display name, a social handle.
 
 **6. Semantic fit.** Does the meaning point at what the thing does, or merely at a mood?
 Mood-only names are legitimate for consumer brands with a marketing budget, and expensive
@@ -54,6 +61,16 @@ Two lines is too many. If you cannot explain it in a sentence, neither can the u
 **12. Negative check.** Unintended readings when run together as a lowercase domain
 (the `pen-island` class of error), unfortunate meanings in the languages the user named,
 existing slang, and the initials.
+
+**13. Searchability.** Grade the name `ownable`, `contested` or `crowded` by how hard it will
+be to sit at the top of a search for your own name. A coined word is ownable on day one. A
+common English word may never be yours. This is a cost on the same scale as an expensive
+domain and it belongs in the report next to one. Method in `search-and-seo.md`.
+
+**14. Spelling stability.** If the name comes from a non-Latin script, decide which
+romanisation is the primary one and find out who holds the others. `dokan`, `dukan` and
+`dukaan` are one word to your user and three strings to a registry. See
+`naming-across-languages.md`.
 
 ## The one-sentence rule
 

@@ -82,6 +82,12 @@ the third telling.
 literally. Usually the richest territory in the run and the one only the user can supply.
 Ask them for five words insiders use that outsiders would not.
 
+**Native vocabulary**. For a product whose market is not English-speaking, the user's own
+language. `Dokan` rather than `shop`. It gives instant meaning to the target audience and
+signals the product was built for them rather than translated. Expect the single words to be
+gone on `.com` and the compounds to be open. Read `naming-across-languages.md` before
+generating here, because transliteration decides how the whole run is checked.
+
 **Coined and morphemic**. Latin/Greek roots recombined. Use when every real word is taken
 or an ownable trademark matters more than instant meaning. `-ora`, `-ify`, `-um`, `-is`,
 `vel-`, `lum-`, `ferr-`. Coined names carry a permanent explanation cost. Justify it.

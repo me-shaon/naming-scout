@@ -101,15 +101,26 @@ same name in the same category is not.
 
 ### Search presence
 
-Search the name alone, and the name plus the category. You are looking for: an existing
-company that owns the term, an established meaning that fights the positioning, and how
-hard it would be to rank.
+Two separate questions. Do not merge them.
+
+**Is there a collision?** Search the name alone and the name plus the category. Look for an
+existing company that owns the term and for an established meaning that fights the
+positioning. A same-category collision is usually fatal. A different-category one is often
+survivable, unless it sells to the same customer, which is where trademark disputes actually
+start.
+
+**Can this name be owned in search?** Grade it `ownable`, `contested` or `crowded` and report
+the grade next to the domain state. Method and grading table in `search-and-seo.md`. This is
+the half that changes the ranking of a shortlist. It is also the half most naming tools skip.
 
 Absence of results is weak evidence of anything. It means the term is not indexed, which is
 also true of every name held privately, every pre-launch company, and every brand too new
 to have coverage. Report search as a signal, never as a verdict, and never treat it as
 availability. The source research has a worked case of exactly that mistake:
 `domain-states.md`.
+
+For a non-English name, search every romanisation and the native script separately. They
+return different results and different competitors. See `naming-across-languages.md`.
 
 ## Reporting
 

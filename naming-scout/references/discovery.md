@@ -74,12 +74,23 @@ minimalist · quirky · warm · austere · nostalgic · confident
 
 Ask what tone would be *wrong*. People are much more precise about what they hate.
 
+If the market is not English-speaking, ask the one question that produces the best material
+in the whole interview:
+
+> Give me five words your customers use every day that an outsider would not know. Not the
+> formal word. The one they actually say.
+
 ### 6. Constraints and style
 
 - Length target, in syllables or characters
 - Must survive being spelled aloud, or not
 - Words, roots, letters, or associations to avoid, and any incumbent it must not echo
 - Languages and regions it has to work in, and any it must not be offensive in
+- **Is the primary market English-speaking?** If not, ask whether they want a name in their
+  own language. Many founders want this and assume it is unprofessional. It usually is not.
+  A local word is often the strongest option available. Read
+  `naming-across-languages.md` before running one of these briefs, because the transliteration
+  problem changes the domain strategy and the clearance profile.
 - Style preference: real word · compound · metaphor · coined · abstract brandable ·
   descriptive · imperative or phrase · no preference
 
