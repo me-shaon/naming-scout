@@ -1,79 +1,66 @@
 # Naming Scout
 
-Finds a name for your startup, product or side project. Then checks if you can use it.
+Finds a name for your startup or product. Then checks if you can really use it.
+
+## Why it is different
+
+Say you are naming a budgeting app. It helps freelancers who earn a lot one month and almost
+nothing the next.
+
+**A name generator gives you your keyword with letters added.**
+
+```
+Budgetly      taken in 2011
+Budgetify     taken in 2014
+GetBudget     taken in 2003
+```
+
+None of these tells your customer what the app does. And all of them are gone. Every
+generator looks in the same small place, so that place is empty.
+
+**Naming Scout works from what your product does.**
+
+Your app stops bad months from hurting. A cushion is soft, and it stops you getting hurt when
+you fall. So one idea it may reach is a name like this:
+
+```
+Cash Cushion    money that softens the fall in a bad month
+```
+
+That is one example, not a promise. You get 8 to 15 names, each with a reason and a weakness.
+
+**Then it tells you the truth about every domain.**
+
+Most tools show you a red cross. You learn nothing from a red cross. You get five answers
+instead:
+
+```
+free           nobody owns it. Register it now.
+for sale       someone owns it and wants to sell it
+parked         someone owns it. No website and no price.
+taken          someone owns it and uses it
+not checked    the check failed. This does not mean free.
+```
+
+The last one matters most. Other tools show a failed check as a free domain. You find out
+later, after you have chosen the name.
+
+---
 
 ```bash
 npx skills add me-shaon/naming-scout
 ```
 
-It is an agent skill. It works in Claude Code, Cursor, Codex, OpenCode and 75 other agents.
-Add `-g` to install it for every project. You need `curl` and `jq`.
+An agent skill for Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for
+every project. You need `curl` and `jq`.
 
 ---
 
-## The problem with name generators
+## It also does these
 
-You want to name a budgeting app for freelancers.
-
-A generator gives you this:
-
-| Name | What it is | The `.com` |
-|---|---|---|
-| `Budgetly` | "budget" plus "ly" | taken in 2011 |
-| `Budgetify` | "budget" plus "ify" | taken in 2014 |
-| `GetBudget` | "budget" plus "get" | taken in 2003 |
-
-All three are the same word with letters added. None of them says what the app does. And all
-three domains went years ago.
-
-Every generator looks in the same small place. That place is empty now.
-
----
-
-## What Naming Scout does instead
-
-It starts with your product, not your keyword.
-
-Your app helps freelancers who earn £9,000 one month and £900 the next. It works out a safe
-amount to pay yourself. So the bad months stop hurting.
-
-A cushion is soft. It stops you getting hurt when you fall.
-
-> ## Cash Cushion
-> Money that softens the fall in a bad month.
-
-Nobody has to explain this name to you. That is the difference.
-
----
-
-## It tells you the truth about domains
-
-Most tools show you a red cross. You learn nothing from a red cross.
-
-Naming Scout tells you five different things:
-
-| Answer | What it means for you |
-|---|---|
-| **free** | Nobody owns it. You can register it now. |
-| **for sale** | Someone owns it. They want to sell it. |
-| **parked** | Someone owns it. There is no website and no price. |
-| **taken** | Someone owns it and uses it. |
-| **not checked** | The check failed. This does not mean free. |
-
-The last one matters. Other tools show a failed check as a free domain. You find out later,
-after you have chosen the name.
-
-Naming Scout cannot tell you the price. No registry publishes prices. It tells you a price
-exists and gives you the listing.
-
----
-
-## It works in your language
-
-You are building a shop app in Bangladesh. You want the word `dokan`.
-
-Bangla is not written in English letters. So people spell it in different ways. Your customers
-will type all of them:
+**It works in your language.** Say you want the Bangla word `dokan` for a shop app. Bangla is
+not written in English letters, so your customers will type it in different ways. All of them
+are already gone:
 
 ```
 dokan.com     taken in 2002
@@ -81,18 +68,11 @@ dukan.com     taken in 2000
 dukaan.com    taken in 1999
 ```
 
-All three are gone. Most people only check one spelling and never learn this.
+Most people check one spelling and never learn this. Naming Scout checks every spelling. It
+does the same for Hindi, Urdu, Arabic, Turkish, Thai and Korean.
 
-Naming Scout checks every spelling first. It does this for Bangla, Hindi, Urdu, Arabic,
-Turkish, Thai and Korean.
-
----
-
-## It stops you making a bad spelling choice
-
-You want `staticapi.com`. It is for sale. You think: I will use `statikapi.com` instead.
-
-Naming Scout checks that idea:
+**It stops a bad spelling choice.** You want `staticapi.com`, but it is for sale. You think
+about using `statikapi.com` instead:
 
 ```
 staticapi.com    for sale
@@ -100,23 +80,16 @@ statikapi.com    taken in October 2025
 staticapi.dev    free
 ```
 
-Someone already took the misspelling. And the correct spelling is free on `.dev`.
+Someone already took the misspelling. And the correct spelling is free with a different
+ending. Keeping the spelling your customers know is almost always better.
 
-Keeping the right spelling and changing the ending is almost always better. Your customers
-type the spelling they know.
-
----
-
-## It tells you if people can find you
-
-Every name gets one of three answers:
+**It tells you if people can find you.** Every name gets one of three answers:
 
 - **ownable.** Nothing else uses this name. You will be the first search result.
 - **contested.** Other things share this name. You will need time and work.
 - **crowded.** This name is a common word. You may never be first.
 
-A name you cannot be found by costs you more than an expensive domain. Most naming tools
-never mention this.
+A name people cannot find costs you more than an expensive domain.
 
 ---
 
@@ -125,10 +98,26 @@ never mention this.
 A web page opens in your browser. The answer is at the top.
 
 You see one recommended name, why it works, and the domain to buy. You also see the one thing
-that would change the answer. Below that, two more names. Then a list of 8 to 15 names. You
-can open any of them to read the full reasoning.
+that would change the answer. Below that, two more names, then the full list.
 
 Every name comes with a weakness. If a name has no weakness listed, nobody checked it properly.
+
+---
+
+## What it checks
+
+It checks these on its own:
+
+- Domain names, at the registry
+- GitHub usernames
+- npm, PyPI, crates.io, RubyGems and Docker Hub package names
+
+It helps you check these by hand, because they need judgement:
+
+- Trademarks
+- Search results
+- App stores
+- Social media handles
 
 ---
 
@@ -151,26 +140,10 @@ Full guide: **[`naming-scout/README.md`](naming-scout/README.md)**
 
 ---
 
-## What it checks
-
-It checks these on its own:
-
-- Domain names, at the registry
-- GitHub usernames
-- npm, PyPI, crates.io, RubyGems and Docker Hub package names
-
-It helps you check these by hand, because they need judgement:
-
-- Trademarks
-- Search results
-- App stores
-- Social media handles
-
----
-
 ## What it cannot do
 
-- **It cannot tell you a domain price.** No registry publishes prices.
+- **It cannot tell you a domain price.** No registry publishes prices. It tells you a listing
+  exists and sends you there.
 - **It cannot check every domain ending.** `.co` and most South Asian endings have no registry
   API. Those come back as "not checked".
 - **It cannot check social handles.** The platforms give wrong answers, so it sends you to look.
