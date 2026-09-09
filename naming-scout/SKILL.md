@@ -105,7 +105,7 @@ are half the value: they are how the user reasons about the space after you leav
 | 2 | Check the strongest, read the hit rate per territory | the survivors |
 | 3 | Go deep in the territories that are both good and unmined | more per territory |
 | 4 | Refine surviving stems: compounds, alternate seams, tighter forms | targeted |
-| 5 | Defensive variants, **finalists only** | 2–3 names |
+| 5 | Manual checks and defensive variants, **finalists only** | 2–5 names |
 
 **Availability rate per territory is a signal about where to keep digging.** A territory
 returning 5% available is mined out by everyone who used the same obvious words. A
@@ -156,7 +156,7 @@ printf '%s\n' survivor1 survivor2 | scripts/rdap.sh --tlds com,io
 # namespaces: only the ecosystems in the chosen clearance profile
 scripts/clearance.sh --checks github,npm,pypi name1 name2
 
-# defensive sweep, finalists only
+# defensive sweep, finalists only (same 2-5 names as the manual checks)
 scripts/variants.sh finalist | scripts/rdap.sh --tlds com --available
 
 # second use: a name you want whose exact domain is gone. --set article finds the
@@ -184,9 +184,21 @@ exact failure this skill exists to prevent. Mark every candidate `unchecked` and
 user which commands to run.
 
 Four checks have no reliable API: trademark, social handles, app stores and search
-presence. Do those by hand and report each at the confidence its method supports. Read
-`references/clearance-guide.md` before doing any of them; it says what each check can and
-cannot establish.
+presence. Each one is a manual search, so each one costs real time.
+
+**Run them on the finalists only, meaning the 2 to 5 names you would actually recommend.**
+Doing them across a fifteen-name shortlist costs an hour and changes nothing: the ranking is
+already settled by then, and a name you are not going to recommend does not need a trademark
+search. Everything above the finalists gets the scripted checks and nothing more. Report the
+rest of the shortlist as unchecked on these four axes rather than implying they came back
+clean, and say so in "Check these yourself".
+
+The one exception is a collision you can see without searching. If a candidate obviously
+shares a name with something in its own category, cut it in round 2, whatever its domain
+state says.
+
+Report each check at the confidence its method supports. Read `references/clearance-guide.md`
+before doing any of them; it says what each check can and cannot establish.
 
 **If the market is not English-speaking**, read `references/naming-across-languages.md` first.
 A name from a non-Latin script has no single spelling, so sweep the romanisations before

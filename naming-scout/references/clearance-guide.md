@@ -20,6 +20,13 @@ Defaults, not rules. Propose one, explain it in a line, let the user change it.
 | **Agency / consultancy** | domain, trademark, search, LinkedIn, local business registry | everything technical |
 | **Course / education** | domain, socials, search, marketplace listings | package registries, app stores |
 
+**Scope the manual checks to finalists.** Domain and package-registry checks are scripted,
+so run them across a whole round. Trademark, socials, app stores and search presence are
+hand searches, and they belong to the 2 to 5 names you would actually recommend. A shortlist
+of fifteen does not need fifteen trademark searches; it needs the ranking settled first and
+then the top of it examined properly. Anything you did not check is reported as unchecked,
+never as clear.
+
 Adjust on the specifics rather than the label. A newsletter that will ship a CLI later
 should check npm now, and it costs one call. A hobby project does not need trademark work.
 
