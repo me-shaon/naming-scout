@@ -10,7 +10,8 @@
 #   ./variants.sh signalforge | ./rdap.sh --tlds com --available
 #
 # Options:
-#   --set LIST   comma-separated from: plural,article,verb,typo,hyphen,tld-stem,translit,all
+#   --set LIST   comma-separated from: plural,article,verb,typo,hyphen,tld-stem,translit,
+#                respell,all
 #                default: plural,article,verb,typo
 #
 # Sets:
@@ -21,6 +22,11 @@
 #             few letter swaps that actually produce confusable brands
 #   hyphen    signalforge -> signal-forge
 #   tld-stem  splits a compound so the domain-hack spelling can be tested separately
+#   respell   deliberate misspellings of an English word, the Lyft/Flickr/Xero move.
+#             c/k, s/z, ph/f, i/y, dropped and doubled letters.
+#             Read the respelling rule in references/brand-filter.md before using these.
+#             The canonical spelling is the one your users will type, so find out who
+#             holds it before you adopt a respelling.
 #   translit  romanisation variants for a name from a non-Latin script.
 #             dokan -> dukan, dokaan, dukaan, dokhan. Run this whenever the name comes
 #             from Bangla, Hindi, Urdu, Arabic, Persian, Turkish, Thai, Korean or any
@@ -47,7 +53,7 @@ if [ ${#names[@]} -eq 0 ]; then
   while IFS= read -r l; do l=$(printf '%s' "$l" | tr -d ' \t'); [ -n "$l" ] && names+=("$l"); done
 fi
 [ ${#names[@]} -gt 0 ] || { printf 'variants.sh: no name given\n' >&2; exit 2; }
-[ "$SETS" = all ] && SETS="plural,article,verb,typo,hyphen,tld-stem,translit"
+[ "$SETS" = all ] && SETS="plural,article,verb,typo,hyphen,tld-stem,translit,respell"
 
 has(){ case ",$SETS," in *",$1,"*) return 0 ;; *) return 1 ;; esac; }
 out=""
@@ -86,6 +92,22 @@ for raw in "${names[@]}"; do
     for seam in ai io co sh me tv us it up so; do
       case "$n" in *"$seam") add "${n%$seam}.$seam" ;; esac
     done
+  fi
+
+  if has respell; then
+    # Single substitutions only. Stacking them produces strings nobody can spell back from
+    # the sound, which is the whole failure this technique has to avoid.
+    for r in \
+      's/c/k/g'   's/k/c/g'   's/s/z/g'    's/z/s/g' \
+      's/ph/f/g'  's/f/ph/g'  's/qu/kw/g'  's/ck/k/g'  's/x/cks/g'  's/ks/x/g' \
+      's/i/y/g'   's/y/i/g'   's/ee/ea/g'  's/ea/ee/g' \
+      's/oo/u/g'  's/er$/r/'  's/le$/l/'   's/or$/r/'  's/en$/n/' ; do
+      add "$(printf '%s' "$n" | sed "$r")"
+    done
+    # double the final consonant: fiver -> fiverr
+    case "$n" in *[aeiou][bdglmnprstz]) add "$n${n#${n%?}}" ;; esac
+    # drop the last vowel before a final consonant: tracker -> trackr
+    add "$(printf '%s' "$n" | sed 's/\([bcdfghjklmnpqrstvwxz]\)[aeiou]\([bcdfghjklmnprstvwxz]\)$/\1\2/')"
   fi
 
   if has translit; then
