@@ -3,19 +3,24 @@
 **Finds a name for your startup, product or side project. Then proves you can actually use
 it.**
 
-Not `Growthly`, `GrowthAI` or `GetGrowth`. Every generator produces those, which is exactly
-why they are all taken. **Naming Scout is an agent skill** that builds names from metaphor
-territories, then checks them against the domain registry itself, plus trademark, GitHub,
-npm, the app stores and search.
+**Naming Scout is an agent skill** that builds names from metaphor territories instead of
+bolting suffixes onto your keyword, then checks them against the domain registry itself, plus
+trademark, GitHub, npm, the app stores and search.
 
-Same brief, same afternoon, one music newsletter:
+Say you are naming a budgeting app for freelancers, the kind whose income is £9,000 one month
+and £900 the next.
 
-| What was tried | Free on `.com` |
+| Name | `.com` |
 |---|---|
-| Industry words: `merchtable`, `soundcheck`, `backline` | **1 of 20** |
-| Phrases: `thedoorsplit`, `whatthegigpays`, `countthegate` | **8 of 17** |
+| `Budgetly` | taken since 2011 |
+| `GetBudget` | taken since 2003 |
+| `Budgetify` | taken since 2014 |
+| `BudgetAI` | for sale on Afternic |
+| **`Even Months`** | **free** |
 
-A permutation tool cannot produce `whatthegigpays`. That is precisely why it was still free.
+The first four are what a generator gives you, and they went years ago. Naming Scout found the
+last one by asking what the product *does*, which is turn uneven income into even months. No
+amount of bolting suffixes onto "budget" gets you there.
 
 ```bash
 npx skills add me-shaon/naming-scout
@@ -45,9 +50,10 @@ Naming Scout works in **metaphor territories** instead. It reads your positionin
 to eight concept domains that fit it, and generates inside those. A budgeting app for
 freelancers gets *storing the harvest* and *steadiness at sea*, not `Budgetly`.
 
-The skill measures the difference as it goes, which is where the 5% against 47% at the top of
-this page came from. It also reports the rate per territory, so you learn which directions
-still have room even if you reject every name on the list.
+The skill measures the difference as it goes. In one run for a music newsletter, industry
+vocabulary like `merchtable` and `soundcheck` came back 1 free out of 20. Phrases like
+`thedoorsplit` and `whatthegigpays` came back 8 out of 17. It reports that rate per territory,
+so you learn which directions still have room even if you reject every name on the list.
 
 ### They tell you a name is unavailable when it is for sale
 
