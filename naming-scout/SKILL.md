@@ -141,11 +141,15 @@ Paths below are relative to this skill's own directory. Run them from there, or 
 the absolute path to it.
 
 ```bash
-# domains: registry-level, distinguishes available / registered / parked / for_sale / unknown
-# output is ordered by buyability: available, for_sale, parked, registered, unknown
-printf '%s\n' name1 name2 name3 | scripts/rdap.sh --tlds com,io --quiet
+# wide screening round: one TLD, only the states you could act on. The stderr summary
+# still reports every state, so you keep the per-territory availability rate.
+printf '%s\n' name1 name2 name3 | scripts/rdap.sh --tlds com --states available,for_sale
 
-# domain mode A (strict) and mode D (aftermarket welcome)
+# survivors: full detail, ordered by buyability
+#   available, for_sale, parked, registered, reserved, unknown
+printf '%s\n' survivor1 survivor2 | scripts/rdap.sh --tlds com,io
+
+# domain mode A (strict) and mode C (parked shown)
 … | scripts/rdap.sh --tlds com --available
 … | scripts/rdap.sh --tlds com --states available,for_sale,parked
 
@@ -159,6 +163,12 @@ scripts/variants.sh finalist | scripts/rdap.sh --tlds com --available
 # get-/try-/the- route before you conclude the name is unusable.
 scripts/variants.sh --set article,plural wantedname | scripts/rdap.sh --tlds com --available
 ```
+
+Screen the wide rounds on **one TLD with a state filter**. Round 1 only asks what is open, so
+`--tlds com --states available,for_sale` halves the lookups and prints a handful of rows
+instead of eighty. The stderr summary counts every state regardless of the filter, so the
+per-territory rate survives it and the unverified-row warning still fires. Widen to more TLDs
+and the full state list once the field is down to survivors.
 
 Pass a whole round in one invocation. The scripts parallelise, back off on 429, and cache
 results (registered 30 days, available 1 hour), so one call for 30 names is far cheaper and
