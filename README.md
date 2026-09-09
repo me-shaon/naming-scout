@@ -1,6 +1,7 @@
 # Naming Scout
 
-Finds a name for your startup or product. Then checks if you can really use it.
+An agent skill that finds a name for your startup or product. Then it checks if you can
+really use it.
 
 ## Why it is different
 
@@ -51,8 +52,8 @@ later, after you have chosen the name.
 npx skills add me-shaon/naming-scout
 ```
 
-An agent skill for Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for
-every project. You need `curl` and `jq`.
+Works in Claude Code, Cursor, Codex, OpenCode and 75 other agents. Add `-g` for every
+project. You need `curl` and `jq`.
 
 ---
 
