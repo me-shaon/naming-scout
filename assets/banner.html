@@ -1,0 +1,46 @@
+<!doctype html><meta charset="utf-8">
+<style>
+:root{
+  --bg:#131310; --ink:#f2f0ea; --ink-2:#b5b1a7; --ink-3:#87837a;
+  --rule-2:#3a3a32; --panel:#1a1a16;
+  --go:#7cc59d; --hold:#d9ab63; --no:#dd9186; --unk:#87837a;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+body.light{
+  --bg:#faf8f3; --ink:#1c1b17; --ink-2:#55524a; --ink-3:#8b877d;
+  --rule-2:#d8d3c8; --panel:#fff;
+  --go:#2f6b4a; --hold:#9a6b1c; --no:#9a5148; --unk:#8b877d;
+}
+*{box-sizing:border-box;margin:0}
+body{width:1280px;height:320px;background:var(--bg);color:var(--ink);
+  font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px}
+
+h1{font:400 62px/1 var(--serif);letter-spacing:-.022em}
+.lede{font:400 23px/1.4 var(--sans);color:var(--ink-2)}
+.lede b{color:var(--ink);font-weight:500}
+
+.dots{display:flex;align-items:center;gap:14px;margin-top:4px}
+.dot{width:10px;height:10px;border-radius:50%}
+.ring{border:2px solid var(--hold)}
+.dots span{font:500 15px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);margin-left:5px}
+
+.cmd{font:500 20px/1 var(--mono);color:var(--ink);background:var(--panel);
+  border:1px solid var(--rule-2);border-radius:8px;padding:13px 18px;margin-top:4px}
+.cmd i{color:var(--ink-3);font-style:normal;margin-right:10px}
+</style>
+<body>
+<h1>Naming Scout</h1>
+<p class="lede">Names your product. Then tells you <b>the truth about every domain</b>.</p>
+<div class="dots">
+  <i class="dot" style="background:var(--go)"></i>
+  <i class="dot" style="background:var(--hold)"></i>
+  <i class="dot ring"></i>
+  <i class="dot" style="background:var(--no)"></i>
+  <i class="dot" style="background:var(--unk)"></i>
+  <span>Five domain states, not one red cross</span>
+</div>
+<div class="cmd"><i>$</i>npx skills add me-shaon/naming-scout</div>

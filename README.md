@@ -1,3 +1,8 @@
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
+  <img src="assets/banner-light.png" alt="Naming Scout. Names your product, then tells you the truth about every domain.">
+</picture>
+
 # Naming Scout
 
 An agent skill that finds a name for your startup or product. Then it checks if you can
