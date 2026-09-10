@@ -158,6 +158,9 @@ A web page opens in your browser. The answer is at the top.
 You see one recommended name, why it works, and the domain to buy. You also see the one thing
 that would change the answer. Below that, two more names, then the full list.
 
+The page is saved in `naming-reports/` where you ran it, so you can read it again next week
+or send it to a co-founder. The data behind it is saved next to the page.
+
 Every name comes with a weakness. If a name has no weakness listed, nobody checked it properly.
 
 ## What it checks

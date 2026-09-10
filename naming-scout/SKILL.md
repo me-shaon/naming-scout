@@ -248,8 +248,10 @@ scripts/report.sh report.json       # renders a self-contained page and opens it
 scripts/report.sh report.json -o ~/naming-report.html --no-open
 ```
 
-Write the JSON to the scratchpad or a temp path, not into the user's project, unless they
-asked for a file. `--schema` is normally enough on its own; open
+The page lands in `naming-reports/` in the working directory, and the JSON is saved beside
+it under the same name. Both outlive the session, so the user can reread the report later
+and re-render it after editing a field. Your working copy of the JSON can go to a temp path.
+The script writes the durable copy itself. `--schema` is normally enough on its own; open
 `examples/report-data.example.json` only if a section's shape is still unclear.
 
 Each domain and clearance state gets a distinct mark, so `unknown` can never be mistaken

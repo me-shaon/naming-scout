@@ -10,6 +10,10 @@ argue with it in five minutes.
 scripts/report.sh report.json
 ```
 
+The page is written to `naming-reports/` in the working directory rather than a temp
+directory, so the user still has it tomorrow. The JSON is saved next to it under the same
+name. Editing a field in that file and re-running the script rebuilds the page.
+
 `examples/report-data.example.json` is a complete payload from a real run.
 
 ## The one rule: answer first
@@ -175,7 +179,7 @@ the path.
 > the name, so a Python installer would ship as `sounder-cli`. That is the only thing that
 > would change my mind.
 >
-> Full report: /tmp/postgres-slow-query-profiler-cli-20260908.html
+> Full report: naming-reports/postgres-slow-query-profiler-cli-20260908.html
 
 ## Length
 

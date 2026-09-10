@@ -84,6 +84,29 @@ printf '{"title":"t"}' > "$TMP/min.json"
 "$ROOT/scripts/report.sh" "$TMP/min.json" -o "$TMP/min.html" --no-open >/dev/null 2>&1 \
   && ok "renders a payload with no candidates" || bad "renders a payload with no candidates"
 
+# the report has to outlive the session: it lands in the working directory, not in temp
+work="$TMP/work"; mkdir -p "$work"
+( cd "$work" && "$ROOT/scripts/report.sh" "$ex" --no-open >/dev/null 2>&1 )
+page=$(ls "$work"/naming-reports/*.html 2>/dev/null | head -1)
+[ -n "$page" ] && ok "default output lands in ./naming-reports" \
+  || bad "default output lands in ./naming-reports" "nothing written under $work"
+[ -n "$page" ] && [ -r "${page%.html}.json" ] && ok "saves the payload beside the page" \
+  || bad "saves the payload beside the page" "no .json next to $page"
+[ -n "$page" ] && jq -e . "${page%.html}.json" >/dev/null 2>&1 \
+  && ok "the saved payload is valid JSON" || bad "the saved payload is valid JSON"
+# re-rendering from the saved payload must not destroy it
+if [ -n "$page" ]; then
+  data="${page%.html}.json"; sum=$(cksum < "$data")
+  "$ROOT/scripts/report.sh" "$data" -o "$page" --no-open >/dev/null 2>&1
+  is "re-render leaves the saved payload intact" "$sum" "$(cksum < "$data")"
+fi
+# an unwritable directory falls back rather than losing the report
+ro="$TMP/ro"; mkdir -p "$ro"; chmod 555 "$ro"
+fb=$( cd "$ro" && "$ROOT/scripts/report.sh" "$ex" --no-open 2>/dev/null )
+chmod 755 "$ro"
+[ -n "$fb" ] && [ -r "$fb" ] && ok "falls back when the directory is read-only" \
+  || bad "falls back when the directory is read-only" "got '$fb'"
+
 # ---------------------------------------------------------------- input safety
 grp "rdap.sh input handling"
 r="$TMP/inv.tsv"

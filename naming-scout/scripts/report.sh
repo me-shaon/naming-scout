@@ -12,9 +12,13 @@
 #   cat report.json | ./report.sh -             # read JSON from stdin
 #
 # Options:
-#   -o, --out FILE   output path. default: a timestamped file in the system temp dir
+#   -o, --out FILE   output path. default: ./naming-reports/<slug>-<timestamp>.html
 #   --no-open        do not launch a browser
 #   --schema         print the expected JSON shape
+#
+# Reports are written to the working directory so they survive the session. The source
+# JSON is saved beside every page as <name>.json, which re-renders it after an edit.
+# If the directory cannot be written to, the report falls back to the system temp dir.
 #
 # Every field is optional. Sections with no data are omitted from the page rather than
 # rendered empty, so a partial report renders correctly.
@@ -90,7 +94,7 @@ while [ $# -gt 0 ]; do
     -o|--out)  OUT="${2:?}"; shift 2 ;;
     --no-open) DO_OPEN=0; shift ;;
     --schema)  schema; exit 0 ;;
-    -h|--help) sed -n '2,22p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
+    -h|--help) sed -n '2,24p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
     -)         SRC="-"; shift ;;
     -*)        die "unknown option: $1 (try --help)" ;;
     *)         SRC="$1"; shift ;;
@@ -117,9 +121,19 @@ printf '%s' "$json" | jq -c . | sed 's|<|\\u003c|g' > "$payfile"
 if [ -z "$OUT" ]; then
   slug=$(printf '%s' "$json" | jq -r '.title // "naming-report"' \
          | tr 'A-Z' 'a-z' | tr -cs 'a-z0-9' '-' | sed 's/^-//; s/-$//' | cut -c1-48)
-  OUT="${TMPDIR:-/tmp}/${slug:-naming-report}-$(date +%Y%m%d-%H%M%S).html"
+  OUT="naming-reports/${slug:-naming-report}-$(date +%Y%m%d-%H%M%S).html"
 fi
 mkdir -p "$(dirname "$OUT")" 2>/dev/null
+
+# A report nobody can open is worse than one in the wrong place: if the target directory
+# is not writable, say so and keep going in the temp dir.
+# stderr is redirected first so a failed open reports through our message, not bash's
+if ! : 2>/dev/null >>"$OUT"; then
+  tmpdir="${TMPDIR:-/tmp}"; tmpdir="${tmpdir%/}"
+  alt="$tmpdir/$(basename "$OUT")"
+  printf 'report.sh: cannot write %s, using %s instead\n' "$OUT" "$alt" >&2
+  OUT="$alt"
+fi
 
 # Splice by line, concatenating the payload from disk. No tool ever interprets its
 # contents, so quotes, backslashes and unicode escapes survive verbatim.
@@ -136,8 +150,19 @@ marker_line=$(sed -n "${ln}p" "$TEMPLATE")
 
 grep -q '__NAMING_SCOUT_DATA__' "$OUT" && die "placeholder not substituted; template may be corrupt"
 
+# Keep the source next to the page. Editing a field and re-running beats rebuilding the
+# payload from nothing, and it is the only copy if the run itself is gone.
+DATA="${OUT%.html}.json"
+if [ "$DATA" = "$OUT" ]; then DATA="$OUT.json"; fi
+if [ "$SRC" != "-" ] && [ "$SRC" -ef "$DATA" ] 2>/dev/null; then
+  :                                   # input already lives there, nothing to copy
+elif ! printf '%s' "$json" | jq . > "$DATA" 2>/dev/null; then
+  rm -f "$DATA"; DATA=""
+fi
+
 n=$(printf '%s' "$json" | jq -r '(.candidates // []) | length')
 printf 'report: %s (%s candidates)\n' "$OUT" "$n" >&2
+[ -n "$DATA" ] && printf 'source: %s\n' "$DATA" >&2
 
 if [ "$DO_OPEN" = 1 ]; then
   opener=""

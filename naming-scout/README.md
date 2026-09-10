@@ -69,7 +69,8 @@ available. A trademark search is reported as "no obvious conflict in what I sear
 as clearance.
 
 **The result opens in your browser.** Not a wall of terminal text. A page you can filter,
-search, print, and send to a co-founder.
+search, print, and send to a co-founder. It is saved in `naming-reports/`, so closing the
+tab does not lose it.
 
 ## The thing this exists to prevent
 
@@ -205,7 +206,9 @@ territory your name already belongs to.
 ## What a result looks like
 
 When the run finishes, a self-contained HTML page opens in your default browser. It is
-ordered the way you actually read: **the answer first, the evidence underneath.**
+written to `naming-reports/` in the directory you ran from, with the JSON behind it saved
+under the same name. It is ordered the way you actually read: **the answer first, the
+evidence underneath.**
 
 - **The pick.** One name, large, with the reason, the domain to register, and the one
   thing that would change the recommendation
