@@ -4,3 +4,6 @@
 
 # Local render previews
 .preview/
+
+# Trackway local state
+.trackway/
